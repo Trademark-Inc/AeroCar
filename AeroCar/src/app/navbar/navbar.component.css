@@ -1,5 +1,9 @@
 .logoTM {
     float: left;
+    margin: 15px 0px 10px 15px;
+    font-family: "Baskerville Old Face";
+    font-size: 30px;
+    vertical-align: middle;
 }
 
 .sign-up-in {
