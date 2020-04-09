@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 .logoTM {
+=======
+.title {
+    font-family: "Baskerville Old Face";
+    font-size: 60px;
+    color: black;
+    margin: 15px 0px 10px 15px;
+>>>>>>> 656f1a4442355c7e9ad14f1f47a5e3dd5f095c8f
     float: left;
 }
 
@@ -6,7 +14,12 @@
     border: 1px solid #444444;
     border-radius: 10px;
     font-size: 20px;
+<<<<<<< HEAD
     margin: 35px 25px 10px 0px;
+=======
+    float: right;
+    margin: 35px;
+>>>>>>> 656f1a4442355c7e9ad14f1f47a5e3dd5f095c8f
     transition-duration: 0.4s;
     float: right;
 }
@@ -16,8 +29,30 @@
     color: black;
 }
 
+<<<<<<< HEAD
 .title-header {
     border-bottom: 2px solid #444444;
     margin: 15px 20px 0px 20px;
     overflow: hidden;
 }
+=======
+.modal {
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) { 
+    .modal:before {
+      display: inline-block;
+      vertical-align: middle;
+      content: " ";
+      height: 100%;
+    }
+  }
+  
+  .modal-dialog {
+    display: inline-block;
+    margin: auto;
+    text-align: center;
+    vertical-align: middle;
+  }
+>>>>>>> 656f1a4442355c7e9ad14f1f47a5e3dd5f095c8f
