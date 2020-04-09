@@ -1,42 +1,19 @@
-.title {
-    font-family: "Baskerville Old Face";
-    font-size: 60px;    
-    margin: 15px 0px 10px 15px;
-    float: left;
-}
-
-.title-header {
-    border-bottom: 2px solid #444444;
-    margin: 15px 20px 0px 20px;
-    overflow: hidden;
-}
-
-.sign-up-in {
-    border: 1px solid #444444;
-    border-radius: 10px;
-    font-size: 20px;
-    float: right;
-    margin: 35px 25px 10px 0px;
-}
-
 .welcome {
     font-size: 50px;
     text-align: center;
     margin: 25px;
 }
 
-.btnAeroplane {
+.btnAeroplaneCar {
     border: 5px solid #444444;
     border-radius: 10px;
     margin: auto;
     display: inline-block;
+    transition-duration: 0.4s;
 }
 
-.btnCar {
-    border: 5px solid #444444;
-    border-radius: 10px;
-    margin: auto;
-    display: inline-block;
+.btnAeroplaneCar:hover {
+    background-color:lightgray;
 }
 
 .space {
@@ -50,21 +27,4 @@
     display: inline-block;
     text-align: center;
     width: 280px;
-}
-
-.buttonColor {
-    transition-duration: 0.4s;
-}
-
-.buttonColorSign-up-in {
-    transition-duration: 0.4s;
-}
-
-.buttonColor:hover {
-    background-color:lightgray;
-}
-
-.buttonColorSign-up-in:hover {
-    background-color: white;
-    color: black;
 }
