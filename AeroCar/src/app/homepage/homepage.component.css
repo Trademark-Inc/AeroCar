@@ -1,0 +1,41 @@
+.title {
+    font-family: "Baskerville Old Face";
+    font-size: 60px;    
+    margin: 15px 0px 10px 15px;
+    float: left;
+}
+
+.title-header {
+    border-bottom: 2px solid #444444;
+    margin: 15px 20px 0px 20px;
+    overflow: hidden;
+}
+
+.sign-up-in {
+    border: 1px solid #444444;
+    border-radius: 10px;
+    font-size: 20px;
+    float: right;
+    margin: 35px 25px 10px 0px;
+}
+
+.welcome {
+    font-size: 50px;
+    text-align: center;
+    margin: 25px;
+    overflow: hidden;
+}
+
+.btnAeroplane {
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: auto;
+    display: inline-block;
+}
+
+.btnCar {
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: auto;
+    display: inline-block;
+}
