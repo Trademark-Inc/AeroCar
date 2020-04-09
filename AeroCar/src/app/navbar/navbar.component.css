@@ -1,6 +1,7 @@
 .title {
     font-family: "Baskerville Old Face";
-    font-size: 60px;    
+    font-size: 60px;
+    color: black;
     margin: 15px 0px 10px 15px;
     float: left;
 }
@@ -16,7 +17,7 @@
     border-radius: 10px;
     font-size: 20px;
     float: right;
-    margin: 35px 25px 10px 0px;
+    margin: 35px;
     transition-duration: 0.4s;
 }
 
@@ -24,3 +25,23 @@
     background-color: white;
     color: black;
 }
+
+.modal {
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) { 
+    .modal:before {
+      display: inline-block;
+      vertical-align: middle;
+      content: " ";
+      height: 100%;
+    }
+  }
+  
+  .modal-dialog {
+    display: inline-block;
+    margin: auto;
+    text-align: center;
+    vertical-align: middle;
+  }
