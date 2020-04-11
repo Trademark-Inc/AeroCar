@@ -58,8 +58,8 @@
     -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
     transform: rotate(45deg);
      
-    border-right: 2px solid #000;
-    border-bottom: 2px solid #000;
+    border-right: 2px solid #ffff;
+    border-bottom: 2px solid #fff;
     margin: 0 0 3px 4px;
     
     width: 16px;
