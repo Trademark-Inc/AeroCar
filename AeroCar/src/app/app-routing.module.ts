@@ -6,9 +6,9 @@ import { HomepageComponent } from './homepage/homepage.component';
 
 
 const routes: Routes = [
-  { path: '', component: HomepageComponent },
-  { path: 'signup', component: SignUpComponent },
-  { path: 'profile', component: ProfileComponent }
+  { path: '', component: HomepageComponent},
+  { path: 'signup', component: SignUpComponent, data: { animation: 'isLeft' } },
+  { path: 'profile', component: ProfileComponent, data: { animation: 'isLeft' }  }
 ];
 
 @NgModule({
