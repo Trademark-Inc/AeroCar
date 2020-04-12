@@ -45,3 +45,21 @@
     text-align: center;
     vertical-align: middle;
   }
+
+.divider-text {
+    position: relative;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.divider-text::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    top: -50%;
+    /*top: 55%;*/
+    left: 0;
+    z-index: 1;
+}

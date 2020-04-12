@@ -1,6 +1,8 @@
 <div class="title-header">
     <div class="logoTM">
+      <a routerLink="" routerLinkActive="active">
         <img src="/../../assets/TMlogo.png" width="330" height="85">
+      </a>
     </div>
     <div>
         <button type="button" class="btn btn-dark sign-up-in" data-toggle="modal" data-target="#userSignIn">
@@ -38,12 +40,14 @@
               </div>
               <div class="form-group row">
                 <div class="col">
-                    <button type="button" class="btn btn-primary" style="width: 100%;" data-dismiss="modal" (click)="signIn()">Sign In</button>
+                    <button routerLink="/profile" routerLinkActive="active" type="button" class="btn btn-primary" style="width: 100%;" data-dismiss="modal" (click)="signIn()">Sign In</button>
                 </div>
               </div>
-              <div class="form-group row">
-                <div class="col" style="text-align: center; width: 100%;">
-                    Or
+              <div class="divider-text">
+                <div>
+                  <span style="color: gray;">
+                    Or login with
+                  </span>
                 </div>
               </div>
               <div class="form-group row">
@@ -51,7 +55,7 @@
                 </div>
               </div>
               <div class="form-group row">
-                <div class="col s12 m6 offset-m3 center-align" style="text-align: center;;">
+                <div class="col s12 m6 offset-m3 center-align" style="text-align: center;">
                     <a class="oauth-container btn darken-4 white black-text" href="/users/google-oauth/" style="text-transform:none">
                         <div class="left" style="border: 1px solid transparent; border-radius: 5px; background-color: lightgray;">
                             <div style="margin: 5px 15px 5px 15px;">
@@ -63,6 +67,11 @@
                     </a>
                 </div>
               </div>
+              <p class="divider-text" style="margin-bottom: 0px;">
+                <span style="color: gray;">
+                  Don't have an account? <a routerLink="/signup" routerLinkActive="active" data-dismiss="modal">Sign Up</a> 
+                </span>
+              </p>
             </form>
           </div>
           <!--
