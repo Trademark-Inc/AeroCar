@@ -1,28 +1,77 @@
-.look{
-    width: 45%;
-    text-align: center; 
+.titleStyle {
+    font-size: 45px;
+    text-align: center;
     color: #444444;
-    font-size: 35px;
-    margin: auto;
 }
 
-.lookFriendsList {
-    background-color: white;
-    border-collapse: collapse;
-    padding: 5px;
-    text-align: left; 
+.lookLabel {
     color: #444444;
+    font-size: 30px;
+    display: inline-block;
+}
+
+.lookBorderBox {
+    width: 300px;
+    border: 2px solid #9a9a9a;
+    border-radius: 10px;
+    background-color: white;
+    color: #5a5a5a;
+}
+
+.lookBigDiv {
+    border: 5px solid #9a9a9a;
+    border-radius: 20px;    
+    background-color: lightgray;
+}
+
+.space {
+    width: 100px;
+    display: inline-block;
+}
+
+.lookButtonArrow {
+    width: 300px;
+    border: 2px solid #9a9a9a;
+    border-radius: 50px;
+    background-color: white;
+    color:#5a5a5a;
+    font-weight: bold;
+}
+
+.lookButtonArrow:hover {
+    background-color:#444444;
+    color: white;
+}
+
+.lookTable{
+    background-color: lightgray;
+}
+
+.lookRow {
+    border: 3px solid #9a9a9a;
+    font-size: 30px;
+    color: #444444;
+}
+
+.lookAddRemoveButtons {
+    border: 3px solid #9a9a9a;
+    border-radius: 10px;
+    background-color: white;
+    color:#1a1a1a;
+    width: 195px;
     font-size: 25px;
 }
 
-.lookTable {
-    background-color: white;
-    text-align: left;
-    margin: auto;
-    width: 100%;
+.lookAddRemoveButtons:hover {
+    background-color:#444444;
+    color: white;
 }
 
-.profileTitle {
-    font-size: 50px;
-    font-weight: bold;
+.lookAddRemoveTextBox {
+    border: 1px solid #9a9a9a;
+    background-color: white;
+    width: 295px;
+    color:#1a1a1a;
+    font-size: 25px;
+    margin: 0.5%;
 }

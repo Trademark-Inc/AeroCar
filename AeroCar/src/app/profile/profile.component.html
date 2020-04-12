@@ -1,78 +1,75 @@
-<div class="container" style="text-align: center; margin: 2.5%;">
-    
-    <div class="look">
-        <h1 class="profileTitle">User profile</h1>
-        <table class="lookTable">
-            <tr>
-                <th>Firstname</th>
-                <td>UserFirstName</td>
-            </tr>
-            <tr>
-                <th>Lastname</th>
-                <td>UserLastName</td>
-            </tr>
-            <tr>
-                <th>E-mail</th>
-                <td>userMail@mail.com</td>
-            </tr>
-            <tr>
-                <th>Phone number</th>
-                <td>0123456789</td>
-            </tr>
-            <tr>
-                <th>City</th>
-                <td>userCity</td>
-            </tr>
-            <tr>
-                <th>Friends list</th>
-                <td>
-                    <button type="button" data-toggle="modal" data-target="#friendsList">
-                        ↓
-                    </button>
-                    </td>
-            </tr>
-        </table>
+<br>
+<div class="container titleStyle animated zoomIn">
+    This is Your profile on <img src="/../../assets/aerocar_logo.png" width="300px" height="100px"/> website
+</div>
+<br>
+<div class="container lookBigDiv" style="text-align: center;">
+    <div class="lookLabel">
+        <label>First name</label><br>
+        <label class="lookBorderBox">UserFirstName</label>
+    </div>
+    <div class="space">
+    </div>
+    <div class="lookLabel">
+        <label>Last name</label><br>
+        <label class="lookBorderBox">UserLastName</label>
+    </div>
+    <div class="space">
+    </div>
+    <div class="lookLabel">
+        <label>Phone number</label><br>
+        <label class="lookBorderBox">0123456789</label>
+    </div>
+    <br>
+    <div class="lookLabel">
+        <label>City</label><br>
+        <label class="lookBorderBox">UserCity</label>
+    </div>
+    <div class="space">
+    </div>
+    <div class="lookLabel">
+        <label>E-mail</label><br>
+        <label class="lookBorderBox">email@mail.com</label>
+    </div>
+    <div class="space">
+    </div>
+    <div class="lookLabel">
+        <label>Friends list</label><br>
+        <button type="button" class="lookButtonArrow" data-toggle="modal" data-target="#friendsList">⇩</button>
     </div>
 </div>
 <div class="modal fade" id="friendsList" tabindex="0" role="dialog" aria-labelledby="friendsList" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="friendsList">Friends</h5>
+            <h5 class="modal-title" id="friendsList" style="font-size: 25px; color: #444444;">Friends</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <table class="lookFriendsList">
-            <tr>
-                <th style="padding: 5px;">Friend1</th>
+          <table class="lookTable">
+            <tr class="lookRow">
+                <td>Friend1</td>
+            </tr>
+            <tr class="lookRow">
+                <td>Friend2</td>
+            </tr>
+            <tr class="lookRow">
+                <td>Friend3</td>
+            </tr>
+            <tr class="lookRow">
+                <td>Friend4</td>
+            </tr>
+            <tr class="lookRow">
+                <td>Friend5</td>
             </tr>
             <tr>
-                <th style="padding: 5px;">Friend2</th>
+                <input class="lookAddRemoveTextBox" type="text">
+                <button class="lookAddRemoveButtons" type="button">Add friend</button><br>                
+                <input class="lookAddRemoveTextBox" type="text">
+                <button class="lookAddRemoveButtons" type="button">Remove friend</button>
             </tr>
-            <tr>
-                <th style="padding: 5px;">Friend3</th>
-            </tr>
-            <tr>
-                <th style="padding: 5px;">Friend4</th>
-            </tr>
-            <tr>
-                <th>
-                    <input type="text">
-                    <button type="button">
-                        Add friend
-                    </button>
-                </th>
-            </tr>
-            <tr>
-                <th>
-                    <input type="text">
-                    <button type="button">
-                        Remove friend
-                    </button>
-                </th>
-            </tr>
-          </table>
-        </div>
+        </table>
+        </div>       
     </div>
 </div>
