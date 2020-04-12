@@ -1,0 +1,28 @@
+.look{
+    width: 45%;
+    text-align: center; 
+    color: #444444;
+    font-size: 35px;
+    margin: auto;
+}
+
+.lookFriendsList {
+    background-color: white;
+    border-collapse: collapse;
+    padding: 5px;
+    text-align: left; 
+    color: #444444;
+    font-size: 25px;
+}
+
+.lookTable {
+    background-color: white;
+    text-align: left;
+    margin: auto;
+    width: 100%;
+}
+
+.profileTitle {
+    font-size: 50px;
+    font-weight: bold;
+}
