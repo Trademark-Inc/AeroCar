@@ -7,7 +7,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
-  { path: 'signup', component: SignUpComponent, data: { animation: 'isLeft' } },
+  { path: 'signup', component: SignUpComponent, data: { animation: 'isRight' } },
   { path: 'profile', component: ProfileComponent, data: { animation: 'isLeft' }  }
 ];
 
