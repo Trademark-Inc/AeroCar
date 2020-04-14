@@ -31,16 +31,17 @@
 
 .lookButtonArrow {
     width: 300px;
-    border: 2px solid #9a9a9a;
+    border: 1px solid #444444;
     border-radius: 50px;
-    background-color: white;
-    color:#5a5a5a;
+    background-color: #202020;
+    color: white;
+    font-size: 20px;
     font-weight: bold;
 }
 
 .lookButtonArrow:hover {
-    background-color:#444444;
-    color: white;
+    background-color: white;
+    color: black;
 }
 
 .lookTable{
