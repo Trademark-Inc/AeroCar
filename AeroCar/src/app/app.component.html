@@ -1,6 +1,7 @@
 <div id="container">
   <app-navbar></app-navbar>
-  <div [@routeAnimations]="prepareRoute(outlet)" style="text-align: center; position: relative;">
+  <div [@routeAnimations]="prepareRoute(outlet)" style="text-align: center; position: relative; margin-bottom: 100px;">
     <router-outlet #outlet="outlet"></router-outlet>
   </div>
+  <app-footer></app-footer>
 </div>

@@ -30,7 +30,15 @@
       function topFunction() {
         document.body.scrollTop = 0; // For Safari
         document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-      } 
+      }
+      window.addEventListener("scroll", function () {
+          if ($(window).scrollTop() > 200) {
+              document.getElementById("footer").hidden = false;
+          }
+          else {
+              document.getElementById("footer").hidden = true;
+          }
+      }, false);
     </script>
     <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
     <div id="fb-root"></div>
