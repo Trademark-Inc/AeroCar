@@ -62,10 +62,10 @@
             </form>
         </div>
         <div class="list">
-            <div class="list-text" hidden>
+            <div class="list-text" *ngIf="!listContainsItems" [@hidden]>
                 The list contains no items.
             </div>
-            <div class="list-items">
+            <div class="list-items" *ngIf="listContainsItems" [@hidden]>
                 <table class="table" style="overflow: auto;">
                     <tbody>
                         <tr>
@@ -77,11 +77,11 @@
                                                     margin: 20px 0px 0px 20px; 
                                                     height: 50%;
                                                     font-weight: bold;">
-                                            Dositejeva 14, Novi Sad
+                                            Some Address XY/Z, Somecity
                                         </div>
                                         <div style="text-align: left; vertical-align: bottom; height: 50%;
                                                     margin: 0px 0px 20px 20px;">
-                                            * * * * *
+                                            <img src="../../assets/ratings/5.png" width="150" height="30" />
                                         </div>
                                     </div>
                                     <div class="list-item-right">
@@ -106,11 +106,11 @@
                                                     margin: 20px 0px 0px 20px; 
                                                     height: 50%;
                                                     font-weight: bold;">
-                                            Dositejeva 14, Novi Sad
+                                            Some Address XY/Z, Somecity
                                         </div>
                                         <div style="text-align: left; vertical-align: bottom; height: 50%;
                                                     margin: 0px 0px 20px 20px;">
-                                            * * * * *
+                                            <img src="../../assets/ratings/4.png" width="150" height="30" />
                                         </div>
                                     </div>
                                     <div class="list-item-right">
@@ -135,11 +135,11 @@
                                                     margin: 20px 0px 0px 20px; 
                                                     height: 50%;
                                                     font-weight: bold;">
-                                            Dositejeva 14, Novi Sad
+                                            Some Address XY/Z, Somecity
                                         </div>
                                         <div style="text-align: left; vertical-align: bottom; height: 50%;
                                                     margin: 0px 0px 20px 20px;">
-                                            * * * * *
+                                            <img src="../../assets/ratings/1.png" width="150" height="30" />
                                         </div>
                                     </div>
                                     <div class="list-item-right">
@@ -164,11 +164,11 @@
                                                     margin: 20px 0px 0px 20px; 
                                                     height: 50%;
                                                     font-weight: bold;">
-                                            Dositejeva 14, Novi Sad
+                                            Some Address XY/Z, Somecity
                                         </div>
                                         <div style="text-align: left; vertical-align: bottom; height: 50%;
                                                     margin: 0px 0px 20px 20px;">
-                                            * * * * *
+                                            <img src="../../assets/ratings/0.png" width="150" height="30" />
                                         </div>
                                     </div>
                                     <div class="list-item-right">
@@ -197,121 +197,101 @@
             More details about our rent-a-car companies
         </h1>
         <div class="details-list">
-            <div class="list-items">
+            <div class="details-list-items">
                 <table class="table" style="overflow: auto;">
                     <tbody>
                         <tr>
                             <td>
-                                <div class="list-item">
-                                    <div class="list-item-left">
-                                        <div style="text-align: left; 
-                                                    vertical-align: top; 
-                                                    margin: 20px 0px 0px 20px; 
-                                                    height: 50%;
-                                                    font-weight: bold;">
-                                            Dositejeva 14, Novi Sad
-                                        </div>
-                                        <div style="text-align: left; vertical-align: bottom; height: 50%;
-                                                    margin: 0px 0px 20px 20px;">
-                                            * * * * *
-                                        </div>
+                                <div class="details-list-item">
+                                    <div class="dli-logo-n-rating">
+                                        <img src="../../assets/aerocar_logo.png" width="100%" height="30%">
+                                        <br>
+                                        <span>Rating</span>
+                                        <br>
+                                        <img src="../../assets/ratings/4.png" width="100%" height="18%">
+                                        <br>
+                                        <span>4.1/5</span>
                                     </div>
-                                    <div class="list-item-right">
-                                        <div style="text-align: right; vertical-align: top;
-                                                    margin: 20px 20px 0px 0px">
-                                            <img src="../../assets/aerocar_logo.png" width="100px" height="50px">
-                                        </div>
-                                        <div style="text-align: right; vertical-align: bottom;
-                                                    margin: 0px 20px 20px 0px">
-                                            AeroCar™
-                                        </div>
+                                    <div class="dli-text">
+                                        <b>Address: Some Address XY/Z, Somecity</b>
+                                        <br>
+                                        <b>Travels to: Belgrade, Vienna, London, Zurich, Berlin</b>
+                                        <br>
+                                        <p>
+                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                        </p>
                                     </div>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <div class="list-item">
-                                    <div class="list-item-left">
-                                        <div style="text-align: left; 
-                                                    vertical-align: top; 
-                                                    margin: 20px 0px 0px 20px; 
-                                                    height: 50%;
-                                                    font-weight: bold;">
-                                            Dositejeva 14, Novi Sad
-                                        </div>
-                                        <div style="text-align: left; vertical-align: bottom; height: 50%;
-                                                    margin: 0px 0px 20px 20px;">
-                                            * * * * *
-                                        </div>
+                                <div class="details-list-item">
+                                    <div class="dli-logo-n-rating">
+                                        <img src="../../assets/aerocar_logo.png" width="100%" height="30%">
+                                        <br>
+                                        <span>Rating</span>
+                                        <br>
+                                        <img src="../../assets/ratings/0.png" width="100%" height="18%">
+                                        <br>
+                                        <span>0/5</span>
                                     </div>
-                                    <div class="list-item-right">
-                                        <div style="text-align: right; vertical-align: top;
-                                                    margin: 20px 20px 0px 0px">
-                                            <img src="../../assets/aerocar_logo.png" width="100px" height="50px">
-                                        </div>
-                                        <div style="text-align: right; vertical-align: bottom;
-                                                    margin: 0px 20px 20px 0px">
-                                            AeroCar™
-                                        </div>
+                                    <div class="dli-text">
+                                        <b>Address: Some Address XY/Z, Somecity</b>
+                                        <br>
+                                        <b>Travels to: Belgrade, Vienna, London, Zurich, Berlin</b>
+                                        <br>
+                                        <p>
+                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                        </p>
                                     </div>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <div class="list-item">
-                                    <div class="list-item-left">
-                                        <div style="text-align: left; 
-                                                    vertical-align: top; 
-                                                    margin: 20px 0px 0px 20px; 
-                                                    height: 50%;
-                                                    font-weight: bold;">
-                                            Dositejeva 14, Novi Sad
-                                        </div>
-                                        <div style="text-align: left; vertical-align: bottom; height: 50%;
-                                                    margin: 0px 0px 20px 20px;">
-                                            * * * * *
-                                        </div>
+                                <div class="details-list-item">
+                                    <div class="dli-logo-n-rating">
+                                        <img src="../../assets/aerocar_logo.png" width="100%" height="30%">
+                                        <br>
+                                        <span>Rating</span>
+                                        <br>
+                                        <img src="../../assets/ratings/3.png" width="100%" height="18%">
+                                        <br>
+                                        <span>3.0/5</span>
                                     </div>
-                                    <div class="list-item-right">
-                                        <div style="text-align: right; vertical-align: top;
-                                                    margin: 20px 20px 0px 0px">
-                                            <img src="../../assets/aerocar_logo.png" width="100px" height="50px">
-                                        </div>
-                                        <div style="text-align: right; vertical-align: bottom;
-                                                    margin: 0px 20px 20px 0px">
-                                            AeroCar™
-                                        </div>
+                                    <div class="dli-text">
+                                        <b>Address: Some Address XY/Z, Somecity</b>
+                                        <br>
+                                        <b>Travels to: Belgrade, Vienna, London, Zurich, Berlin</b>
+                                        <br>
+                                        <p>
+                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                        </p>
                                     </div>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <div class="list-item">
-                                    <div class="list-item-left">
-                                        <div style="text-align: left; 
-                                                    vertical-align: top; 
-                                                    margin: 20px 0px 0px 20px; 
-                                                    height: 50%;
-                                                    font-weight: bold;">
-                                            Dositejeva 14, Novi Sad
-                                        </div>
-                                        <div style="text-align: left; vertical-align: bottom; height: 50%;
-                                                    margin: 0px 0px 20px 20px;">
-                                            * * * * *
-                                        </div>
+                                <div class="details-list-item">
+                                    <div class="dli-logo-n-rating">
+                                        <img src="../../assets/aerocar_logo.png" width="100%" height="30%">
+                                        <br>
+                                        <span>Rating</span>
+                                        <br>
+                                        <img src="../../assets/ratings/5.png" width="100%" height="18%">
+                                        <br>
+                                        <span>4.6/5</span>
                                     </div>
-                                    <div class="list-item-right">
-                                        <div style="text-align: right; vertical-align: top;
-                                                    margin: 20px 20px 0px 0px">
-                                            <img src="../../assets/aerocar_logo.png" width="100px" height="50px">
-                                        </div>
-                                        <div style="text-align: right; vertical-align: bottom;
-                                                    margin: 0px 20px 20px 0px">
-                                            AeroCar™
-                                        </div>
+                                    <div class="dli-text">
+                                        <b>Address: Some Address XY/Z, Somecity</b>
+                                        <br>
+                                        <b>Travels to: Belgrade, Vienna, London, Zurich, Berlin</b>
+                                        <br>
+                                        <p>
+                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                        </p>
                                     </div>
                                 </div>
                             </td>

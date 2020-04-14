@@ -7,13 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarsComponent implements OnInit {
 
-  constructor() { }
+  listContainsItems: boolean;
+
+  constructor() {
+    this.listContainsItems = false;
+  }
 
   ngOnInit(): void {
   }
 
   searchForFlights(): void {
-    
+    this.listContainsItems = true;
   }
 
 }
