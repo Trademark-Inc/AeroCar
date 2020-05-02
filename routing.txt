@@ -1,0 +1,27 @@
+/sign-up/
+/sign-in/
+/profile/
+/admin/
+	/system/ <- Nedeljko Bajic Baja
+		/register/
+			/avio/
+			/rent-a-car/
+			/sub-admin/
+		/bonus/
+	/avio/
+	/rent-a-car/
+/homepage/
+	/user?id=.../
+		/rate/
+		/notifications/
+/flights/
+	/profile?id=.../ <- Detalji o kompaniji i mogucnost brze rezervacije ako je korisnik ulogovan
+	/reservation/
+		/seats/
+		/invitations/
+		/details/
+		/confirmation/
+/rent-a-car/
+	/profile?id=.../ <- Detalji o kompaniji i mogucnost brze rezervacije ako je korisnik ulogovan i vec ima rezervisan let
+	/reservation/
+		/details/
