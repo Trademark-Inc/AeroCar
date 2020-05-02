@@ -9,9 +9,21 @@
 			/sub-admin/
 		/bonus/
 	/avio/
+		/profile/
+		/aeroplanes/
+			/seats/
+		/flights/
+		/report/
+		/user/
 	/rent-a-car/
+		/profile/
+		/cars/
+		/offices/
+		/report/
+		/user/
 /homepage/
 	/user?id=.../
+		/friends/
 		/rate/
 		/notifications/
 /flights/
