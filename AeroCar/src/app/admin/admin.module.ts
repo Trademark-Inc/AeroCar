@@ -1,5 +1,3 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { AdminRoutingModule } from './admin-routing.module';
@@ -17,8 +15,6 @@ import { SeatsComponent } from './avio/aeroplanes/seats/seats.component';
   declarations: [AdminComponent, SystemComponent, AvioComponent, ProfileComponent, AeroplanesComponent, SeatsComponent],
   imports: [
     CommonModule,
-    BrowserModule,
-    BrowserAnimationsModule,
     AdminRoutingModule
   ]
 })
