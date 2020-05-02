@@ -6,6 +6,11 @@
     vertical-align: middle;
 }
 
+.sign-in:hover {
+    background-color: white;
+    color: #343a40;
+}
+
 .sign-up-in {
     border: 1px solid #444444;
     border-radius: 10px;
@@ -16,7 +21,7 @@
 
 .sign-up-in:hover {
     background-color: white;
-    color: black;
+    color: #343a40;
 }
 
 .title-header {
