@@ -1,0 +1,106 @@
+<div class="lookTittle animated fadeInDown">
+    Here You can change basic information of this avio company.
+</div>
+<br>
+<div class="container lookBigDiv" style="overflow: hidden; margin: 1% 0% 0% 30%;">
+    <form>
+        <div>
+            <div>
+                <label class="lookLabel">Name of avio company</label>
+                <input class="lookBox" type="text">
+            </div>
+            <div>           
+                <label class="lookLabel">Address</label>
+                <input class="lookBox" type="text">
+            </div>
+            <div>
+                <label class="lookLabel">Description</label>
+                <br>
+                <textarea class="lookDescriptionBox" type="text"></textarea>
+            </div>
+            <div>
+                <label class="lookLabel">Flights</label>
+                <label class="lookArow">→→→→→→→→→→→→→→→</label>
+                <button style="float: right;" class="lookButton" type="button" data-toggle="modal" data-target="#flightList">Edit</button>
+            </div>
+            <div>
+                <label class="lookLabel">List of bonus tickets</label>
+                <label class="lookArow">→→→→→→→→</label>
+                <button style="float: right;" class="lookButton" type="button" data-toggle="modal" data-target="#ticketsList">Tickets</button>
+            </div>
+            <div>
+                <label class="lookLabel">Change seats</label>
+                <label class="lookArow">→→→→→→→→→→→</label>
+                <button style="float: right;" class="lookButton" routerLink="/avio/aeroplanes" routerLinkActive="active" type="button">Change</button>
+            </div>
+            <div>
+                <label class="lookLabel">Pricelist</label>
+                <label class="lookArow">→→→→→→→→→→→→</label>
+                <button style="float: right;" class="lookButton" style="width: 140px;" type="button">Edit pricelist</button>
+            </div>
+        </div>
+    </form>   
+</div>
+<div class="modal fade" id="flightList" tabindex="0" role="dialog" aria-labelledby="flightList" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="flightList" style="font-size: 25px; color: #444444;">Flights</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <table class="lookTable">
+            <tr class="lookRow">
+                <td>Flight1</td>
+            </tr>
+            <tr class="lookRow">
+                <td>Flight2</td>
+            </tr>
+            <tr class="lookRow">
+                <td>Flight3</td>
+            </tr>
+            <tr class="lookRow">
+                <td>Flight4</td>
+            </tr>
+            <tr class="lookRow">
+                <td>Flight5</td>
+            </tr>
+            <tr>
+                <button routerLink="/avio/flights" routerLinkActive="active" class="lookAddRemoveButtons" type="button">Add flight</button><br>                
+                <input class="lookRemoveTextBox" type="text">
+                <button class="lookAddRemoveButtons" type="button">Remove flight</button>
+            </tr>
+        </table>
+        </div>       
+    </div>
+</div>
+<div class="modal fade" id="ticketsList" tabindex="0" role="dialog" aria-labelledby="ticketsList" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="ticketsList" style="font-size: 25px; color: #444444;">Tickets</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <table class="lookTable">
+            <tr class="lookRow">
+                <td>Ticket1</td>
+            </tr>
+            <tr class="lookRow">
+                <td>Ticket2</td>
+            </tr>
+            <tr class="lookRow">
+                <td>Ticket3</td>
+            </tr>
+            <tr class="lookRow">
+                <td>Ticket4</td>
+            </tr>
+            <tr class="lookRow">
+                <td>Ticket</td>
+            </tr>
+        </table>
+        </div>       
+    </div>
+</div>

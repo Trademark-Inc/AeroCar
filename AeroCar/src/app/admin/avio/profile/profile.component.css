@@ -1,0 +1,94 @@
+.lookLabel {
+    font-size: 25px;
+    color: #444444;
+    margin: 1%;
+}
+
+.lookBigDiv {
+    width: 40%;
+    height: 100%; 
+    border: 5px solid #9a9a9a;
+    border-radius: 20px;    
+    background-color: lightgray;
+}
+
+.lookButton {
+    margin: 1% 0% 1% 1%;
+    border: 1px solid #444444;
+    background-color: #202020;
+    color: white;
+    border-radius: 10px;
+    width: 80px;
+    height: 40px;
+}
+
+.lookButton:hover {
+    background-color: white;
+    color: black;
+}
+
+.lookBox {
+    float: right;
+    margin: 2% 0% 0% 0%;
+    border: 2px solid #9a9a9a;
+    border-radius: 10px;
+    background-color: white;
+    color: #5a5a5a;
+    height: 35px;
+    width: 220px;
+}
+
+.lookDescriptionBox {
+    width: 100%;
+    height: 250px;
+    border: 2px solid #9a9a9a;
+    border-radius: 10px;
+    background-color: white;
+    color: #5a5a5a;
+    font-size: 20px;
+}
+
+.lookTable{
+    background-color: lightgray;
+}
+
+.lookRow {
+    border: 3px solid #9a9a9a;
+    font-size: 30px;
+    color: #444444;
+}
+
+.lookAddRemoveButtons {
+    border: 3px solid #9a9a9a;
+    border-radius: 10px;
+    background-color: white;
+    color:#1a1a1a;
+    width: 195px;
+    font-size: 25px;
+}
+
+.lookAddRemoveButtons:hover {
+    background-color:#444444;
+    color: white;
+}
+
+.lookRemoveTextBox {
+    border: 1px solid #9a9a9a;
+    background-color: white;
+    width: 295px;
+    color:#1a1a1a;
+    font-size: 25px;
+    margin: 0.5%;
+}
+
+.lookArow {
+    font-size: 25px;
+    color: #444444;
+}
+
+.lookTittle {
+    margin: 2% 0% 0% 0%; 
+    text-align: center;
+    font-size: 40px;
+    color: #444444;
+}
