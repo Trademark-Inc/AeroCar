@@ -1,13 +1,17 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SystemComponent } from './system/system.component';
-import { AdminComponent } from './admin.component';
-import { CarComponent } from './car/car.component';
+import { AvioComponent } from './avio/avio.component';
+import { ProfileComponent } from './avio/profile/profile.component';
+import { AeroplanesComponent } from './avio/aeroplanes/aeroplanes.component';
+import { SeatsComponent } from './avio/aeroplanes/seats/seats.component';
 
 const routes: Routes = [
-  { path: '', component: AdminComponent },
   { path: 'system', component: SystemComponent },
-  { path: 'car', component: CarComponent }
+  { path: 'avio', component: AvioComponent },
+  { path: 'avio/profile', component: ProfileComponent },
+  { path: 'avio/aeroplanes', component: AeroplanesComponent},
+  { path: 'avio/aeroplanes/seats', component: SeatsComponent}
 ]
 
 @NgModule({
