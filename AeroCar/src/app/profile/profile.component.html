@@ -3,46 +3,49 @@
     This is Your profile on <img src="/../../assets/aerocar_logo.png" width="300px" height="100px"/> website
 </div>
 <br>
-<div class="container lookBigDiv" style="text-align: center;">
-    <div class="lookLabel">
-        <label>First name</label><br>
-        <input class="lookBorderBox" type="text">
-    </div>
-    <div class="space">
-    </div>
-    <div class="lookLabel">
-        <label>Last name</label><br>
-        <input class="lookBorderBox" type="text">
-    </div>
-    <div class="space">
-    </div>
-    <div class="lookLabel">
-        <label>Phone number</label><br>
-        <input class="lookBorderBox" type="text">
+<div class="container lookBigDiv">
+    <div style="display: flex;">
+        <div class="lookLabel">
+            <label>First name</label><br>
+            <input class="lookBorderBox" type="text">
+        </div>
+        <div class="space">
+        </div>
+        <div class="lookLabel">
+            <label>Last name</label><br>
+            <input class="lookBorderBox" type="text">
+        </div>
+        <div class="space">
+        </div>
+        <div class="lookLabel">
+            <label>Phone number</label><br>
+            <input class="lookBorderBox" type="text">
+        </div>
     </div>
     <br>
-    <div class="lookLabel">
-        <label>City</label><br>
-        <input class="lookBorderBox" type="text">
+    <div style="display: flex;">
+        <div class="lookLabel">
+            <label>City</label><br>
+            <input class="lookBorderBox" type="text">
+        </div>
+        <div class="space">
+        </div>
+        <div class="lookLabel">
+            <label>E-mail</label><br>
+            <input class="lookBorderBox" type="text">
+        </div>
+        <div class="space">
+        </div>
+        <div class="lookLabel">
+            <label>Friends list</label><br>
+            <button type="button" class="lookButtonArrow" data-toggle="modal" data-target="#friendsList">⇩</button>
+        </div>        
     </div>
-    <div class="space">
-    </div>
-    <div class="lookLabel">
-        <label>E-mail</label><br>
-        <input class="lookBorderBox" type="text">
-    </div>
-    <div class="space">
-    </div>
-    <div class="lookLabel">
-        <label>Friends list</label><br>
-        <button type="button" class="lookButtonArrow" data-toggle="modal" data-target="#friendsList">⇩</button>
-    </div>
-    <div class="space">
-    </div>
-    <div>
+    <br>
+    <div style="overflow: hidden;">
         <button class="lookButtonSave" type="button">Save</button>
+        <button class="lookButtonCancel" type="button">Cancel</button>
     </div>
-    
 </div>
 <div class="modal fade" id="friendsList" tabindex="0" role="dialog" aria-labelledby="friendsList" aria-hidden="true">
     <div class="modal-dialog" role="document">

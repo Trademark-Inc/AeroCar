@@ -1,0 +1,419 @@
+<div class="lookTittle animated fadeInDown">
+    Welcome User!
+</div>
+<br>
+<div class="container lookBigDiv">   
+    <div style="display: inline-block; width: 45%;">
+        <div style="float: left;">
+            <label class="lookLabel">Your profile</label><br>
+            <label class="lookLabel">List of Your friends</label>
+        </div>
+        <div style="float: right;">  
+            <button routerLink="/profile" routerLinkActive="active" class="lookButton" type="button">Click here</button><br><br>
+            <button routerLink="/homepage/user/friends" routerLinkActive="active" class="lookButton" type="button">Friend list</button>
+        </div>          
+    </div>
+    <div class="space">
+    </div>
+    <div style="display: inline-block; width: 45%;">
+        <div style="float: left;">
+            <label class="lookLabel">Invitations</label><br>
+            <label class="lookLabel">Bonus points</label>
+        </div>
+        <div style="float: right;">
+            <button routerLink="/homepage/user/notifications" routerLinkActive="active" class="lookButton" style="margin: 5% 0% 0% 0%;" type="button">More</button><br><br> 
+            <label class="lookLabelBonus">123</label>
+        </div>                   
+    </div>   
+    <hr>  
+    <div style="display: inline-block; width: 45%; vertical-align: top;">
+        <label class="lookLabel">View history of Your flights and rented cars</label><br>
+        <div style="float: left;">
+            <label class="lookLabel" style="font-size: 20px;">- Flights</label><br>
+            <label class="lookLabel" style="font-size: 20px;">- Cars</label>
+        </div>
+        <div style="float: right;">
+            <button class="lookButton" type="button" style="float: right;  margin: 1% 0% 0% 0%;" data-toggle="modal" data-target="#flightsList">Click here</button><br><br>      
+            <button class="lookButton" type="button" style="float: right;  margin: 1% 0% 0% 0%;" data-toggle="modal" data-target="#carsList">Click here</button>
+        </div>        
+    </div>
+    <div class="space">
+    </div>
+    <div style="display: inline-block; width: 45%;" >
+        <label class="lookLabel">List of avio company and cars in our system</label><br>
+        <div style="float: left;">
+            <label class="lookLabel" style="font-size: 20px;">- Avio company</label><br>
+            <label class="lookLabel" style="font-size: 20px;">- Rent-a-car</label>
+        </div>
+        <div style="float: right;">
+            <button routerLink="/flights" routerLinkActive="active" class="lookButton" type="button" style="float: right; margin: 1% 0% 0% 0%;">AC list</button><br><br>          
+            <button routerLink="/cars" routerLinkActive="active" class="lookButton" type="button" style="float: right;  margin: 1% 0% 0% 0%;">Cars list</button>
+        </div>        
+    </div>
+    <hr>
+    <div style="display: inline-block; width: 45%;">
+        <label class="lookLabel">Your reservation of flights and cars</label><br>
+        <div style="float: left;" >
+            <label class="lookLabel" style="font-size: 20px;">- Flights</label><br>
+            <label class="lookLabel" style="font-size: 20px;">- Cars</label>
+        </div>
+        <div style="float: right;">
+            <button class="lookButton" type="button" style="float: right; margin: 1% 0% 0% 0%;" data-toggle="modal" data-target="#reservationFlightsList">Click here</button><br><br>            
+            <button class="lookButton" type="button" style="float: right; margin: 1% 0% 0% 0%;" data-toggle="modal" data-target="#reservationCarsList">Click here</button>
+        </div>
+    </div>
+    <div class="space">
+    </div>
+    <div style="display: inline-block; width: 45%;">
+        <label class="lookLabel">Rating of flights and cars</label><br>
+        <div style="float: left;">
+            <label class="lookLabel" style="font-size: 20px;">- Flights</label><br>
+            <label class="lookLabel" style="font-size: 20px;">- Cars</label>
+        </div>
+        <div style="float: right;">
+            <button class="lookButton" type="button" style="float: right; margin: 1% 0% 0% 0%;" data-toggle="modal" data-target="#rateFlightsList">Click here</button><br><br>            
+            <button class="lookButton" type="button" style="float: right; margin: 1% 0% 0% 0%;" data-toggle="modal" data-target="#rateCarsList">Click here</button>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="flightsList" tabindex="0" role="dialog" aria-labelledby="flightsList" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="flightsList" style="font-size: 25px; color: #444444;">Flights</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+            <table class="table" style="background-color: rgb(223, 239, 245);">
+                <tr class="lookRow">
+                    <td class="lookTd">Berlin - Beograd,<br>01.02.2003,<br>FirmaAvioFirma</td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Berlin - Beograd,<br>01.02.2003,<br>FirmaAvioFirma</td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Berlin - Beograd,<br>01.02.2003,<br>FirmaAvioFirma</td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Berlin - Beograd,<br>01.02.2003,<br>FirmaAvioFirma</td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Berlin - Beograd,<br>01.02.2003,<br>FirmaAvioFirma</td>
+                </tr>
+            </table>
+        </div>       
+    </div>
+</div>
+<div class="modal fade" id="carsList" tabindex="0" role="dialog" aria-labelledby="carsList" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="carsList" style="font-size: 25px; color: #444444;">Cars</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+            <table class="table" style="background-color: rgb(223, 239, 245);">
+                <tr class="lookRow">
+                    <td class="lookTd">Berlin (Preuzeto),<br>01.02.2003,<br>FirmaAvioFirma</td>
+                    <td class="lookTd">Minhen (Predato),<br>10.02.2003,<br> FirmaAvioFirma</td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Berlin (Preuzeto),<br>01.02.2003,<br>FirmaAvioFirma</td>
+                    <td class="lookTd">Minhen (Predato),<br>10.02.2003,<br> FirmaAvioFirma</td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Berlin (Preuzeto),<br>01.02.2003,<br>FirmaAvioFirma</td>
+                    <td class="lookTd">Minhen (Predato),<br>10.02.2003,<br> FirmaAvioFirma</td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Berlin (Preuzeto),<br>01.02.2003,<br>FirmaAvioFirma</td>
+                    <td class="lookTd">Minhen (Predato),<br>10.02.2003,<br> FirmaAvioFirma</td>              
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Berlin (Preuzeto),<br>01.02.2003,<br>FirmaAvioFirma</td>
+                    <td class="lookTd">Minhen (Predato),<br>10.02.2003,<br> FirmaAvioFirma</td>             
+                </tr>
+            </table>
+        </div>       
+    </div>
+</div>
+<div class="modal fade" id="reservationFlightsList" tabindex="0" role="dialog" aria-labelledby="reservationFlightsList" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="reservationFlightsList" style="font-size: 25px; color: #444444;">Reservation (flights)</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+            <table class="table" style="background-color: rgb(223, 239, 245);">
+                <tr class="lookRow">
+                    <td class="lookTd">Berlin - Beograd,<br>01.02.2003,<br>FirmaAvioFirma</td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Berlin - Beograd,<br>01.02.2003,<br>FirmaAvioFirma</td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Berlin - Beograd,<br>01.02.2003,<br>FirmaAvioFirma</td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Berlin - Beograd,<br>01.02.2003,<br>FirmaAvioFirma</td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Berlin - Beograd,<br>01.02.2003,<br>FirmaAvioFirma</td>
+                </tr>
+            </table>            
+            <div style="display: flex; margin: 0% 0% 1% 0%;">
+                <select class="lookReservationBox">
+                    <option>Reservation1</option>
+                    <option>Reservation2</option>
+                    <option>Reservation3</option>
+                    <option>Reservation4</option>
+                </select>
+                <button class="lookReservationButton" type="button">Cancel reservation</button>         
+            </div>
+        </div>       
+    </div>
+</div>
+<div class="modal fade" id="reservationCarsList" tabindex="0" role="dialog" aria-labelledby="reservationCarsList" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="reservationCarsList" style="font-size: 25px; color: #444444;">Reservation (cars)</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+            <table class="table" style="background-color: rgb(223, 239, 245);">
+                <tr class="lookRow">
+                    <td class="lookTd">Berlin (Preuzeto),<br>01.02.2003,<br>FirmaAvioFirma</td>
+                    <td class="lookTd">Minhen (Predato),<br>10.02.2003,<br> FirmaAvioFirma</td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Berlin (Preuzeto),<br>01.02.2003,<br>FirmaAvioFirma</td>
+                    <td class="lookTd">Minhen (Predato),<br>10.02.2003,<br> FirmaAvioFirma</td>             
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Berlin (Preuzeto),<br>01.02.2003,<br>FirmaAvioFirma</td>
+                    <td class="lookTd">Minhen (Predato),<br>10.02.2003,<br> FirmaAvioFirma</td>           
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Berlin (Preuzeto),<br>01.02.2003,<br>FirmaAvioFirma</td>
+                    <td class="lookTd">Minhen (Predato),<br>10.02.2003,<br> FirmaAvioFirma</td>               
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Berlin (Preuzeto),<br>01.02.2003,<br>FirmaAvioFirma</td>
+                    <td class="lookTd">Minhen (Predato),<br>10.02.2003,<br> FirmaAvioFirma</td>               
+                </tr>
+            </table>
+            <div style="display: flex; margin: 0% 0% 1% 0%;">
+                <select class="lookReservationBox">
+                    <option>Reservation1</option>
+                    <option>Reservation2</option>
+                    <option>Reservation3</option>
+                    <option>Reservation4</option>
+                </select>
+                <button class="lookReservationButton" type="button">Cancel reservation</button>         
+            </div>            
+        </div>       
+    </div>
+</div>
+<div class="modal fade" id="rateFlightsList" tabindex="0" role="dialog" aria-labelledby="rateFlightsList" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="rateFlightsList" style="font-size: 25px; color: #444444;">Rate (flights)</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+            <table class="table" style="background-color: rgb(223, 239, 245);">
+                <tr class="lookRow">
+                    <td class="lookTd">Berlin - Beograd,<br>01.02.2003,<br>FirmaAvioFirma</td>
+                    <td class="lookTdRating">
+                        <div style="overflow: hidden;">
+                            <label style="font-size: 15px; float: left;">Rating</label>
+                                <select class="lookRating">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                        </div>                    
+                    </td>
+                    <td class="lookTdConfirm">
+                        <button class="lookButtonConfirm" type="button">Confirm</button>  
+                    </td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Berlin - Beograd,<br>01.02.2003,<br>FirmaAvioFirma</td>
+                    <td class="lookTdRating">
+                        <label style="font-size: 15px;">Rating </label>
+                            <select class="lookRating">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                    </td>
+                    <td class="lookTdConfirm">
+                        <button class="lookButtonConfirm" type="button">Confirm</button>  
+                    </td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Berlin - Beograd,<br>01.02.2003,<br>FirmaAvioFirma</td>
+                    <td class="lookTdRating">
+                        <label style="font-size: 15px;">Rating </label>
+                            <select class="lookRating">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                    </td>
+                    <td class="lookTdConfirm">
+                        <button class="lookButtonConfirm" type="button">Confirm</button>  
+                    </td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Berlin - Beograd,<br>01.02.2003,<br>FirmaAvioFirma</td>
+                    <td class="lookTdRating">
+                        <label style="font-size: 15px;">Rating </label>
+                            <select class="lookRating">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                    </td>
+                    <td class="lookTdConfirm">
+                        <button class="lookButtonConfirm" type="button">Confirm</button>  
+                    </td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Berlin - Beograd,<br>01.02.2003,<br>FirmaAvioFirma</td>
+                    <td class="lookTdRating">
+                        <label style="font-size: 15px;">Rating </label>
+                            <select class="lookRating">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                    </td>
+                    <td class="lookTdConfirm">
+                        <button class="lookButtonConfirm" type="button">Confirm</button>  
+                    </td>
+                </tr>
+            </table>            
+        </div>       
+    </div>
+</div>
+<div class="modal fade" id="rateCarsList" tabindex="0" role="dialog" aria-labelledby="rateCarsList" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="rateCarsList" style="font-size: 25px; color: #444444;">Rate (cars)</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+            <table class="table" style="background-color: rgb(223, 239, 245);">
+                <tr class="lookRow">
+                    <td class="lookTd">Berlin (Preuzeto),<br>01.02.2003,<br>FirmaAvioFirma</td>
+                    <td class="lookTd">Minhen (Predato),<br>10.02.2003,<br>FirmaAvioFirma</td>                    
+                    <td class="lookTdRating">
+                        <div style="overflow: hidden;">
+                            <label style="font-size: 15px; float: left;">Rating</label>
+                                <select class="lookRating">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                        </div>                    
+                    </td>
+                    <td class="lookTdConfirm">
+                        <button class="lookButtonConfirm" type="button">Confirm</button>  
+                    </td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Berlin (Preuzeto),<br>01.02.2003,<br>FirmaAvioFirma</td>
+                    <td class="lookTd">Minhen (Predato),<br>10.02.2003,<br>FirmaAvioFirma</td>
+                    <td class="lookTdRating">
+                        <label style="font-size: 15px;">Rating </label>
+                            <select class="lookRating">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                    </td>
+                    <td class="lookTdConfirm">
+                        <button class="lookButtonConfirm" type="button">Confirm</button>  
+                    </td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Berlin (Preuzeto),<br>01.02.2003,<br>FirmaAvioFirma</td>
+                    <td class="lookTd">Minhen (Predato),<br>10.02.2003,<br>FirmaAvioFirma</td>
+                    <td class="lookTdRating">
+                        <label style="font-size: 15px;">Rating </label>
+                            <select class="lookRating">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                    </td>
+                    <td class="lookTdConfirm">
+                        <button class="lookButtonConfirm" type="button">Confirm</button>  
+                    </td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Berlin (Preuzeto),<br>01.02.2003,<br>FirmaAvioFirma</td>
+                    <td class="lookTd">Minhen (Predato),<br>10.02.2003,<br>FirmaAvioFirma</td>
+                    <td class="lookTdRating">
+                        <label style="font-size: 15px;">Rating </label>
+                            <select class="lookRating">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                    </td>
+                    <td class="lookTdConfirm">
+                        <button class="lookButtonConfirm" type="button">Confirm</button>  
+                    </td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Berlin (Preuzeto),<br>01.02.2003,<br>FirmaAvioFirma</td>
+                    <td class="lookTd">Minhen (Predato),<br>10.02.2003,<br>FirmaAvioFirma</td>
+                    <td class="lookTdRating">
+                        <label style="font-size: 15px;">Rating </label>
+                            <select class="lookRating">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                    </td>
+                    <td class="lookTdConfirm">
+                        <button class="lookButtonConfirm" type="button">Confirm</button>  
+                    </td>
+                </tr>
+            </table>            
+        </div>       
+    </div>
+</div>

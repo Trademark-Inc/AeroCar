@@ -1,62 +1,57 @@
-.look-label {
-  font-size: 25px;
+.lookLabel {
+  font-size: 20px;
   color: #444444;
-  margin: 2% 0% 0% 3%;
   float: left;
 }
 
-.look-box {
-  width: 330px;
-  font-size: 20px;
+.lookBox {
+  width: 250px;
+  height: 35px;
   border-radius: 10px;
-  margin: 2% 2% 0% 0%;
   border: 2px solid #9a9a9a;
   background-color: white;
   color: #707070;
   float: right;
 }
 
-.look-combo-box {
-  width: 330px;
-  font-size: 20px;
+.lookComboBox {
+  width: 250px;
+  height: 35px;
   border-radius: 10px;
-  margin: 2% 2% 0% 0%;
   border: 2px solid #9a9a9a;
   background-color: white;
   color: #444444;
   float: right;
+  font-size: 15px;
 }
 
-.look-small-box {
-  font-size: 20px;
-  width: 30px;
-  height: 30px;
-  border-radius: 10px;
-  margin: 2.5% 0% 0% 2%;
+.lookSmallBox {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
   text-align: center;
   border: 2px solid #9a9a9a;
   float: left;
 }
 
-.look-div-left {
+.lookDivLeft {
   border: 5px solid #9a9a9a;
   border-radius: 20px;    
   background-color: lightgray;
   width: 40%;
   overflow: hidden;
-  height: 50%;
+  height: 40%;
+  margin-left: 2%;
 }
 
-.look-button-search {
+.lookButtonSearch {
   border: 1px solid #444444;
-  width: 100px;
-  height: 50px;
+  width: 70px;
+  height: 40px;
   border-radius: 10px;
   float: right;
-  margin: 1%;
   background-color: #202020;
   color: white;
-  font-size: 20px;
 }
 
 .look-button-search:hover {
@@ -70,7 +65,8 @@
   background-color: lightgray;
   display: inline-block;
   width: 55%;
-  margin: 2%;
+  margin-left: 2%;
+  margin-right: 2%;
 }
 
 .look-list-no-content {

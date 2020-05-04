@@ -4,7 +4,7 @@
     height: 100%;
     border: 5px solid #9a9a9a;
     border-radius: 20px;    
-    background-color: lightgray;
+    background-color: white;
 }
 
 .lookTd {
@@ -13,7 +13,7 @@
     border-left: 1px solid #9a9a9a;
     border-right: 1px solid #9a9a9a;
     text-align: center;
-    background-color: green;
+    background-color: rgb(33, 33, 253);
     border-radius: 30px;
     font-weight: bold;
 }

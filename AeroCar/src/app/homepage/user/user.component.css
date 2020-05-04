@@ -1,0 +1,127 @@
+.lookTittle {
+    margin: 2% 0% 0% 0%; 
+    text-align: center;
+    font-size: 40px;
+    color: #444444;
+}
+
+.lookLabel {
+    color: #444444;
+    font-size: 25px;
+}
+
+.lookBigDiv {
+    border: 5px solid #9a9a9a;
+    border-radius: 20px;    
+    background-color: white;
+    width: 100%;
+    overflow: hidden;
+    padding: 25px;
+}
+
+.lookRow {
+    border: 2px solid darkgray;
+    font-size: 15px;
+    color: #444444;
+    border-bottom: black;
+}
+
+.lookTd {
+    border: 2px solid darkgray;
+    width: 50%;
+    color: black;   
+}
+
+.lookTdRating {
+    width: 20%;
+    border: 2px solid darkgray;
+    vertical-align: bottom;
+}
+
+.lookRating {
+    border: 1px solid #444444;
+    font-size: 15px;
+    float: right;
+}
+
+.spaceRating {
+    width: 1%;
+}
+
+.lookTdConfirm {
+    width: 10%;
+    border: 2px solid darkgray;
+    vertical-align: bottom;
+}
+
+.lookButton {
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #444444;
+    background-color: rgb(33, 33, 253);
+    color: white;
+    border-radius: 20px;    
+}
+
+.lookButton:hover {
+    background-color: white;
+    color: rgb(33, 33, 253);
+}
+
+.lookReservationButton {
+    border: 3px solid #9a9a9a;
+    border-radius: 10px;
+    background-color: white;
+    color:#1a1a1a;
+    height: 35px;
+    font-size: 18px;
+    display: inline-block;
+    width: 50%;
+}
+
+.lookReservationButton:hover {
+    background-color:#444444;
+    color: white;
+}
+
+.lookReservationBox {
+    border: 2px solid #9a9a9a;
+    background-color: white;
+    height: 30px;
+    color:#1a1a1a;
+    font-size: 15px;
+    margin: 0.5%;
+    display: inline-block;
+    width: 50%;
+}
+
+.lookLabelBonus {
+    width: 50px;
+    height: 30px;
+    font-size: 15px;
+    border-radius: 10px;
+    border: 2px solid #444444;
+    float: right;
+    text-align: center;
+}
+
+.space {
+    width: 10%;
+    display: inline-block;
+}
+
+.lookButtonConfirm {
+    border: 3px solid #9a9a9a;
+    border-radius: 10px;
+    background-color: white;
+    color:#1a1a1a;
+    width: 70px;
+    height: 30px;
+}
+
+.lookButtonConfirm:hover {
+    background-color:#444444;
+    color: white;
+}
+

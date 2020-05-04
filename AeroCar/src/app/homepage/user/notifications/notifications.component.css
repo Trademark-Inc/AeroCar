@@ -1,0 +1,52 @@
+.lookBigDiv {
+    border: 5px solid #9a9a9a;
+    border-radius: 20px;    
+    background-color: white;
+    width: 50%;
+    height: 100%;
+    padding: 25px;
+}
+
+.lookTittle {
+    margin: 2% 0% 0% 0%; 
+    text-align: center;
+    font-size: 40px;
+    color: #444444;
+}
+
+.lookAcceptButton {
+    border: 3px solid #9a9a9a;
+    border-radius: 10px;
+    background-color: #444444;
+    color: white;
+}
+
+.lookAcceptButton:hover {
+    background-color: white;
+    color: #1a1a1a;
+}
+
+.lookRejectButton {
+    border: 3px solid #9a9a9a;
+    border-radius: 10px;
+    background-color: white;
+    color:#1a1a1a;
+}
+
+.lookRejectButton:hover {
+    background-color:#444444;
+    color: white;
+}
+
+
+
+
+
+.lookRow {
+    font-size: 18px;
+    color: #444444;
+}
+
+.lookTd {
+    border: 2px solid darkgray;
+}

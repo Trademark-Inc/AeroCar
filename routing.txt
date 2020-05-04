@@ -24,7 +24,6 @@
 /homepage/
 	/user?id=.../
 		/friends/
-		/rate/
 		/notifications/
 /flights/
 	/profile?id=.../ <- Detalji o kompaniji i mogucnost brze rezervacije ako je korisnik ulogovan

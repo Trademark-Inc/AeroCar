@@ -6,17 +6,17 @@ import { AdminComponent } from './admin.component';
 import { SystemComponent } from './system/system.component';
 import { CarComponent } from './car/car.component';
 import { AvioComponent } from './avio/avio.component';
-import { ProfileComponent } from './avio/profile/profile.component';
-import { AeroplanesComponent } from './avio/aeroplanes/aeroplanes.component';
-import { SeatsComponent } from './avio/aeroplanes/seats/seats.component';
-import { FlightsComponent } from './avio/flights/flights.component';
-import { ReportComponent } from './avio/report/report.component';
-import { UserComponent } from './avio/user/user.component';
+import { AvioProfileComponent } from './avio/profile/profile.component';
+import { AvioAeroplanesComponent } from './avio/aeroplanes/aeroplanes.component';
+import { AvioSeatsComponent } from './avio/aeroplanes/seats/seats.component';
+import { AvioFlightsComponent } from './avio/flights/flights.component';
+import { AvioReportComponent } from './avio/report/report.component';
+import { AvioUserComponent } from './avio/user/user.component';
 
 
 
 @NgModule({
-  declarations: [AdminComponent, SystemComponent, CarComponent, AvioComponent, ProfileComponent, AeroplanesComponent, SeatsComponent, FlightsComponent, ReportComponent, UserComponent],
+  declarations: [AdminComponent, SystemComponent, CarComponent, AvioComponent, AvioProfileComponent, AvioAeroplanesComponent, AvioSeatsComponent, AvioFlightsComponent, AvioReportComponent, AvioUserComponent],
   imports: [
     CommonModule,
     AdminRoutingModule

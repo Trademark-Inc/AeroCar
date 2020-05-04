@@ -9,6 +9,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { FooterComponent } from './footer/footer.component';
+import { UserComponent } from './homepage/user/user.component';
+import { FriendsComponent } from './homepage/user/friends/friends.component';
+import { NotificationsComponent } from './homepage/user/notifications/notifications.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { FooterComponent } from './footer/footer.component';
     NavbarComponent,
     ProfileComponent,
     SignUpComponent,
-    FooterComponent
+    FooterComponent,
+    UserComponent,
+    FriendsComponent,
+    NotificationsComponent
   ],
   imports: [
     BrowserModule,
