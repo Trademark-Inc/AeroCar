@@ -1,5 +1,8 @@
 <div class="container main">
     <div class="line">
+        <h2>Basic options</h2>
+    </div>
+    <div class="line">
         <div class="left">
             Change your Rent-A-Car company's details
             <div class="details">
@@ -9,7 +12,7 @@
             </div>
         </div>
         <div class="right">
-            <button class="btn btn-primary btn-dim" routerLink="profile">Edit Profile</button>
+            <button class="btn btn-primary btn-dim" routerLink="/admin/car/profile">Edit Profile</button>
         </div>
     </div>
     <div class="line">
@@ -22,7 +25,7 @@
             </div>
         </div>
         <div class="right">
-            <button class="btn btn-primary btn-dim" routerLink="cars">Vehicles</button>
+            <button class="btn btn-primary btn-dim" routerLink="/admin/car/vehicles">Vehicles</button>
         </div>
     </div>
     <div class="line">
@@ -35,20 +38,31 @@
             </div>
         </div>
         <div class="right">
-            <button class="btn btn-primary btn-dim" routerLink="offices">Offices</button>
+            <button class="btn btn-primary btn-dim" routerLink="/admin/car/offices">Offices</button>
         </div>
+    </div>
+    <hr/>
+    <div class="line">
+        <h2>Other details</h2>
     </div>
     <div class="line">
         <div class="left">
-            See all the details concerning your company in a stylized report
-            <div class="details">
-                <i>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-                </i>
-            </div>
+            <h4>Your service rating:</h4>
         </div>
         <div class="right">
-            <button class="btn btn-primary btn-dim" routerLink="report">Report</button>
+            <img src="../../../assets/ratings/4.png" width="170" height="35"/>
+        </div>
+    </div>
+    <div class="line">
+        <div>
+            Check out your revenue:
+        </div>
+        <div>
+            <canvas id="myChart"></canvas> 
+            <!--
+            <canvas id="myChart"></canvas> WEEK
+            <canvas id="myChart"></canvas> DAY
+            -->
         </div>
     </div>
     <div class="line">
@@ -61,7 +75,7 @@
             </div>
         </div>
         <div class="right">
-            <button class="btn btn-primary btn-dim" routerLink="user">Your Details</button>
+            <button class="btn btn-primary btn-dim" routerLink="/admin/car/user">Your Details</button>
         </div>
     </div>
 </div>

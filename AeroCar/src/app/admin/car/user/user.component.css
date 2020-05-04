@@ -1,0 +1,50 @@
+.main {
+    width: 50%; 
+    padding: 20px;
+    margin: auto; 
+    margin-top: 50px; 
+    background-color: white; 
+    border: 1px solid gray; 
+    border-radius: 10px;
+}
+
+.modal {
+    text-align: center;
+}
+
+
+@media screen and (min-width: 768px) { 
+    .modal:before {
+      display: inline-block;
+      vertical-align: middle;
+      content: " ";
+      height: 100%;
+    }
+  }
+  
+.modal-dialog {
+  display: inline-block;
+  margin: auto;
+  text-align: center;
+  vertical-align: middle;
+}
+
+  .btn-positive {
+    background-color: #343a40;
+    color: white;
+}
+
+.btn-positive:hover {
+    background-color: white;
+    color: #343a40;
+}
+
+.btn-negative {
+    color: #343a40;
+    background-color: white;
+    border: 0px solid black;
+}
+
+.btn-negative:hover {
+    color: black;
+}

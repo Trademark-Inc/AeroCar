@@ -1,0 +1,60 @@
+<div class="container main">
+    <article class="card-body mx-auto" style="max-width: 600px;">
+        <h4 class="card-title mt-3 text-center" style="margin: 50px;">Your profile</h4>
+        <form>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-user">Username:</i> </span>
+                </div>
+                <input name="" class="form-control" placeholder="eg. RAC Unlimited™" type="text">
+            </div> <!-- form-group// -->
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-user">Email:</i> </span>
+                </div>
+                <input name="" class="form-control" placeholder="eg. email@email.com" type="email">
+            </div> <!-- form-group// -->
+        </form>                           
+        <div class="form-group">
+            <button routerLink="/admin/car" class="btn btn-primary btn-block btn-dark btn-negative">✗ Cancel</button>
+            <button routerLink="/admin/car" class="btn btn-primary btn-block btn-dark btn-positive">✓ Save</button>
+        </div> <!-- form-group// -->  
+        <p class="text-center" style="color: gray;"><a href="#" data-toggle="modal" data-target="#changePassword">Change password?</a> </p>                                                                  
+    </article>
+</div>
+
+<div class="modal fade" id="changePassword" tabindex="0" role="dialog" aria-labelledby="changePassword" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="changePassword">Change password</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="tab-content">
+            <form class="form">
+              <div class="form-group row">
+                <label for="lat" class="col-sm-4 col-form-label">Current password:</label>
+                <div class="col-sm-8">
+                    <input type="password" class="form-control" id="currentPassword" placeholder="Enter your current password">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="lat" class="col-sm-4 col-form-label">New password:</label>
+                <div class="col-sm-8">
+                    <input type="password" class="form-control" id="newPassword" placeholder="Enter your new password">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col">
+                    <button routerLink="/admin/user" routerLinkActive="active" type="button" class="btn btn-dark" style="width: 100%;" data-dismiss="modal" (click)="changePassword()">Change</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

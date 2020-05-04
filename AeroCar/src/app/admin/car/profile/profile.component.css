@@ -1,0 +1,29 @@
+.main {
+    width: 50%; 
+    padding: 20px;
+    margin: auto; 
+    margin-top: 50px; 
+    background-color: white; 
+    border: 1px solid gray; 
+    border-radius: 10px;
+}
+
+.btn-positive {
+    background-color: #343a40;
+    color: white;
+}
+
+.btn-positive:hover {
+    background-color: white;
+    color: #343a40;
+}
+
+.btn-negative {
+    color: #343a40;
+    background-color: white;
+    border: 0px solid black;
+}
+
+.btn-negative:hover {
+    color: black;
+}
