@@ -15,9 +15,9 @@
 		/flights/
 		/report/
 		/user/
-	/rent-a-car/
+	/car/
 		/profile/
-		/cars/
+		/vehicles/
 		/offices/
 		/report/
 		/user/
@@ -33,7 +33,7 @@
 		/invitations/
 		/details/
 		/confirmation/
-/rent-a-car/
+/cars/
 	/profile?id=.../ <- Detalji o kompaniji i mogucnost brze rezervacije ako je korisnik ulogovan i vec ima rezervisan let
 	/reservation/
 		/details/
