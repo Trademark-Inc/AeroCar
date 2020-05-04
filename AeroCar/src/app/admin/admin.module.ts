@@ -9,11 +9,14 @@ import { AvioComponent } from './avio/avio.component';
 import { ProfileComponent } from './avio/profile/profile.component';
 import { AeroplanesComponent } from './avio/aeroplanes/aeroplanes.component';
 import { SeatsComponent } from './avio/aeroplanes/seats/seats.component';
+import { FlightsComponent } from './avio/flights/flights.component';
+import { ReportComponent } from './avio/report/report.component';
+import { UserComponent } from './avio/user/user.component';
 
 
 
 @NgModule({
-  declarations: [AdminComponent, SystemComponent, CarComponent, AvioComponent, ProfileComponent, AeroplanesComponent, SeatsComponent],
+  declarations: [AdminComponent, SystemComponent, CarComponent, AvioComponent, ProfileComponent, AeroplanesComponent, SeatsComponent, FlightsComponent, ReportComponent, UserComponent],
   imports: [
     CommonModule,
     AdminRoutingModule
