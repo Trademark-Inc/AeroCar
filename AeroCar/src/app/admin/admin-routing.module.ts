@@ -10,6 +10,9 @@ import { CarProfileComponent } from './car/profile/profile.component';
 import { CarVehiclesComponent } from './car/vehicles/vehicles.component';
 import { CarOfficesComponent as CarOfficesComponent } from './car/offices/offices.component';
 import { CarUserComponent } from './car/user/user.component';
+import { FlightsComponent} from './avio/flights/flights.component';
+import { ReportComponent} from './avio/report/report.component';
+import { UserComponent} from './avio/user/user.component';
 
 const routes: Routes = [
   { path: 'system', component: SystemComponent },
@@ -22,6 +25,9 @@ const routes: Routes = [
   { path: 'car/vehicles', component: CarVehiclesComponent, data: { animation: 'isRight' } },
   { path: 'car/offices', component: CarOfficesComponent, data: { animation: 'isRight' } },
   { path: 'car/user', component: CarUserComponent, data: { animation: 'isRight' } }
+  { path: 'avio/flights', component: FlightsComponent},
+  { path: 'avio/report', component: ReportComponent},
+  { path: 'avio/user', component: UserComponent}
 ]
 
 @NgModule({
