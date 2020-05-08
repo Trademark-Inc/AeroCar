@@ -2,6 +2,13 @@
     font-size: 25px;
     color: #444444;
     margin: 1%;
+    float: left;
+}
+
+.lookLabelTable {
+    color: #444444;
+    float: left;
+    width: 50%;
 }
 
 .lookBox {
@@ -12,71 +19,24 @@
     background-color: white;
     color: #5a5a5a;
     height: 35px;
-    width: 160px;
-    text-align: center;
+    width: 200px;
+}
+
+.lookBoxTable {
+    float: right;
+    border: 2px solid #9a9a9a;
+    border-radius: 10px;
+    background-color: white;
+    color: #5a5a5a;
+    width: 50%;
 }
 
 .lookBigDiv {
-    width: 35%;
+    width: 55%;
     height: 100%; 
     border: 5px solid #9a9a9a;
     border-radius: 20px;    
     background-color: white;
-}
-
-
-.lookButtons {
-    border: 1px solid #444444;
-    background-color: #202020;
-    color: white;
-    border-radius: 10px;
-    width: 120px;
-    height: 40px;
-    font-size: 20px;
-    margin: 0% 1% 1% 1%;
-}
-
-.lookAddRemoveButtons {
-    border: 3px solid #9a9a9a;
-    border-radius: 10px;
-    background-color: white;
-    color:#1a1a1a;
-    width: 195px;
-    font-size: 25px;
-}
-
-.lookAddRemoveButtons:hover {
-    background-color:#444444;
-    color: white;
-}
-
-.lookTable{
-    background-color: lightgray;
-}
-
-.lookRow {
-    border: 3px solid #9a9a9a;
-    font-size: 30px;
-    color: #444444;
-}
-
-.lookAddRemoveButtons:hover {
-    background-color:#444444;
-    color: white;
-}
-
-.lookAddRemoveTextBox {
-    border: 1px solid #9a9a9a;
-    background-color: white;
-    width: 295px;
-    color:#1a1a1a;
-    font-size: 25px;
-    margin: 0.5%;
-}
-
-.lookButtons:hover {
-    background-color: white;
-    color: black;
 }
 
 .lookTittle {
@@ -84,4 +44,85 @@
     text-align: center;
     font-size: 40px;
     color: #444444;
+}
+
+.lookButtonCancel {
+    margin: 1% 0% 1% 1%;
+    border: 1px solid #444444;
+    background-color: white;
+    color: #202020;
+    border-radius: 10px;
+    width: 100px;
+    height: 40px;
+    float: left;
+}
+
+.lookButtonCancel:hover {
+    background-color: black;
+    color: white;
+}
+
+.lookButtonSave {
+    margin: 1% 0% 1% 1%;
+    border: 1px solid #444444;
+    background-color: #202020;
+    color: white;
+    border-radius: 10px;
+    width: 100px;
+    height: 40px;
+    float: right;
+}
+
+.lookButtonSave:hover {
+    background-color: white;
+    color: black;
+}
+
+.lookButtonCancelTable {
+    margin: 1% 0% 1% 1%;
+    border: 1px solid #444444;
+    background-color: white;
+    color: rgb(33, 33, 253);
+    border-radius: 10px;
+    width: 70px;
+    height: 30px;
+    float: left;
+}
+
+.lookButtonCancelTable:hover {
+    background-color: rgb(33, 33, 253);
+    color: white;
+}
+
+.lookButtonSaveTable {
+    margin: 1% 0% 1% 1%;
+    border: 1px solid #444444;
+    background-color: rgb(33, 33, 253);
+    color: white;
+    border-radius: 10px;
+    width: 70px;
+    height: 30px;
+    float: right;
+}
+
+.lookButtonSaveTable:hover {
+    background-color: white;
+    color: rgb(33, 33, 253);
+}
+
+.lookButtonChange{
+    border: 1px solid #444444;
+    background-color: rgb(33, 33, 253);
+    color: white;
+    border-radius: 10px;
+    width: 130px;
+    height: 30px;
+    font-size: 15px;
+    float: right;
+    margin: 2% 0% 0% 0%;
+}
+
+.lookButtonChange:hover {
+    background-color: white;
+    color: rgb(33, 33, 253);
 }

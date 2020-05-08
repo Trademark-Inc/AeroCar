@@ -3,25 +3,31 @@
 </div>
 <br>
 <div class="container lookBigDiv">
-    <div>
-        <label class="lookLabel">Average rating of company</label>
-        <label class="lookLabel" style="font-size: 20px; float: right;">123456789</label>
+    <div style="margin: 25px;">
+        <div>
+            <div style="overflow: hidden;">
+                <label class="lookLabel">Average rating of company</label>
+                <label class="lookLabelValue">Value</label>
+            </div>
+            <div style="overflow: hidden;">
+                <label class="lookLabel">Average rating of flight</label>
+                <label class="lookLabelValue">Value</label>
+            </div>
+            <div style="overflow: hidden;">
+                <label class="lookLabel">Graph of sold tickets</label>
+                <button (click)="ShowChart()" class="lookButtonGraph" type="button">See graph</button>
+                <canvas [hidden]="!graph" id="myChart" width="400" height="400"></canvas>
+            </div>
+            <div style="overflow: hidden;">
+                <label class="lookLabel">Revenues</label>
+                <label class="lookLabelValue">Value</label>
+            </div>
+        </div>   
+        <br>
+        <div style="overflow: hidden;">
+            <button class="lookButtonCancel" type="button">Cancel</button>
+            <button class="lookButtonSave" type="button">Save</button>
+        </div>
     </div>
-    <div>
-        <label class="lookLabel">Average rating of flight</label>
-        <label class="lookLabel" style="font-size: 20px; float: right;">123456789</label>
-    </div>
-    <div>
-        <label class="lookLabel">Graph of sold tickets</label>
-        <button style="float: right;" class="lookButtonGraph" type="button">See graph</button>     
-    </div>
-    <div>
-        <label class="lookLabel">Revenues</label>
-        <label class="lookLabel" style="font-size: 20px; float: right;">123456789</label>
-    </div>
-    <br>
-    <div style="overflow: hidden;">
-        <button style="float: left;" class="lookButtons" type="button">Cancel</button>
-        <button style="float: right;" class="lookButtons" type="button">Save</button>
-    </div>
+    
 </div>

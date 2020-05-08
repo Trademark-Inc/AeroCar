@@ -3,34 +3,67 @@
 </div>
 <br>
 <div class="container lookBigDiv">
-    <div>
-        <label class="lookLabel">First name</label>
-        <input class="lookBox" type="text">
-    </div>
-    <div>
-        <label class="lookLabel">Last name</label>
-        <input class="lookBox" type="text">
-    </div>
-    <div>
-        <label class="lookLabel">Phone number</label>
-        <input class="lookBox" type="text">
-    </div>
-    <div>
-        <label class="lookLabel">City</label>
-        <input class="lookBox" type="text">
-    </div>
-    <div>
-        <label class="lookLabel">E-mail</label>
-        <input class="lookBox" type="text">
-    </div>
-    <hr>
-    <div>
-        <label class="lookLabel">Change password</label>
-        <input class="lookBox" type="password">
-    </div>
-    <br>
-    <div style="overflow: hidden;">
-        <button style="float: left;" class="lookButtons" type="button">Cancel</button>
-        <button style="float: right;" class="lookButtons" type="button">Save</button>
+    <div style="margin: 35px;">
+        <div style="overflow: hidden;">
+            <label class="lookLabel">First name</label>
+            <input placeholder="First name" class="lookBox" type="text">
+        </div>
+        <div style="overflow: hidden;">
+            <label class="lookLabel">Last name</label>
+            <input placeholder="Last name" class="lookBox" type="text">
+        </div>
+        <div style="overflow: hidden;">
+            <label class="lookLabel">Phone number</label>
+            <input placeholder="Number" class="lookBox" type="text">
+        </div>
+        <div style="overflow: hidden;">
+            <label class="lookLabel">City</label>
+            <input placeholder="City" class="lookBox" type="text">
+        </div>
+        <div style="overflow: hidden;">
+            <label class="lookLabel">E-mail</label>
+            <input placeholder="E-mail" class="lookBox" type="text">
+        </div>
+        <div style="overflow: hidden;">
+            <label class="lookLabel">Change password</label>
+            <button class="lookButtonChange" data-toggle="modal" data-target="#change" type="button">Change</button>
+        </div>
+        <br>
+        <div style="overflow: hidden;">
+            <button routerLink="/admin/avio" routerLinkActive="active" class="lookButtonCancel" type="button">Cancel</button>
+            <button class="lookButtonSave" type="button">Save</button>
+        </div>
+    </div>  
+</div>
+<div class="modal fade" id="change" tabindex="0" role="dialog" aria-labelledby="change" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="change" style="font-size: 15px; color: #444444;">Change password</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div style="margin: 20px;">
+            <div style="overflow: hidden;">
+                <label class="lookLabelTable">Current password</label>
+                <input placeholder="Current password" class="lookBoxTable" type="password"><br>
+              </div>
+              <div style="overflow: hidden;">
+                <label class="lookLabelTable">New password</label>
+                <input placeholder="New password" class="lookBoxTable" type="password"><br>
+              </div>
+              <div style="overflow: hidden;">
+                <label class="lookLabelTable">Confirm new password</label>
+                <input placeholder="Confirm new password" class="lookBoxTable" type="password"><br>
+              </div>
+              <br>
+              <div style="overflow: hidden;">
+                <button class="lookButtonSaveTable" type="button">Save</button>
+                <button class="lookButtonCancelTable" type="button">Cancel</button>    
+              </div>
+          </div>
+          
+        </div>       
     </div>
 </div>

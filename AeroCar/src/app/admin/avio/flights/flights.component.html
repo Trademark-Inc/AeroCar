@@ -3,40 +3,43 @@
 </div>
 <br>
 <div class="container lookBigDiv">
-    <div>
-        <label class="lookLabel">Date and time of departure</label>
-        <input class="lookBox" type="date">
-    </div>
-    <div>
-        <label class="lookLabel">Date and time of lading</label>
-        <input class="lookBox" type="date">
-    </div>
-    <div>
-        <label class="lookLabel">Travel time (h)</label>
-        <input class="lookBoxSmall" type="text">
-    </div>
-    <div>
-        <label class="lookLabel">Travel lenght (km)</label>
-        <input class="lookBoxSmall" type="text">
-    </div>
-    <div>
-        <label class="lookLabel">Number and locations of changeover</label>
+    <div style="margin: 25px;">
+        <div>
+            <label class="lookLabel">Date and time of departure</label>
+            <input class="lookBox" type="date">
+        </div>
+        <div>
+            <label class="lookLabel">Date and time of lading</label>
+            <input class="lookBox" type="date">
+        </div>
+        <div>
+            <label class="lookLabel">Travel time</label>
+            <input placeholder="h" class="lookBoxSmall" type="text">
+        </div>
+        <div>
+            <label class="lookLabel">Travel lenght</label>
+            <input placeholder="km" class="lookBoxSmall" type="text">
+        </div>
+        <div>
+            <label class="lookLabel">Number and locations of changeover</label>
+            <br>
+            <div style="margin: 0% 0% 0% 2%;">
+                <label class="lookLabel">- Locations</label>
+                <button type="button" class="lookButtonLocations" style="float: right;" data-toggle="modal" data-target="#locationsList">Click</button>
+                    <br>
+            </div>        
+        </div>
+        <div>
+            <label class="lookLabel">Ticket price</label>
+            <input placeholder="$" class="lookBoxSmall" type="text">
+        </div>
         <br>
-        <div style="margin: 0% 0% 0% 2%;">
-            <label class="lookLabel">- Locations</label>
-            <button type="button" class="lookButtonLocations" style="float: right;" data-toggle="modal" data-target="#locationsList">Click</button>
-                <br>
-        </div>        
+        <div style="overflow: hidden;">
+            <button class="lookButtonCancel" type="button">Cancel</button>
+            <button class="lookButtonSave" type="button">Save</button>
+        </div>
     </div>
-    <div>
-        <label class="lookLabel">Ticket price ($)</label>
-        <input class="lookBoxSmall" type="text">
-    </div>
-    <br>
-    <div style="overflow: hidden;">
-        <button style="float: left;" class="lookButtons" type="button">Cancel</button>
-        <button style="float: right;" class="lookButtons" type="button">Save</button>
-    </div>
+    
 </div>
 <div class="modal fade" id="locationsList" tabindex="0" role="dialog" aria-labelledby="locationsList" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -47,34 +50,41 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <table class="lookTable">
-            <tr class="lookRow">
-                <td>Location1</td>
-            </tr>
-            <tr class="lookRow">
-                <td>Location2</td>
-            </tr>
-            <tr class="lookRow">
-                <td>Location4</td>
-            </tr>
-            <tr class="lookRow">
-                <td>Location5</td>
-            </tr>
-            <tr class="lookRow">
-                <td>Location6</td>
-            </tr>
-            <tr>
-                <select class="lookAddRemoveTextBox">
-                    <option>Locaton7</option>
-                    <option>Locaton8</option>
-                    <option>Locaton9</option>
-                    <option>Locaton10</option>
-                  </select>
-                  <button class="lookAddRemoveButtons" type="button" style="float: right;">Add location</button><br>    
-                <input class="lookAddRemoveTextBox" type="text">
-                <button class="lookAddRemoveButtons" type="button" style="float: right;">Remove location</button>
-            </tr>
-        </table>
+          <div style="margin: 10px;">
+            <table class="table" style="background-color: rgb(223, 239, 245);">
+                <tr class="lookRow">
+                    <td class="lookTd">Location1</td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Location2</td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Location4</td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Location5</td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Location6</td>
+                </tr>
+            </table>
+            <div>
+                <div style="overflow: hidden;">
+                    <select class="lookAddRemoveTextBox">
+                        <option>Locaton7</option>
+                        <option>Locaton8</option>
+                        <option>Locaton9</option>
+                        <option>Locaton10</option>
+                      </select>
+                      <button class="lookAddButton" type="button">Add</button>
+                </div>
+                <br>
+                <div style="overflow: hidden;">
+                    <input class="lookAddRemoveTextBox" type="text">
+                    <button class="lookRemoveButton" type="button">Remove</button>
+                </div> 
+          </div>       
+          </div>
         </div>       
     </div>
 </div>

@@ -8,7 +8,7 @@
 
 
 .lookBigDiv {
-    width: 40%;
+    width: 50%;
     height: 100%; 
     border: 5px solid #9a9a9a;
     border-radius: 20px;    
@@ -27,9 +27,8 @@
     border: 2px solid #9a9a9a;
     border-radius: 10px;
     background-color: white;
-    color: #5a5a5a;
     height: 35px;
-    width: 160px;
+    width: 200px;
     text-align: center;
 }
 
@@ -39,24 +38,39 @@
     border: 2px solid #9a9a9a;
     border-radius: 10px;
     background-color: white;
-    color: #5a5a5a;
     height: 35px;
     width: 60px;
     text-align: center;
 }
 
-.lookButtons {
+.lookButtonCancel {
+    margin: 1% 0% 1% 1%;
+    border: 1px solid #444444;
+    background-color: white;
+    color: #202020;
+    border-radius: 10px;
+    width: 100px;
+    height: 40px;
+    float: left;
+}
+
+.lookButtonCancel:hover {
+    background-color: black;
+    color: white;
+}
+
+.lookButtonSave {
+    margin: 1% 0% 1% 1%;
     border: 1px solid #444444;
     background-color: #202020;
     color: white;
     border-radius: 10px;
     width: 100px;
     height: 40px;
-    font-size: 20px;
-    margin: 0% 1% 1% 1%;
+    float: right;
 }
 
-.lookButtons:hover {
+.lookButtonSave:hover {
     background-color: white;
     color: black;
 }
@@ -77,25 +91,46 @@
     color: rgb(33, 33, 253);
 }
 
-.lookAddRemoveButtons {
-    border: 3px solid #9a9a9a;
-    border-radius: 10px;
-    background-color: white;
-    color:#1a1a1a;
-    width: 195px;
-    font-size: 25px;
-}
-
-.lookAddRemoveButtons:hover {
-    background-color:#444444;
-    color: white;
-}
-
 .lookAddRemoveTextBox {
     border: 1px solid #9a9a9a;
     background-color: white;
-    width: 295px;
+    width: 55%;
     color:#1a1a1a;
-    font-size: 25px;
-    margin: 0.5%;
+    margin: 0% 0% 0% 2%;
+}
+
+.lookTd {
+    border: 2px solid darkgray;
+    width: 50%;
+    color: black;   
+}
+
+.lookAddButton {
+    border: 1px solid #444444;
+    background-color: #202020;
+    color: white;
+    border-radius: 10px;
+    width: 40%;
+    float: right;
+    margin: 0% 2% 0% 0%;
+}
+
+.lookAddButton:hover {
+    background-color: white;
+    color: black;
+}
+
+.lookRemoveButton {
+    border: 1px solid #444444;
+    background-color: white;
+    color: #202020;
+    border-radius: 10px;
+    width: 40%;
+    margin: 0% 2% 0% 0%;
+    float: right;
+}
+
+.lookRemoveButton:hover {
+    background-color: black;
+    color: white;
 }

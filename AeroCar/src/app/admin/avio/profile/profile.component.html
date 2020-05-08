@@ -2,44 +2,44 @@
     Here You can change basic information of this avio company.
 </div>
 <br>
-<div class="container lookBigDiv" style="overflow: hidden; margin: 1% 0% 0% 30%;">
-    <form>
-        <div>
-            <div>
+<div class="container lookBigDiv" style="overflow: hidden;">
+    <div style="margin: 25px;">
+        <form>
+            <div style="overflow: hidden;">
                 <label class="lookLabel">Name of avio company</label>
-                <input class="lookBox" type="text">
+                <input placeholder="Name" class="lookBox" type="text">
             </div>
-            <div>           
+            <div style="overflow: hidden;">
                 <label class="lookLabel">Address</label>
-                <input class="lookBox" type="text">
+                <input placeholder="Address" class="lookBox" type="text">
             </div>
-            <div>
+            <div style="overflow: hidden;">
                 <label class="lookLabel">Description</label>
-                <br>
-                <textarea class="lookDescriptionBox" type="text"></textarea>
+                <textarea placeholder="Description about company" class="lookDescriptionBox" type="text"></textarea>
             </div>
-            <div>
+            <div style="overflow: hidden;">
                 <label class="lookLabel">Flights</label>
-                <label class="lookArow">→→→→→→→→→→→→→→→</label>
-                <button style="float: right;" class="lookButton" type="button" data-toggle="modal" data-target="#flightList">Edit</button>
+                <button class="lookButton" type="button" data-toggle="modal" data-target="#flightList">Edit</button>
             </div>
-            <div>
+            <div style="overflow: hidden;">
                 <label class="lookLabel">List of bonus tickets</label>
-                <label class="lookArow">→→→→→→→→</label>
-                <button style="float: right;" class="lookButton" type="button" data-toggle="modal" data-target="#ticketsList">Tickets</button>
+                <button class="lookButton" type="button" data-toggle="modal" data-target="#ticketsList">Tickets</button>
             </div>
-            <div>
+            <div style="overflow: hidden;">
                 <label class="lookLabel">Change seats</label>
-                <label class="lookArow">→→→→→→→→→→→</label>
-                <button style="float: right;" class="lookButton" routerLink="/avio/aeroplanes" routerLinkActive="active" type="button">Change</button>
+                <button class="lookButton" routerLink="/admin/avio/aeroplanes/seats" routerLinkActive="active" type="button">Change</button>
             </div>
-            <div>
+            <div style="overflow: hidden;">
                 <label class="lookLabel">Pricelist</label>
-                <label class="lookArow">→→→→→→→→→→→→</label>
-                <button style="float: right;" class="lookButton" style="width: 140px;" type="button">Edit pricelist</button>
+                <button class="lookButton" type="button">Edit pricelist</button>
             </div>
-        </div>
-    </form>   
+            <br>
+            <div style="overflow: hidden;">
+                <button routerLink="/admin/avio" routerLinkActive="active" class="lookButtonCancel" type="button">Cancel</button>
+                <button class="lookButtonSave" type="button">Save</button>
+            </div>
+        </form>   
+    </div> 
 </div>
 <div class="modal fade" id="flightList" tabindex="0" role="dialog" aria-labelledby="flightList" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -50,28 +50,29 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <table class="lookTable">
-            <tr class="lookRow">
-                <td>Flight1</td>
-            </tr>
-            <tr class="lookRow">
-                <td>Flight2</td>
-            </tr>
-            <tr class="lookRow">
-                <td>Flight3</td>
-            </tr>
-            <tr class="lookRow">
-                <td>Flight4</td>
-            </tr>
-            <tr class="lookRow">
-                <td>Flight5</td>
-            </tr>
-            <tr>
-                <button routerLink="/avio/flights" routerLinkActive="active" class="lookAddRemoveButtons" type="button">Add flight</button><br>                
+          <div style="margin: 10px;">
+            <table class="table" style="background-color: rgb(223, 239, 245);">
+                <tr class="lookRow">
+                    <td class="lookTd">Flight1</td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Flight2</td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Flight3</td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Flight4</td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Flight5</td>
+                </tr>
+            </table>
+            <div style="overflow: hidden;">
                 <input class="lookRemoveTextBox" type="text">
-                <button class="lookAddRemoveButtons" type="button">Remove flight</button>
-            </tr>
-        </table>
+                <button class="lookRemoveButton" type="button">Remove</button>
+            </div>           
+          </div>         
         </div>       
     </div>
 </div>
@@ -84,23 +85,46 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <table class="lookTable">
-            <tr class="lookRow">
-                <td>Ticket1</td>
-            </tr>
-            <tr class="lookRow">
-                <td>Ticket2</td>
-            </tr>
-            <tr class="lookRow">
-                <td>Ticket3</td>
-            </tr>
-            <tr class="lookRow">
-                <td>Ticket4</td>
-            </tr>
-            <tr class="lookRow">
-                <td>Ticket</td>
-            </tr>
-        </table>
+          <div style="margin: 10px;">
+            <table class="table" style="background-color: rgb(223, 239, 245);">
+                <tr class="lookRow">
+                    <td class="lookTd">Ticket1</td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Ticket2</td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Ticket3</td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Ticket4</td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">Ticket5</td>
+                </tr>
+            </table>
+            <div style="margin: 0% 0% 0% 2%; width: 100%; display: flex;">
+                <div style="width: 20%; display: inline-block;">
+                    <label class="lookLabelTable">Id (Flight):</label><br>
+                    <label class="lookLabelTable">Percent:</label><br>                   
+                </div>  
+                <div style="width: 80%; display: inline-block;">
+                    <input placeholder="flight_id" type="text"><br>    
+                    <input placeholder="percent" type="text">
+                    <button class="lookAddButton" type="button">Add</button> 
+                </div>                        
+            </div>  
+            <br>
+            <div style="width: 100%; margin: 0% 0% 0% 2%; display: flex;">
+                <div style="width: 20%; display: inline-block;">
+                    <label class="lookLabelTable">Id (ticket):</label>
+                </div>
+                <div style="width: 80%; display: inline-block;">
+                    <input placeholder="ticket_id" type="text">
+                    <button class="lookRemoveButton" type="button">Remove</button>    
+                </div>                           
+            </div>                      
+          </div>
         </div>       
     </div>
 </div>
