@@ -55,6 +55,29 @@
                     </div>
                 </div>
                 <div class="form-group row">
+                    <label for="lat" class="col-sm-4 col-form-label">Car type:</label>
+                    <div class="col-sm-8">
+                        <select class="form-control">
+                            <option>Hatchback</option>
+                            <option>Sedan</option>
+                            <option>Coupe</option>
+                            <option>SUV</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="lat" class="col-sm-4 col-form-label">Passanger number:</label>
+                    <div class="col-sm-8">
+                        <select class="form-control">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5+</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
                     <div class="col">
                         <button type="button" class="btn btn-primary" (click)="searchForFlights()">Search</button>
                     </div>
@@ -66,61 +89,41 @@
                 The list contains no items.
             </div>
             <div class="list-items" *ngIf="listContainsItems" [@hidden]>
-                <table class="table" style="overflow: auto;">
+                <table class="table">
                     <tbody>
                         <tr>
                             <td>
                                 <div class="list-item">
-                                    <div class="list-item-left">
-                                        <div style="text-align: left; 
-                                                    vertical-align: top; 
-                                                    margin: 20px 0px 0px 20px; 
-                                                    height: 50%;
-                                                    font-weight: bold;">
-                                            Some Address XY/Z, Somecity
+                                    <div class="list-item-content">
+                                        <div class="split-content-left">
+                                            <div class="car-id">
+                                                ID: 43156659 
+                                            </div>
+                                            <div class="car-name">
+                                                Toyota Auris
+                                            </div>
+                                            <div class="car-cost">
+                                                $13 / day
+                                            </div>
                                         </div>
-                                        <div style="text-align: left; vertical-align: bottom; height: 50%;
-                                                    margin: 0px 0px 20px 20px;">
-                                            <img src="../../assets/ratings/5.png" width="150" height="30" />
+                                        <div class="split-content-right">
+                                            <div style="margin-top: 2.5%; margin-bottom: 2.5%;">
+                                                🚗 Hatchback
+                                                <br/>
+                                                👤 5 🧳 2
+                                                <br/>
+                                                Has <b>5</b> doors.
+                                                <br/>
+                                                ⛽ Gasoline
+                                                <br/>
+                                                ⚙️ Manual, 5 gears
+                                            </div>
+                                            <div style="float: right;">
+                                                <img src="../../../../assets/ratings/5.png" width="150px" height="30px"/>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="list-item-right">
-                                        <div style="text-align: right; vertical-align: top;
-                                                    margin: 20px 20px 0px 0px">
-                                            <img src="../../assets/aerocar_logo.png" width="100px" height="50px">
-                                        </div>
-                                        <div style="text-align: right; vertical-align: bottom;
-                                                    margin: 0px 20px 20px 0px">
-                                            AeroCar™
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="list-item">
-                                    <div class="list-item-left">
-                                        <div style="text-align: left; 
-                                                    vertical-align: top; 
-                                                    margin: 20px 0px 0px 20px; 
-                                                    height: 50%;
-                                                    font-weight: bold;">
-                                            Some Address XY/Z, Somecity
-                                        </div>
-                                        <div style="text-align: left; vertical-align: bottom; height: 50%;
-                                                    margin: 0px 0px 20px 20px;">
-                                            <img src="../../assets/ratings/4.png" width="150" height="30" />
-                                        </div>
-                                    </div>
-                                    <div class="list-item-right">
-                                        <div style="text-align: right; vertical-align: top;
-                                                    margin: 20px 20px 0px 0px">
-                                            <img src="../../assets/aerocar_logo.png" width="100px" height="50px">
-                                        </div>
-                                        <div style="text-align: right; vertical-align: bottom;
-                                                    margin: 0px 20px 20px 0px">
-                                            AeroCar™
+                                        <div class="car-additional">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                                         </div>
                                     </div>
                                 </div>
@@ -129,27 +132,36 @@
                         <tr>
                             <td>
                                 <div class="list-item">
-                                    <div class="list-item-left">
-                                        <div style="text-align: left; 
-                                                    vertical-align: top; 
-                                                    margin: 20px 0px 0px 20px; 
-                                                    height: 50%;
-                                                    font-weight: bold;">
-                                            Some Address XY/Z, Somecity
+                                    <div class="list-item-content">
+                                        <div class="split-content-left">
+                                            <div class="car-id">
+                                                ID: 43156659 
+                                            </div>
+                                            <div class="car-name">
+                                                Toyota Auris
+                                            </div>
+                                            <div class="car-cost">
+                                                $13 / day
+                                            </div>
                                         </div>
-                                        <div style="text-align: left; vertical-align: bottom; height: 50%;
-                                                    margin: 0px 0px 20px 20px;">
-                                            <img src="../../assets/ratings/1.png" width="150" height="30" />
+                                        <div class="split-content-right">
+                                            <div style="margin-top: 2.5%; margin-bottom: 2.5%;">
+                                                🚗 Hatchback
+                                                <br/>
+                                                👤 5 🧳 2
+                                                <br/>
+                                                Has <b>5</b> doors.
+                                                <br/>
+                                                ⛽ Gasoline
+                                                <br/>
+                                                ⚙️ Manual, 5 gears
+                                            </div>
+                                            <div style="float: right;">
+                                                <img src="../../../../assets/ratings/5.png" width="150px" height="30px"/>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="list-item-right">
-                                        <div style="text-align: right; vertical-align: top;
-                                                    margin: 20px 20px 0px 0px">
-                                            <img src="../../assets/aerocar_logo.png" width="100px" height="50px">
-                                        </div>
-                                        <div style="text-align: right; vertical-align: bottom;
-                                                    margin: 0px 20px 20px 0px">
-                                            AeroCar™
+                                        <div class="car-additional">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                                         </div>
                                     </div>
                                 </div>
@@ -158,27 +170,112 @@
                         <tr>
                             <td>
                                 <div class="list-item">
-                                    <div class="list-item-left">
-                                        <div style="text-align: left; 
-                                                    vertical-align: top; 
-                                                    margin: 20px 0px 0px 20px; 
-                                                    height: 50%;
-                                                    font-weight: bold;">
-                                            Some Address XY/Z, Somecity
+                                    <div class="list-item-content">
+                                        <div class="split-content-left">
+                                            <div class="car-id">
+                                                ID: 43156659 
+                                            </div>
+                                            <div class="car-name">
+                                                Toyota Auris
+                                            </div>
+                                            <div class="car-cost">
+                                                $13 / day
+                                            </div>
                                         </div>
-                                        <div style="text-align: left; vertical-align: bottom; height: 50%;
-                                                    margin: 0px 0px 20px 20px;">
-                                            <img src="../../assets/ratings/0.png" width="150" height="30" />
+                                        <div class="split-content-right">
+                                            <div style="margin-top: 2.5%; margin-bottom: 2.5%;">
+                                                🚗 Hatchback
+                                                <br/>
+                                                👤 5 🧳 2
+                                                <br/>
+                                                Has <b>5</b> doors.
+                                                <br/>
+                                                ⛽ Gasoline
+                                                <br/>
+                                                ⚙️ Manual, 5 gears
+                                            </div>
+                                            <div style="float: right;">
+                                                <img src="../../../../assets/ratings/5.png" width="150px" height="30px"/>
+                                            </div>
+                                        </div>
+                                        <div class="car-additional">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                                         </div>
                                     </div>
-                                    <div class="list-item-right">
-                                        <div style="text-align: right; vertical-align: top;
-                                                    margin: 20px 20px 0px 0px">
-                                            <img src="../../assets/aerocar_logo.png" width="100px" height="50px">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="list-item">
+                                    <div class="list-item-content">
+                                        <div class="split-content-left">
+                                            <div class="car-id">
+                                                ID: 43156659 
+                                            </div>
+                                            <div class="car-name">
+                                                Toyota Auris
+                                            </div>
+                                            <div class="car-cost">
+                                                $13 / day
+                                            </div>
                                         </div>
-                                        <div style="text-align: right; vertical-align: bottom;
-                                                    margin: 0px 20px 20px 0px">
-                                            AeroCar™
+                                        <div class="split-content-right">
+                                            <div style="margin-top: 2.5%; margin-bottom: 2.5%;">
+                                                🚗 Hatchback
+                                                <br/>
+                                                👤 5 🧳 2
+                                                <br/>
+                                                Has <b>5</b> doors.
+                                                <br/>
+                                                ⛽ Gasoline
+                                                <br/>
+                                                ⚙️ Manual, 5 gears
+                                            </div>
+                                            <div style="float: right;">
+                                                <img src="../../../../assets/ratings/5.png" width="150px" height="30px"/>
+                                            </div>
+                                        </div>
+                                        <div class="car-additional">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="list-item-last">
+                                    <div class="list-item-content">
+                                        <div class="split-content-left">
+                                            <div class="car-id">
+                                                ID: 43156659 
+                                            </div>
+                                            <div class="car-name">
+                                                Toyota Auris
+                                            </div>
+                                            <div class="car-cost">
+                                                $13 / day
+                                            </div>
+                                        </div>
+                                        <div class="split-content-right">
+                                            <div style="margin-top: 2.5%; margin-bottom: 2.5%;">
+                                                🚗 Hatchback
+                                                <br/>
+                                                👤 5 🧳 2
+                                                <br/>
+                                                Has <b>5</b> doors.
+                                                <br/>
+                                                ⛽ Gasoline
+                                                <br/>
+                                                ⚙️ Manual, 5 gears
+                                            </div>
+                                            <div style="float: right;">
+                                                <img src="../../../../assets/ratings/5.png" width="150px" height="30px"/>
+                                            </div>
+                                        </div>
+                                        <div class="car-additional">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                                         </div>
                                     </div>
                                 </div>
@@ -197,6 +294,77 @@
             More details about our rent-a-car companies
         </h1>
         <div class="details-list">
+            <div class="filter-div">
+                <button class="btn btn-primary btn-dark" (click)="toggleFilters()">{{btnFiltersText}}</button>
+                <div class="filters" *ngIf="filtersShown" [@hidden]>
+                    <form class="form">
+                        <div class="form-group row">
+                            <label for="lat" class="col-sm-4 col-form-label">Company name:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="companyName" placeholder="Enter company's name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lat" class="col-sm-4 col-form-label">Location:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="location" placeholder="Enter the location">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lat" class="col-sm-4 col-form-label">Pickup date:</label>
+                            <div class="col-sm-8">
+                                <input type="date" class="form-control" id="pickupDate">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lat" class="col-sm-4 col-form-label">Pickup hour:</label>
+                            <div class="col-sm-8">
+                                <input type="time" class="form-control" id="pickupHour" value="12:00">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lat" class="col-sm-4 col-form-label">Return date:</label>
+                            <div class="col-sm-8">
+                                <input type="date" class="form-control" id="returnDate">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lat" class="col-sm-4 col-form-label">Return hour:</label>
+                            <div class="col-sm-8">
+                                <input type="time" class="form-control" id="returnHour" value="20:00">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lat" class="col-sm-4 col-form-label">Car type:</label>
+                            <div class="col-sm-8">
+                                <select class="form-control">
+                                    <option>Hatchback</option>
+                                    <option>Sedan</option>
+                                    <option>Coupe</option>
+                                    <option>SUV</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lat" class="col-sm-4 col-form-label">Passanger number:</label>
+                            <div class="col-sm-8">
+                                <select class="form-control">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5+</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col">
+                                <button type="button" class="btn btn-primary" (click)="searchForFlights()">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
             <div class="details-list-items">
                 <table class="table" style="overflow: auto;">
                     <tbody>
