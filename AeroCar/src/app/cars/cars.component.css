@@ -36,11 +36,9 @@
 
 .list {
     width: 70%;
-    margin: 25px 25px 25px 0px;
-    padding: 20px;
+    margin: 25px 25px 25px 25px;
     text-align: left;
     display: inline-block;
-    border: 1px solid gray;
     border-radius: 20px;
     background-color: white;
 }
@@ -58,33 +56,75 @@
 }
 
 .list-items {
+  overflow-x: hidden;
+}
 
+.list-items table tr,td {
+  border: 0px solid black;
 }
 
 .list-item {
-    width: 100%;
-    overflow: hidden;
-    display: flex;
-    border-radius: 20px;
-    background-color: white;
-    transition: background-color 0.25s ease-in-out;
+  width: 100%;
+  border-bottom: 1px solid gray;
 }
 
-.list-item:hover {
-    background-color: lightgray;
-    cursor: pointer;
-    transition: background-color 0.25s ease-in-out;
+.list-item-last {
+  width: 100%;
 }
 
-.list-item-left {
-   display: inline-block;
-   width: 50%;
+.list-item-content {
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  transition: background-color .5s linear;
 }
 
-.list-item-right {
-    display: inline-block;
-    width: 50%;
- }
+.list-item-content:hover {
+  background-color: lightgray;
+  cursor: pointer;
+  transition: background-color .5s linear;
+}
+
+.split-content-left {
+  width: 40%;
+  display: inline-block;
+}
+
+.split-content-right {
+  width: 60%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.split-content-right div {
+  display: inline-block;
+  margin-left: 25px;
+}
+
+.car-name {
+  font-size: 50px;
+  font-weight: bold;
+  vertical-align: top;
+}
+
+.car-cost {
+  font-size: 30px;
+  font-weight: bold;
+  vertical-align: bottom;
+}
+
+.list-item-content .car-additional {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: lightgray;
+  font-style: italic;
+  display: none;
+}
+
+.list-item-content:active .car-additional {
+  display: block;
+}
 
 .details-list {
   width: 80%;
@@ -98,7 +138,7 @@
 }
 
 .details-list-items {
-
+  overflow-x: hidden;
 }
 
 .details-list-item {
@@ -128,6 +168,16 @@
   display: inline-block;
   text-align: left;
   padding: 35px;
+}
+
+.filter-div {
+  text-align: left;
+  margin: 25px;
+}
+
+.filter-div .filters {
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 *, *:before, *:after {
