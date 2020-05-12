@@ -60,18 +60,59 @@
                 <label style="font-size: 15px;" class="lookLabel">Infants (0-2 year/s)</label>               
             </div>     
             <div>
-                <button type="button" class="lookButtonSearch">Search</button>
+                <button style="margin-bottom: 20px;" type="button" class="lookButtonSearch">Search</button>
             </div>       
         </form>
     </div>
     <div class="look-div-right">
+        <div style="margin-left: 25px; margin-top: 25px;">
+            <label class="lookLabel">Filter by</label>
+        </div>
+        <div style="padding-left: 45px; padding-right: 45px; width: 100%; display: flex;">
+            <div style="width: 50%; display: inline-block;">
+                <label class="lookLabel">- Avio company</label><br>
+                <label class="lookLabel">- Total flight duration</label><br>
+                <label class="lookLabel">- Price</label>
+            </div>
+            <div style="width: 50%; display: inline-block;">
+                <select class="lookComboBox">
+                    <option>None</option>
+                    <option>AC 1</option>
+                    <option>AC 2</option>
+                    <option>AC 3</option>
+                </select>
+                <select class="lookComboBox">
+                    <option>None</option>
+                    <option>0 - 30 min</option>
+                    <option>30 - 60 min</option>
+                    <option>60 - 120 min</option>
+                    <option>120 - 180 min</option>
+                    <option>180 - 240 min</option>
+                    <option>240 - 280 min</option>
+                    <option>280 min and more</option>
+                </select>
+                <select class="lookComboBox">
+                    <option>None</option>
+                    <option>0 - 100 $</option>
+                    <option>100 - 200$</option>
+                    <option>300 - 400$</option>
+                    <option>400 - 500$</option>
+                    <option>500 - 600$</option>
+                    <option>600 - 700$</option>
+                    <option>700$ and more</option>
+                </select>
+                <button style="margin-top: 25px;" class="lookButtonSearch" type="button">Filter</button>
+            </div>
+        </div>
+        <hr>
         <div class="look-list-no-content" hidden>
             <label>No content</label>
         </div>
         <table class="table">
             <tbody>
-                <tr>
+                <tr>                    
                     <td>
+                        <a routerLink="/flights/reservation">
                         <div class="look-list-item">
                             <div class="look-list-content">
                                 <div class="look-list-content-left-up">
@@ -101,38 +142,41 @@
                                 </div>                         
                             </div>
                         </div>
+                        </a>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <div class="look-list-item">
-                            <div class="look-list-content">
-                                <div class="look-list-content-left-up">
-                                    <label>13.00 - 14.15</label>
+                            <a routerLink="/flights/reservation">
+                                <div class="look-list-content">
+                                    <div class="look-list-content-left-up">
+                                        <label>13.00 - 14.15</label>
+                                    </div>
+                                    <div class="look-list-content-left-down">
+                                        <label>1h 15min</label>
+                                    </div>                         
                                 </div>
-                                <div class="look-list-content-left-down">
-                                    <label>1h 15min</label>
-                                </div>                         
-                            </div>
-                            <div class="look-list-content">
-                                <div class="look-list-content-center-up">
-                                    <label>Belgrade -> Vienna</label>
+                                <div class="look-list-content">
+                                    <div class="look-list-content-center-up">
+                                        <label>Belgrade -> Vienna</label>
+                                    </div>
+                                    <div class="direct-or-transit">
+                                        <label>Direct flight</label>
+                                    </div>       
+                                    <div class="seats-left">
+                                        <label>4 seats left</label>
+                                    </div>                  
                                 </div>
-                                <div class="direct-or-transit">
-                                    <label>Direct flight</label>
-                                </div>       
-                                <div class="seats-left">
-                                    <label>4 seats left</label>
-                                </div>                  
-                            </div>
-                            <div class="look-list-content" style="text-align: right;">
-                                <div>
-                                    <img src="/../../assets/aerocar_logo.png" width="150px" height="50px">
+                                <div class="look-list-content" style="text-align: right;">
+                                    <div>
+                                        <img src="/../../assets/aerocar_logo.png" width="150px" height="50px">
+                                    </div>
+                                    <div class="price">
+                                        <label>135$</label>
+                                    </div>                         
                                 </div>
-                                <div class="price">
-                                    <label>135$</label>
-                                </div>                         
-                            </div>
+                            </a>
                         </div>
                     </td>
                 </tr>
