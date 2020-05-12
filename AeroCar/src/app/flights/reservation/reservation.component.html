@@ -1,0 +1,57 @@
+<div class="lookTittle animated fadeInDown">
+    Reservation details
+</div>
+<br>
+<div class="container lookBigDiv">
+    <div style="margin: 25px;">
+        <div>
+            <label class="lookLabelBig">More information about flight</label><br>
+            <div style="width: 45%;">
+                <div style="overflow: hidden;">
+                    <label class="lookLabelLeft">- Flight id</label>
+                    <label class="lookLabelRight">Value</label><br>
+                </div>
+                <div style="overflow: hidden;">
+                    <label class="lookLabelLeft">- Departure date</label>
+                    <label class="lookLabelRight">Value</label><br>
+                </div>
+                <div style="overflow: hidden;">
+                    <label class="lookLabelLeft">- Arrival date</label>        
+                    <label class="lookLabelRight">Value</label>
+                </div>
+            </div>     
+        </div>
+        <div>
+            <label class="lookLabelBig">Luggage</label>
+            <div style="display: flex;">
+                <div style=" display: inline-block; width: 35%;">
+                    <label class="lookLabel">- Number of lauggage</label>
+                </div>          
+                <div style="width: 15px;">
+                </div>
+                <div style="display: inline-block; width: 50%;">    
+                    <input style="width: 50px;" type="text">
+                    <label class="lookSize">max: 20 kg, max: 75x46x26 cm</label>  
+                </div>   
+            </div>
+        </div>
+        <div>
+            <label class="lookLabelBig">Additional services</label>
+            <div style="width: 45%;">
+                <div style="overflow: hidden;">
+                    <label class="lookLabelLeft">- Serving</label>
+                    <input class="lookCheckBox" type="checkbox">
+                </div>
+                <div style="overflow: hidden;">
+                    <label class="lookLabelLeft">- Newspaper</label>
+                    <input class="lookCheckBox" type="checkbox">
+                </div>
+            </div>            
+        </div>
+        <br>
+        <div style="overflow: hidden;">
+            <button routerLink="/flights" routerLinkActive="active" class="lookButtonCancel" type="button">Cancel</button>
+            <button routerLink="/admin/avio/aeroplanes/seats" routerLinkActive="active" class="lookButtonReseve" type="button">Reserve</button>
+        </div>       
+    </div>  
+</div>

@@ -31,7 +31,7 @@
             </div>
             <div style="overflow: hidden;">
                 <label class="lookLabel">Pricelist</label>
-                <button class="lookButton" type="button">Edit pricelist</button>
+                <button data-toggle="modal" data-target="#pricelist" class="lookButton" type="button">Edit pricelist</button>
             </div>
             <br>
             <div style="overflow: hidden;">
@@ -121,6 +121,107 @@
                 </div>
                 <div style="width: 80%; display: inline-block;">
                     <input placeholder="ticket_id" type="text">
+                    <button class="lookRemoveButton" type="button">Remove</button>    
+                </div>                           
+            </div>                      
+          </div>
+        </div>       
+    </div>
+</div>
+<div class="modal fade" id="pricelist" tabindex="0" role="dialog" aria-labelledby="pricelist" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="pricelist" style="font-size: 25px; color: #444444;">Pricelist</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div style="margin: 10px;">
+            <table class="table" style="background-color: rgb(223, 239, 245);">        
+                <tr class="lookRow">
+                    <td class="lookTd">
+                        <label class="lookLabelTable">Id</label>
+                    </td>
+                    <td class="lookTd">
+                        <label class="lookLabelTable">Service</label>
+                    </td>
+                    <td class="lookTd">
+                        <label class="lookLabelTable">Price</label>
+                    </td>
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">
+                        <label class="lookLabelTable">1</label>
+                    </td>
+                    <td class="lookTd">
+                        <label class="lookLabelTable">ServiceName1</label>
+                    </td>   
+                    <td class="lookTd">
+                        <label class="lookLabelTable">Value1</label>
+                    </td>             
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">
+                        <label class="lookLabelTable">1</label>
+                    </td>
+                    <td class="lookTd">
+                        <label class="lookLabelTable">ServiceName1</label>
+                    </td>   
+                    <td class="lookTd">
+                        <label class="lookLabelTable">Value1</label>
+                    </td>    
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">
+                        <label class="lookLabelTable">1</label>
+                    </td>
+                    <td class="lookTd">
+                        <label class="lookLabelTable">ServiceName1</label>
+                    </td>   
+                    <td class="lookTd">
+                        <label class="lookLabelTable">Value1</label>
+                    </td>    
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">
+                        <label class="lookLabelTable">1</label>
+                    </td>
+                    <td class="lookTd">
+                        <label class="lookLabelTable">ServiceName1</label>
+                    </td>   
+                    <td class="lookTd">
+                        <label class="lookLabelTable">Value1</label>
+                    </td>    
+                </tr>
+                <tr class="lookRow">
+                    <td class="lookTd">
+                        <label class="lookLabelTable">1</label>
+                    </td>
+                    <td class="lookTd">
+                        <label class="lookLabelTable">ServiceName1</label>
+                    </td>   
+                    <td class="lookTd">
+                        <label class="lookLabelTable">Value1</label>
+                    </td>    
+                </tr>
+            </table>
+            <div style="margin: 0% 0% 0% 2%; width: 100%; display: flex;">
+                <div style="width: 20%; display: inline-block;">
+                    <label class="lookLabelTable">Id:</label>
+                </div>  
+                <div style="width: 80%; display: inline-block;">
+                    <input placeholder="id" type="text">
+                    <button class="lookAddButton" type="button">Add</button> 
+                </div>                        
+            </div>  
+            <br>
+            <div style="width: 100%; margin: 0% 0% 0% 2%; display: flex;">
+                <div style="width: 20%; display: inline-block;">
+                    <label class="lookLabelTable">Id:</label>
+                </div>
+                <div style="width: 80%; display: inline-block;">
+                    <input placeholder="id" type="text">
                     <button class="lookRemoveButton" type="button">Remove</button>    
                 </div>                           
             </div>                      

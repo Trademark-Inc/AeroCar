@@ -1,7 +1,6 @@
 .lookLabel {
   font-size: 20px;
   color: #444444;
-  float: left;
 }
 
 .lookBox {
@@ -54,7 +53,7 @@
   color: white;
 }
 
-.look-button-search:hover {
+.lookButtonSearch:hover {
   background-color: white;
   color: black;
 }
