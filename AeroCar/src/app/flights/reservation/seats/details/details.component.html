@@ -1,0 +1,74 @@
+<div class="lookTittle animated fadeInDown">
+    Details about passenger.
+</div>
+<br>
+<div class="container lookBigDiv">
+    <div style="margin: 25px;">
+        <div style="width: 80%;">
+            <div style="overflow: hidden;">
+                <label class="lookLabel">Seat seat1</label>
+            </div>
+            <div style="overflow: hidden;">
+                <label class="lookLabelSmallLeft">Name1</label>
+                <input placeholder="Name" style="float: right; margin: 1%;" type="text">
+            </div>
+            <div style="overflow: hidden;">
+                <label class="lookLabelSmallLeft">Surname1</label>
+                <input placeholder="Surname" style="float: right; margin: 1%;" type="text">
+            </div>
+            <div style="overflow: hidden;">
+                <label class="lookLabelSmallLeft">Number of passport1</label>
+                <input placeholder="Number of passport" style="float: right; margin: 1%;" type="text">
+            </div>
+        </div>
+        <hr>
+        <div style="width: 80%;">
+            <div style="overflow: hidden;">
+                <label class="lookLabel">Seat seat1</label>
+            </div>
+            <div style="overflow: hidden;">
+                <label class="lookLabelSmallLeft">Name1</label>
+                <input placeholder="Name" style="float: right; margin: 1%;" type="text">
+            </div>
+            <div style="overflow: hidden;">
+                <label class="lookLabelSmallLeft">Surname1</label>
+                <input placeholder="Surname" style="float: right; margin: 1%;" type="text">
+            </div>
+            <div style="overflow: hidden;">
+                <label class="lookLabelSmallLeft">Number of passport1</label>
+                <input placeholder="Number of passport" style="float: right; margin: 1%;" type="text">
+            </div>
+        </div>
+        <br>
+        <div style="overflow: hidden;">
+            <button routerLink="/flights/reservation/seats" routerLinkActive="active" class="lookButtonCancel" type="button">Cancel</button>
+            <button data-toggle="modal" data-target="#confirm" class="lookButtonSave" type="button">Confirm</button>
+        </div>
+    </div>  
+</div>
+<div class="modal fade" id="confirm" tabindex="0" role="dialog" aria-labelledby="confirm" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="confirm" style="font-size: 25px; color: #444444;">Confirm</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div style="margin: 10px; background-color: rgb(223, 239, 245);">
+            <div style="margin: 15px">
+                <label class="lookLabel">Great!<br>Now you have made a flight reservation.</label>
+            </div>
+            <hr>
+            <div style="overflow: hidden; width: 70%;">
+                <label class="lookLabelSmallLeft">Would You like to rent-a-car?</label>
+                <button data-dismiss="modal" routerLink="/cars" routerLinkActive="active" class="lookButtonYes" type="button">Yes</button>
+            </div>
+            <br>             
+          </div>
+          <div style="overflow: hidden;">               
+            <button class="lookButtonCancelSmall" type="button">Cancel</button>
+        </div> 
+        </div>       
+    </div>
+</div>

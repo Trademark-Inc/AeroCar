@@ -1,0 +1,119 @@
+.lookBigDiv {
+    margin: auto;
+    width: 50%;
+    height: 100%;
+    border: 5px solid #9a9a9a;
+    border-radius: 20px;    
+    background-color: white;
+}
+
+.lookTd {
+    border: 2px solid darkgray;
+    width: 50%;
+    color: black;   
+}
+
+.lookTdButton {
+    width: 80px;
+    height: 50px;
+    background-color: rgb(33, 33, 253);
+    border-radius: 30px;
+}
+
+.lookTittle {
+    margin: 2% 0% 0% 0%; 
+    text-align: center;
+    font-size: 40px;
+    color: #444444;
+}
+
+.lookButtonCancelSmall {
+    margin: 1% 0% 1% 1%;
+    border: 1px solid #444444;
+    background-color: white;
+    color: #202020;
+    border-radius: 10px;
+    width: 80px;
+    float: left;
+}
+
+.lookButtonCancelSmall:hover {
+    background-color: black;
+    color: white;
+}
+
+.lookSendButton {
+    border: 1px solid #444444;
+    background-color: #202020;
+    color: white;
+    border-radius: 10px;
+    width: 70px;
+    float: right;
+}
+
+.lookSendButton:hover {
+    background-color: white;
+    color: black;
+}
+
+.lookBox {
+    margin-top: 2%;
+    border: 2px solid #9a9a9a;
+    border-radius: 10px;
+    background-color: white;
+    width: 300px;
+    display: inline-block;
+}
+
+.lookLabelTable {
+    font-size: 20px;
+    color: #444444;
+    margin: 1%;
+}
+
+.lookLabelTableSmall {
+    color: #444444;
+    font-size: 20px;
+    margin-left: 1%;
+    float: left;
+}
+
+.lookRow {
+    border: 2px solid darkgray;
+    font-size: 15px;
+    color: #444444;
+    border-bottom: black;
+}
+
+
+.lookButtonSave {
+    margin: 1% 0% 1% 1%;
+    border: 1px solid #444444;
+    background-color: #202020;
+    color: white;
+    border-radius: 10px;
+    width: 120px;
+    height: 40px;
+    float: right;
+}
+
+.lookButtonSave:hover {
+    background-color: white;
+    color: black;
+}
+
+.lookButtonCancel {
+    margin: 1% 0% 1% 1%;
+    border: 1px solid #444444;
+    background-color: white;
+    color: #202020;
+    border-radius: 10px;
+    width: 120px;
+    height: 40px;
+    float: left;
+}
+
+.lookButtonCancel:hover {
+    background-color: black;
+    color: white;
+}
