@@ -1,0 +1,95 @@
+.main {
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.back {
+    width: 100%;
+    padding-top: 25px;
+}
+
+.list {
+    width: 100%;
+    height: 500px;
+    margin: auto;
+    border: 1px solid gray;
+    border-radius: 10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.list-item {
+    width: 100%;
+    border-bottom: 1px solid gray;
+}
+
+.list-item-last {
+    width: 100%;
+}
+
+.list-item-content {
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    transition: background-color .5s linear;
+}
+
+.list-item-content:hover {
+    background-color: lightgray;
+    cursor: pointer;
+    transition: background-color .5s linear;
+}
+
+.split-content-left {
+    width: 40%;
+    display: inline-block;
+}
+
+.split-content-right {
+    width: 60%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.office-location {
+    font-size: 50px;
+    font-weight: bold;
+    vertical-align: top;
+}
+
+.list-item-content .office-additional {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: lightgray;
+    font-style: italic;
+    display: none;
+}
+
+.list-item-content:active .office-additional {
+    display: block;
+}
+
+.add-remove {
+    width: 100%;
+    margin-top: 25px;
+}
+
+.add-remove .add {
+    width: 50%;
+    padding: 25px;
+    display: inline-block;
+    border-right: 1px solid gray;
+}
+
+.add-remove .remove {
+    width: 50%;
+    padding: 25px;
+    display: inline-block;
+    vertical-align: top;
+}

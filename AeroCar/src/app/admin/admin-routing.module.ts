@@ -1,6 +1,9 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SystemComponent } from './system/system.component';
+import { SystemAvioComponent } from './system/register/avio/avio.component';
+import { SystemCarComponent } from './system/register/car/car.component';
+import { SystemAdminComponent } from './system/register/admin/admin.component';
 import { AvioComponent } from './avio/avio.component';
 import { AvioProfileComponent } from './avio/profile/profile.component';
 import { AvioAeroplanesComponent } from './avio/aeroplanes/aeroplanes.component';
@@ -16,6 +19,9 @@ import { CarUserComponent } from './car/user/user.component';
 
 const routes: Routes = [
   { path: 'system', component: SystemComponent },
+  { path: 'system/register/avio', component: SystemAvioComponent },
+  { path: 'system/register/car', component: SystemCarComponent },
+  { path: 'system/register/admin', component: SystemAdminComponent },
   { path: 'avio', component: AvioComponent },
   { path: 'avio/profile', component: AvioProfileComponent },
   { path: 'avio/aeroplanes', component: AvioAeroplanesComponent},
