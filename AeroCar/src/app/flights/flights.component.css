@@ -173,6 +173,11 @@
   margin-top: 3%;
 }
 
+.look-div-down a {
+  color: inherit;
+  text-decoration: none !important;
+}
+
 .slogan-fly {
   width: 100%;
   height: 100%;
