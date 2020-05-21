@@ -13,61 +13,60 @@
             <span class="">OR</span>
         </p>
         -->
-        <form>
+        <form #signupForm="ngForm" (ngSubmit)="signUp(signupForm)">
             <div class="form-group input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    <span class="input-group-text"> <i class="fa fa-user">Username:</i> </span>
                  </div>
-                <input name="" class="form-control" placeholder="Username" type="text">
+                <input name="username" ngModel required class="form-control" placeholder="Username" type="text">
             </div> <!-- form-group// -->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    <span class="input-group-text"> <i class="fa fa-user">Name:</i> </span>
                 </div>
-                <input name="" class="form-control" placeholder="Name" type="text">
+                <input name="name" ngModel required class="form-control" placeholder="Name" type="text">
             </div> <!-- form-group// -->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    <span class="input-group-text"> <i class="fa fa-user">Surname:</i> </span>
                 </div>
-                <input name="" class="form-control" placeholder="Surname" type="text">
+                <input name="surname" ngModel required class="form-control" placeholder="Surname" type="text">
             </div> <!-- form-group// -->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                    <span class="input-group-text"> <i class="fa fa-envelope">Email:</i> </span>
                 </div>
-                <input name="" class="form-control" placeholder="Email address" type="email">
+                <input name="email" ngModel required class="form-control" placeholder="Email address" type="email">
             </div> <!-- form-group// -->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                    <span class="input-group-text"> <i class="fa fa-phone">Phone:</i> </span>
                 </div>
-                <select class="custom-select" style="max-width: 120px;">
-                    <option selected="" value="1">+381</option>
-                    <option value="2">+387</option>
-                </select>
-                <input name="" class="form-control" placeholder="Phone number" type="text">
+                <input name="phone" ngModel required class="form-control" placeholder="Phone number" type="text">
             </div> <!-- form-group// -->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                    <span class="input-group-text"> <i class="fa fa-envelope">City:</i> </span>
                 </div>
-                <input name="" class="form-control" placeholder="City" type="text">
+                <input name="city" ngModel required class="form-control" placeholder="City" type="text">
             </div> <!-- form-group// -->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    <span class="input-group-text"> <i class="fa fa-lock">Password:</i> </span>
                 </div>
-                <input class="form-control" placeholder="Password" type="password">
+                <input name="password" ngModel required class="form-control" placeholder="Password" type="password">
             </div> <!-- form-group// -->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    <span class="input-group-text"> <i class="fa fa-lock">Confirm Password:</i> </span>
                 </div>
-                <input class="form-control" placeholder="Confirm password" type="password">
+                <input name="confirmPassword" ngModel required class="form-control" placeholder="Confirm password" type="password">
             </div> <!-- form-group// -->                                      
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-block btn-dark sign-up"> Create Account  </button>
+                <div class="loader" *ngIf="loading"></div> 
+                <div class="success" *ngIf="success">✓ You have successfully registered.<br/>Please check your email.</div> 
+                <div class="failed" *ngIf="failed">✗ You have been unable to register.</div> 
             </div> <!-- form-group// -->      
             <p class="text-center" style="color: gray;">Have an account? <a href="#" data-toggle="modal" data-target="#userSignIn">Sign In</a> </p>                                                                 
         </form>
