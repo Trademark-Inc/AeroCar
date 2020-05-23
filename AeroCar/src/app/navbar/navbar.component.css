@@ -67,3 +67,31 @@
     left: 0;
     z-index: 1;
 }
+
+.loader {
+    border: 3px solid #f3f3f3; /* Light grey */
+    border-top: 3px solid #343a40; /* Blue */
+    border-radius: 50%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.failed {
+    border: 1px solid darkred;
+    border-radius: 4px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100%;
+    color: darkred;
+    background-color: lightcoral;
+    padding: 10px;
+}

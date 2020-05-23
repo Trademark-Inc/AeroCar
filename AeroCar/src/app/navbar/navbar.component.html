@@ -25,24 +25,31 @@
             <div style="margin: 25px 25px 25px 25px; text-align: center;">
                 <img src="/../../assets/aerocar_logo.png" width="32%" height="12%"/>
             </div>
-            <form class="form">
+            <form #signInForm="ngForm" (ngSubmit)="signIn(signInForm)">
               <div class="form-group row">
                 <label for="lat" class="col-sm-4 col-form-label">Username:</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="username" placeholder="Enter your username">
+                    <input name="username" ngModel required type="text" class="form-control" id="username" placeholder="Enter your username">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="lat" class="col-sm-4 col-form-label">Password:</label>
                 <div class="col-sm-8">
-                    <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                    <input name="password" ngModel required type="password" class="form-control" id="password" placeholder="Enter your password">
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col">
-                    <button routerLink="/profile" routerLinkActive="active" type="button" class="btn btn-dark sign-in" style="width: 100%;" data-dismiss="modal" (click)="signIn()">Sign In</button>
+                    <button type="submit" class="btn btn-dark sign-in" style="width: 100%;">Sign In</button>
                 </div>
               </div>
+              <div class="form-group row">
+                <div class="col">
+                  <div class="loader" *ngIf="loading"></div>
+                  <div class="failed" *ngIf="failed">✗ Invalid login username or password.</div>
+                </div>
+              </div>
+            </form>
               <div class="divider-text">
                 <div>
                   <span style="color: gray;">
@@ -72,7 +79,6 @@
                   Don't have an account? <a routerLink="/signup" routerLinkActive="active" data-dismiss="modal">Sign Up</a> 
                 </span>
               </p>
-            </form>
           </div>
           <!--
           <div class="modal-footer">
