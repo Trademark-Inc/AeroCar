@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { NgForm, NgModel } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -12,16 +12,42 @@ declare var jQuery:any;
 })
 export class NavbarComponent implements OnInit {
 
+  @ViewChild('loginModal') private closeModal: ElementRef;
+
   public loading: boolean;
   public failed: boolean;
+  public redirectUrl: string;
+  public username: string;
+  public showProfileButton: boolean;
 
   constructor(public http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
+    this.redirectUrl = "";
+    this.username = null;
+    this.showProfileButton = false;
+
+    var ret = this.http.get("http://localhost:62541/api/user/current", { 
+      headers: {'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem("token")},
+      observe: 'response',
+      withCredentials: true,
+      responseType: 'json' }).subscribe(data => {
+        console.log("DATA");
+        console.log(data);
+        console.log(data.body);
+        this.username = data.body["user"].username;
+        this.showProfileButton = true;
+      },
+      err => {
+        console.log("ERROR");
+        console.log(err);
+      });
   }
 
   signIn(form: NgForm): void {
     console.log(form);
+    form.value['redirectUrl'] = this.redirectUrl;
     var jsonized = JSON.stringify(form.value);
     console.log(jsonized);
     this.loading = true;
@@ -32,8 +58,14 @@ export class NavbarComponent implements OnInit {
       responseType: 'json' }).subscribe(data => {
         console.log("DATA");
         console.log(data);
+        console.log(data.body);
         this.loading = false;
-        this.router.navigateByUrl('/profile');
+        localStorage.setItem("token", data.body["t"]);
+        this.router.navigateByUrl(data.body["redirectUrl"].toLocaleString());
+        this.closeModal.nativeElement.click();
+        console.log(form.value);
+        this.username = form.value.username;
+        this.showProfileButton = true;
       },
       err => {
         console.log("ERROR");

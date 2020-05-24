@@ -5,13 +5,16 @@
       </a>
     </div>
     <div>
-        <button type="button" class="btn btn-dark sign-up-in" data-toggle="modal" data-target="#userSignIn">
+        <button type="button" class="btn btn-dark sign-up-in" data-toggle="modal" data-target="#userSignIn" *ngIf="!showProfileButton">
             Sign up / Sign in
         </button>
+        <button type="button" routerLink="/profile" class="btn btn-dark sign-up-in" *ngIf="showProfileButton">
+          👤 {{username}}
+      </button>
     </div>
 </div>
 
-<div class="modal fade" id="userSignIn" tabindex="0" role="dialog" aria-labelledby="userSignIn" aria-hidden="true">
+<div #loginModal class="modal fade" id="userSignIn" tabindex="0" role="dialog" aria-labelledby="userSignIn" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
