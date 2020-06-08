@@ -12,6 +12,7 @@ export class ProfileComponent implements OnInit {
 
   profile: any;
   friends: any;
+  dashboardRoute: any;
 
   constructor(public http: HttpClient, private router: Router, public zone: NgZone) {
     var ret = this.http.get("http://localhost:62541/api/user/current", { 
@@ -26,6 +27,16 @@ export class ProfileComponent implements OnInit {
         this.zone.run(() => 
         {
           this.profile = data.body["user"];
+
+          if (data.body["userRole"][0] === "RegularUser") {
+            this.dashboardRoute = "/dashboard";
+          } else if (data.body["userRole"][0] === "AvioAdmin") {
+            this.dashboardRoute = "/admin/avio";
+          } else if (data.body["userRole"][0] === "CarAdmin") {
+            this.dashboardRoute = "/admin/car";
+          } else {
+            this.dashboardRoute = "/admin/system";
+          }
         });
       },
       err => {

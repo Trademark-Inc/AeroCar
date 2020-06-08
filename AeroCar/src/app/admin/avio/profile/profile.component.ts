@@ -136,7 +136,7 @@ export class AvioProfileComponent implements OnInit {
   }
 
   removeItem(form: NgForm): void {
-    var ret = this.http.post("http://localhost:62541/api/avioadmin/company/remove/ticket/" + form.value.id, null, { 
+    var ret = this.http.post("http://localhost:62541/api/avioadmin/company/remove/item/" + form.value.id, null, { 
       headers: {'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + localStorage.getItem("token")},
       observe: 'response',

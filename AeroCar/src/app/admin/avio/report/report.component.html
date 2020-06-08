@@ -7,11 +7,11 @@
         <div>
             <div style="overflow: hidden;">
                 <label class="lookLabel">Average rating of company</label>
-                <label class="lookLabelValue">Value</label>
+                <label class="lookLabelValue">{{report.companyRating}}/5</label>
             </div>
             <div style="overflow: hidden;">
                 <label class="lookLabel">Average rating of flight</label>
-                <label class="lookLabelValue">Value</label>
+                <label class="lookLabelValue">{{report.flightRating}}/5</label>
             </div>
             <div style="overflow: hidden;">
                 <label class="lookLabel">Graph of sold tickets</label>
@@ -19,14 +19,13 @@
                 <canvas [hidden]="!graph" id="myChart" width="400" height="400"></canvas>
             </div>
             <div style="overflow: hidden;">
-                <label class="lookLabel">Revenues</label>
-                <label class="lookLabelValue">Value</label>
+                <label class="lookLabel">Revenue</label>
+                <label class="lookLabelValue">${{report.revenue}}</label>
             </div>
         </div>   
         <br>
         <div style="overflow: hidden;">
-            <button class="lookButtonCancel" type="button">Cancel</button>
-            <button class="lookButtonSave" type="button">Save</button>
+            <button class="lookButtonCancel" type="button" routerLink="/admin/avio">← Back</button>
         </div>
     </div>
     
