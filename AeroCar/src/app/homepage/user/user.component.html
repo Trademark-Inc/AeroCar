@@ -1,5 +1,5 @@
 <div class="lookTittle animated fadeInDown">
-    Welcome User!
+    Welcome {{profile.userName}}!
 </div>
 <br>
 <div class="container lookBigDiv">   
@@ -10,7 +10,7 @@
         </div>
         <div style="float: right;">  
             <button routerLink="/profile" routerLinkActive="active" class="lookButton" type="button">Click here</button><br><br>
-            <button routerLink="/homepage/user/friends" routerLinkActive="active" class="lookButton" type="button">Friend list</button>
+            <button routerLink="/dashboard/friends" routerLinkActive="active" class="lookButton" type="button">Friend list</button>
         </div>          
     </div>
     <div class="space">
@@ -21,7 +21,7 @@
             <label class="lookLabel">Bonus points</label>
         </div>
         <div style="float: right;">
-            <button routerLink="/homepage/user/notifications" routerLinkActive="active" class="lookButton" style="margin: 5% 0% 0% 0%;" type="button">More</button><br><br> 
+            <button routerLink="/dashboard/notifications" routerLinkActive="active" class="lookButton" style="margin: 5% 0% 0% 0%;" type="button">More</button><br><br> 
             <label class="lookLabelBonus">123</label>
         </div>                   
     </div>   

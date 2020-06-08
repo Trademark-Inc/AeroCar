@@ -4,41 +4,44 @@
 <br>
 <div class="container lookBigDiv" style="overflow: hidden;">
     <div style="margin: 25px;">
-        <form>
+        <form class="form" #companyProfileForm="ngForm" (ngSubmit)="updateCompanyProfile(companyProfileForm);">
             <div style="overflow: hidden;">
                 <label class="lookLabel">Name of avio company</label>
-                <input placeholder="Name" class="lookBox" type="text">
+                <input name="name" [(ngModel)]="profile.avioCompanyProfile.name" required placeholder="Name" class="lookBox" type="text">
             </div>
             <div style="overflow: hidden;">
                 <label class="lookLabel">Address</label>
-                <input placeholder="Address" class="lookBox" type="text">
+                <input name="address" [(ngModel)]="profile.avioCompanyProfile.address" required placeholder="Address" class="lookBox" type="text">
             </div>
             <div style="overflow: hidden;">
                 <label class="lookLabel">Description</label>
-                <textarea placeholder="Description about company" class="lookDescriptionBox" type="text"></textarea>
-            </div>
-            <div style="overflow: hidden;">
-                <label class="lookLabel">Flights</label>
-                <button class="lookButton" type="button" data-toggle="modal" data-target="#flightList">Edit</button>
-            </div>
-            <div style="overflow: hidden;">
-                <label class="lookLabel">List of bonus tickets</label>
-                <button class="lookButton" type="button" data-toggle="modal" data-target="#ticketsList">Tickets</button>
-            </div>
-            <div style="overflow: hidden;">
-                <label class="lookLabel">Change seats</label>
-                <button class="lookButton" routerLink="/admin/avio/aeroplanes/seats" routerLinkActive="active" type="button">Change</button>
-            </div>
-            <div style="overflow: hidden;">
-                <label class="lookLabel">Pricelist</label>
-                <button data-toggle="modal" data-target="#pricelist" class="lookButton" type="button">Edit pricelist</button>
+                <textarea name="promoDescription" [(ngModel)]="profile.avioCompanyProfile.promoDescription" required placeholder="Description about company" class="lookDescriptionBox" type="text">
+                    {{profile.avioCompanyProfile.promoDescription}}
+                </textarea>
             </div>
             <br>
             <div style="overflow: hidden;">
                 <button routerLink="/admin/avio" routerLinkActive="active" class="lookButtonCancel" type="button">Cancel</button>
-                <button class="lookButtonSave" type="button">Save</button>
+                <button class="lookButtonSave" type="submit">Save</button>
             </div>
         </form>   
+        <hr>
+        <div style="overflow: hidden;">
+            <label class="lookLabel">Flights</label>
+            <button class="lookButton" type="button" data-toggle="modal" data-target="#flightList">Edit</button>
+        </div>
+        <div style="overflow: hidden;">
+            <label class="lookLabel">List of bonus tickets</label>
+            <button class="lookButton" type="button" data-toggle="modal" data-target="#ticketsList">Tickets</button>
+        </div>
+        <div style="overflow: hidden;">
+            <label class="lookLabel">Change seats</label>
+            <button class="lookButton" routerLink="/admin/avio/aeroplanes" routerLinkActive="active" type="button">Change</button>
+        </div>
+        <div style="overflow: hidden;">
+            <label class="lookLabel">Pricelist</label>
+            <button data-toggle="modal" data-target="#pricelist" class="lookButton" type="button">Edit pricelist</button>
+        </div>
     </div> 
 </div>
 <div class="modal fade" id="flightList" tabindex="0" role="dialog" aria-labelledby="flightList" aria-hidden="true">
@@ -52,26 +55,26 @@
           </div>
           <div style="margin: 10px;">
             <table class="table" style="background-color: rgb(223, 239, 245);">
-                <tr class="lookRow">
-                    <td class="lookTd">Flight1</td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Flight2</td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Flight3</td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Flight4</td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Flight5</td>
+                <tr class="lookRow" *ngFor="let flight of profile.avioCompany.flights;">
+                    <td class="lookTd">
+                        <b>Id: {{flight.flightId}}</b>
+                        <br/>
+                        Aeroplane: <b>{{getAeroplane(flight.aeroplaneId).name}}</b>
+                        <br/>
+                        Trasnit: <b>{{flight.departureLocation.name}}</b> -> <i *ngFor="let location of flight.transit">{{location.name}} -> </i> <b>{{flight.arrivalLocation.name}}</b>
+                        <br/>
+                        Departure date: {{flight.departure}}
+                        <br/>
+                        Arrival date: {{flight.arrival}}
+                    </td>
                 </tr>
             </table>
-            <div style="overflow: hidden;">
-                <input class="lookRemoveTextBox" type="text">
-                <button class="lookRemoveButton" type="button">Remove</button>
-            </div>           
+            <form class="form" #removeFlightForm="ngForm" (ngSubmit)="removeFlight(removeFlightForm);">
+                <div style="overflow: hidden;">
+                    <input name="id" ngModel required class="lookRemoveTextBox" type="text" placeholder="Type an Id here to remove">
+                    <button class="lookRemoveButton" type="submit">Remove</button>
+                </div>
+            </form>        
           </div>         
         </div>       
     </div>
@@ -87,43 +90,35 @@
           </div>
           <div style="margin: 10px;">
             <table class="table" style="background-color: rgb(223, 239, 245);">
-                <tr class="lookRow">
-                    <td class="lookTd">Ticket1</td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Ticket2</td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Ticket3</td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Ticket4</td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Ticket5</td>
+                <tr class="lookRow" *ngFor="let ticket of profile.avioCompany.fastReservationTickets">
+                    <td class="lookTd">Id: {{ticket.frftId}}, FlightId: {{ticket.flightId}}, Percentage: {{ticket.percent}}%</td>
                 </tr>
             </table>
-            <div style="margin: 0% 0% 0% 2%; width: 100%; display: flex;">
-                <div style="width: 20%; display: inline-block;">
-                    <label class="lookLabelTable">Id (Flight):</label><br>
-                    <label class="lookLabelTable">Percent:</label><br>                   
-                </div>  
-                <div style="width: 80%; display: inline-block;">
-                    <input placeholder="flight_id" type="text"><br>    
-                    <input placeholder="percent" type="text">
-                    <button class="lookAddButton" type="button">Add</button> 
-                </div>                        
-            </div>  
+            <form class="form" #addTicketForm="ngForm" (ngSubmit)="addBonusTicket(addTicketForm);">
+                <div style="margin: 0% 0% 0% 2%; width: 100%; display: flex;">
+                    <div style="width: 20%; display: inline-block;">
+                        <label class="lookLabelTable">Id (Flight):</label><br>
+                        <label class="lookLabelTable">Percent:</label><br>                   
+                    </div>  
+                    <div style="width: 80%; display: inline-block;">
+                        <input name="flightId" ngModel required placeholder="flight_id" type="number"><br>    
+                        <input name="percent" ngModel required placeholder="percent" min="1" max="100" type="number">
+                        <button class="lookAddButton" type="submit">Add</button> 
+                    </div>                        
+                </div> 
+            </form>
             <br>
-            <div style="width: 100%; margin: 0% 0% 0% 2%; display: flex;">
-                <div style="width: 20%; display: inline-block;">
-                    <label class="lookLabelTable">Id (ticket):</label>
-                </div>
-                <div style="width: 80%; display: inline-block;">
-                    <input placeholder="ticket_id" type="text">
-                    <button class="lookRemoveButton" type="button">Remove</button>    
-                </div>                           
-            </div>                      
+            <form class="form" #removeTicketForm="ngForm" (ngSubmit)="removeTicket(removeTicketForm);">
+                <div style="width: 100%; margin: 0% 0% 0% 2%; display: flex;">
+                    <div style="width: 20%; display: inline-block;">
+                        <label class="lookLabelTable">Id (ticket):</label>
+                    </div>
+                    <div style="width: 80%; display: inline-block;">
+                        <input name="id" ngModel required placeholder="ticket_id" type="text">
+                        <button class="lookRemoveButton" type="submit">Remove</button>    
+                    </div>                           
+                </div>  
+            </form>                    
           </div>
         </div>       
     </div>
@@ -139,91 +134,42 @@
           </div>
           <div style="margin: 10px;">
             <table class="table" style="background-color: rgb(223, 239, 245);">        
-                <tr class="lookRow">
+                <tr class="lookRow" *ngFor="let item of profile.avioCompany.priceList;">
                     <td class="lookTd">
-                        <label class="lookLabelTable">Id</label>
+                        <label class="lookLabelTable">Id: {{item.priceListIdemId}}</label>
                     </td>
                     <td class="lookTd">
-                        <label class="lookLabelTable">Service</label>
+                        <label class="lookLabelTable">Service: {{item.name}}</label>
                     </td>
                     <td class="lookTd">
-                        <label class="lookLabelTable">Price</label>
+                        <label class="lookLabelTable">Price: ${{item.price}}</label>
                     </td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">
-                        <label class="lookLabelTable">1</label>
-                    </td>
-                    <td class="lookTd">
-                        <label class="lookLabelTable">ServiceName1</label>
-                    </td>   
-                    <td class="lookTd">
-                        <label class="lookLabelTable">Value1</label>
-                    </td>             
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">
-                        <label class="lookLabelTable">1</label>
-                    </td>
-                    <td class="lookTd">
-                        <label class="lookLabelTable">ServiceName1</label>
-                    </td>   
-                    <td class="lookTd">
-                        <label class="lookLabelTable">Value1</label>
-                    </td>    
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">
-                        <label class="lookLabelTable">1</label>
-                    </td>
-                    <td class="lookTd">
-                        <label class="lookLabelTable">ServiceName1</label>
-                    </td>   
-                    <td class="lookTd">
-                        <label class="lookLabelTable">Value1</label>
-                    </td>    
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">
-                        <label class="lookLabelTable">1</label>
-                    </td>
-                    <td class="lookTd">
-                        <label class="lookLabelTable">ServiceName1</label>
-                    </td>   
-                    <td class="lookTd">
-                        <label class="lookLabelTable">Value1</label>
-                    </td>    
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">
-                        <label class="lookLabelTable">1</label>
-                    </td>
-                    <td class="lookTd">
-                        <label class="lookLabelTable">ServiceName1</label>
-                    </td>   
-                    <td class="lookTd">
-                        <label class="lookLabelTable">Value1</label>
-                    </td>    
                 </tr>
             </table>
             <div style="margin: 0% 0% 0% 2%; width: 100%; display: flex;">
                 <div style="width: 20%; display: inline-block;">
-                    <label class="lookLabelTable">Id:</label>
-                </div>  
-                <div style="width: 80%; display: inline-block;">
-                    <input placeholder="id" type="text">
-                    <button class="lookAddButton" type="button">Add</button> 
-                </div>                        
+                    <label class="lookLabelTable">Name:</label><br>
+                    <label class="lookLabelTable">Price:</label><br>
+                </div> 
+                <form class="" #addItemForm="ngForm" (ngSubmit)="addItem(addItemForm);">
+                    <div style="width: 80%; display: inline-block;">
+                        <input name="name" ngModel required placeholder="eg. Candy 50g" type="text"><br>
+                        <input name="price" ngModel required placeholder="$" min="0" type="number">
+                        <button class="lookAddButton" type="submit">Add</button> 
+                    </div>  
+                </form>                      
             </div>  
             <br>
             <div style="width: 100%; margin: 0% 0% 0% 2%; display: flex;">
                 <div style="width: 20%; display: inline-block;">
                     <label class="lookLabelTable">Id:</label>
                 </div>
-                <div style="width: 80%; display: inline-block;">
-                    <input placeholder="id" type="text">
-                    <button class="lookRemoveButton" type="button">Remove</button>    
-                </div>                           
+                <form class="" #removeItemForm="ngForm" (ngSubmit)="removeItem(removeItemForm);">
+                    <div style="width: 70%; display: inline-block;">
+                        <input name="id" ngModel required placeholder="id" type="text">
+                        <button class="lookRemoveButton" type="submit">Remove</button>    
+                    </div>     
+                </form>                      
             </div>                      
           </div>
         </div>       
