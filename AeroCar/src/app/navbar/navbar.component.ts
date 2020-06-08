@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef, NgZone } from '@angular/core';
 import { NgForm, NgModel } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -20,11 +20,8 @@ export class NavbarComponent implements OnInit {
   public username: string;
   public showProfileButton: boolean;
 
-  constructor(public http: HttpClient, private router: Router) { }
-
-  ngOnInit(): void {
+  constructor(public http: HttpClient, private router: Router, public zone: NgZone) { 
     this.redirectUrl = "";
-    this.username = null;
     this.showProfileButton = false;
 
     var ret = this.http.get("http://localhost:62541/api/user/current", { 
@@ -36,13 +33,20 @@ export class NavbarComponent implements OnInit {
         console.log("DATA");
         console.log(data);
         console.log(data.body);
-        this.username = data.body["user"].username;
-        this.showProfileButton = true;
+        this.zone.run(() => 
+        {
+          this.username = data.body["user"].userName;
+          this.showProfileButton = true;
+        });
       },
       err => {
         console.log("ERROR");
         console.log(err);
       });
+  }
+
+  ngOnInit(): void {
+    
   }
 
   signIn(form: NgForm): void {
@@ -61,11 +65,12 @@ export class NavbarComponent implements OnInit {
         console.log(data.body);
         this.loading = false;
         localStorage.setItem("token", data.body["t"]);
-        this.router.navigateByUrl(data.body["redirectUrl"].toLocaleString());
-        this.closeModal.nativeElement.click();
         console.log(form.value);
         this.username = form.value.username;
         this.showProfileButton = true;
+        localStorage.setItem("username", form.value.username);
+        this.router.navigateByUrl(data.body["redirectUrl"].toLocaleString());
+        this.closeModal.nativeElement.click();
       },
       err => {
         console.log("ERROR");

@@ -16,12 +16,17 @@ import { CarVehiclesComponent } from './car/vehicles/vehicles.component';
 import { CarOfficesComponent } from './car/offices/offices.component';
 import { CarUserComponent } from './car/user/user.component';
 import { CarProfileComponent } from './car/profile/profile.component';
-
-
+import { SystemAvioComponent } from './system/register/avio/avio.component';
+import { SystemAdminComponent } from './system/register/admin/admin.component';
+import { SystemCarComponent } from './system/register/car/car.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AdminComponent, 
-                 SystemComponent, 
+                 SystemComponent,
+                 SystemAvioComponent,
+                 SystemAdminComponent,
+                 SystemCarComponent, 
                  CarComponent, 
                  AvioComponent, 
                  AvioProfileComponent, 
@@ -36,7 +41,8 @@ import { CarProfileComponent } from './car/profile/profile.component';
                  CarUserComponent],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    FormsModule
   ]
 })
 export class AdminModule { }

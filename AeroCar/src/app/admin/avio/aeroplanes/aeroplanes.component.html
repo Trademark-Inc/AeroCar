@@ -5,58 +5,19 @@
 <div class="container lookBigDiv" style="margin: auto;">
     <div style="margin: 25px;">
         <table class="table">
-            <tr>
+            <tr *ngFor="let aeroplane of aeroplanes;">
                 <td class="lookTd">
                     <label class="lookLabelTop">Id</label><br>
-                    <label class="lookLabelDown">1</label>
+                    <label class="lookLabelDown">{{aeroplane.aeroplaneId}}</label>
                 </td>
                 <td class="lookTd" style="text-align: center;">
                     <label class="lookLabelTop">Aeroplane</label><br>
-                    <label class="lookLabelDown"> Airbus A380</label>
+                    <label class="lookLabelDown">{{aeroplane.name}}</label>
                 </td>                   
                 <td class="lookTd">      
-                    <button routerLink="/admin/avio/aeroplanes/seats" routerLinkActive="active" class="lookButton" type="button">Change seats</button>                                     
+                    <button routerLink="/admin/avio/aeroplanes/seats/{{aeroplane.aeroplaneId}}" routerLinkActive="active" class="lookButton" type="button">Change seats</button>                                     
                 </td>
-            </tr>
-            <tr>
-                <td class="lookTd">
-                    <label class="lookLabelTop">Id</label><br>
-                    <label class="lookLabelDown">1</label>
-                </td>
-                <td class="lookTd" style="text-align: center;">
-                    <label class="lookLabelTop">Aeroplane</label><br>
-                    <label class="lookLabelDown"> Airbus A380</label>
-                </td>                   
-                <td class="lookTd">      
-                    <button routerLink="/admin/avio/aeroplanes/seats" routerLinkActive="active" class="lookButton" type="button">Change seats</button>                                   
-                </td>          
-            </tr>
-            <tr>
-                <td class="lookTd">
-                    <label class="lookLabelTop">Id</label><br>
-                    <label class="lookLabelDown">1</label>
-                </td>
-                <td class="lookTd" style="text-align: center;">
-                    <label class="lookLabelTop">Aeroplane</label><br>
-                    <label class="lookLabelDown"> Airbus A380</label>
-                </td>                   
-                <td class="lookTd">      
-                    <button routerLink="/admin/avio/aeroplanes/seats" routerLinkActive="active" class="lookButton" type="button">Change seats</button>                                   
-                </td>        
-            </tr>
-            <tr>
-                <td class="lookTd">
-                    <label class="lookLabelTop">Id</label><br>
-                    <label class="lookLabelDown">1</label>
-                </td>
-                <td class="lookTd" style="text-align: center;">
-                    <label class="lookLabelTop">Aeroplane</label><br>
-                    <label class="lookLabelDown"> Airbus A380</label>
-                </td>                   
-                <td class="lookTd">      
-                    <button routerLink="/admin/avio/aeroplanes/seats" routerLinkActive="active" class="lookButton" type="button">Change seats</button>                                    
-                </td>         
-            </tr>          
+            </tr>        
         </table>        
     </div>
     <div style="overflow: hidden;">

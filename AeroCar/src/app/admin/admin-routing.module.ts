@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'avio', component: AvioComponent },
   { path: 'avio/profile', component: AvioProfileComponent },
   { path: 'avio/aeroplanes', component: AvioAeroplanesComponent},
-  { path: 'avio/aeroplanes/seats', component: AvioSeatsComponent},
+  { path: 'avio/aeroplanes/seats/:id', component: AvioSeatsComponent},
   { path: 'avio/flights', component: AvioFlightsComponent},
   { path: 'avio/report', component: AvioReportComponent},
   { path: 'avio/user', component: AvioUserComponent},

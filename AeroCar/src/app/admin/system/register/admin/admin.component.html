@@ -1,93 +1,20 @@
 <div class="container main">
     <h3>You can modify your admin list here.</h3>
     <div class="list">
-        <div class="list-item">
+        <div class="list-item" *ngFor="let item of items;">
             <div class="list-item-content">
                 <div class="split-content-left">
                     <div class="office-id">
-                        ID: 43156659 
+                        ID: {{item.id}}
                     </div>
                     <div class="office-location">
-                        Username
+                        {{item.username}}
                     </div>
                 </div>
                 <div class="split-content-right">
-                    Avio Company Admin
-                </div>
-                <div class="office-additional">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </div>
-            </div>
-        </div>
-        <div class="list-item">
-            <div class="list-item-content">
-                <div class="split-content-left">
-                    <div class="office-id">
-                        ID: 43156659 
-                    </div>
-                    <div class="office-location">
-                        Username
-                    </div>
-                </div>
-                <div class="split-content-right">
-                    Rent-A-Car Company Admin
-                </div>
-                <div class="office-additional">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </div>
-            </div>
-        </div>
-        <div class="list-item">
-            <div class="list-item-content">
-                <div class="split-content-left">
-                    <div class="office-id">
-                        ID: 43156659 
-                    </div>
-                    <div class="office-location">
-                        Username
-                    </div>
-                </div>
-                <div class="split-content-right">
-                    Rent-A-Car Company Admin
-                </div>
-                <div class="office-additional">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </div>
-            </div>
-        </div>
-        <div class="list-item">
-            <div class="list-item-content">
-                <div class="split-content-left">
-                    <div class="office-id">
-                        ID: 43156659 
-                    </div>
-                    <div class="office-location">
-                        Username
-                    </div>
-                </div>
-                <div class="split-content-right">
-                    Avio Company Admin
-                </div>
-                <div class="office-additional">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </div>
-            </div>
-        </div>
-        <div class="list-item-last">
-            <div class="list-item-content">
-                <div class="split-content-left">
-                    <div class="office-id">
-                        ID: 43156659 
-                    </div>
-                    <div class="office-location">
-                        Username
-                    </div>
-                </div>
-                <div class="split-content-right">
-                    Avio Company Admin
-                </div>
-                <div class="office-additional">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Type: <b>{{item.adminType}}</b>
+                    <br/>
+                    Company: <b>{{item.company}}</b>
                 </div>
             </div>
         </div>
@@ -95,53 +22,49 @@
     <div class="add-remove">
         <div class="add">
             <h4 style="margin-bottom: 15px;">Add an avio company admin:</h4>
-            <form class="form">
+            <form class="form" #addAvioAdminForm="ngForm" (ngSubmit)="addAvioAdmin(addAvioAdminForm)">
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user">Username:</i> </span>
                     </div>
-                    <input name="" class="form-control" placeholder="eg. Someuser123" type="text">
+                    <input name="username" ngModel required class="form-control" placeholder="eg. Someuser123" type="text">
                 </div> <!-- form-group// -->
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user">Password:</i> </span>
                     </div>
-                    <input name="" class="form-control" placeholder="eg. somepass123" type="password">
+                    <input name="password" ngModel required class="form-control" placeholder="eg. somepass123" type="password">
                 </div> <!-- form-group// -->
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user">Confirm password:</i> </span>
                     </div>
-                    <input name="" class="form-control" placeholder="eg. somepass123" type="password">
+                    <input name="confirmPassword" ngModel required class="form-control" placeholder="eg. somepass123" type="password">
                 </div> <!-- form-group// -->
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-envelope">Select a company:</i> </span>
                     </div>
-                    <select class="form-control">
-                        <option>Wizz Air</option>
-                        <option>Wizz Air</option>
-                        <option>Wizz Air</option>
-                        <option>Wizz Air</option>
-                        <option>Wizz Air</option>
+                    <select name="companyName" ngModel required class="form-control">
+                        <option *ngFor="let company of avioCompanies;" [ngValue]="company.name">{{company.name}}</option>
                     </select>
                 </div> <!-- form-group// -->   
                 <div class="form-group">
-                    <button routerLink="/admin/system/register/admin" class="btn btn-primary btn-block btn-dark">+ Add</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-dark">+ Add</button>
                 </div> <!-- form-group// -->     
             </form>
         </div>
         <div class="remove">
             <h4 style="margin-bottom: 15px;">Remove an avio company admin:</h4>
-            <form class="form">
+            <form class="form" #removeAvioAdminForm="ngForm" (ngSubmit)="removeAvioAdmin(removeAvioAdminForm);">
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user">Admin id:</i> </span>
                     </div>
-                    <input name="" class="form-control" placeholder="eg. 234" type="text">
+                    <input name="id" ngModel required class="form-control" placeholder="eg. 234" type="text">
                 </div>   
                 <div class="form-group">
-                    <button routerLink="/admin/system/register/admin" class="btn btn-primary btn-block btn-dark">- Remove</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-dark">- Remove</button>
                 </div> <!-- form-group// -->     
             </form>
         </div>
@@ -149,53 +72,49 @@
     <div class="add-remove">
         <div class="add">
             <h4 style="margin-bottom: 15px;">Add a rent-a-car admin:</h4>
-            <form class="form">
+            <form class="form" #addCarAdminForm="ngForm" (ngSubmit)="addCarAdmin(addCarAdminForm)">
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user">Username:</i> </span>
                     </div>
-                    <input name="" class="form-control" placeholder="eg. Someuser123" type="text">
+                    <input name="username" ngModel required class="form-control" placeholder="eg. Someuser123" type="text">
                 </div> <!-- form-group// -->
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user">Password:</i> </span>
                     </div>
-                    <input name="" class="form-control" placeholder="eg. somepass123" type="password">
+                    <input name="password" ngModel required class="form-control" placeholder="eg. somepass123" type="password">
                 </div> <!-- form-group// -->
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user">Confirm password:</i> </span>
                     </div>
-                    <input name="" class="form-control" placeholder="eg. somepass123" type="password">
+                    <input name="confirmPassword" ngModel required class="form-control" placeholder="eg. somepass123" type="password">
                 </div> <!-- form-group// -->
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-envelope">Select a company:</i> </span>
                     </div>
-                    <select class="form-control">
-                        <option>Eurocar</option>
-                        <option>Eurocar</option>
-                        <option>Eurocar</option>
-                        <option>Eurocar</option>
-                        <option>Eurocar</option>
+                    <select name="companyName" ngModel required class="form-control">
+                        <option *ngFor="let company of carCompanies" [ngValue]="company.name">{{company.name}}</option>
                     </select>
                 </div> <!-- form-group// -->   
                 <div class="form-group">
-                    <button routerLink="/admin/system/register/admin" class="btn btn-primary btn-block btn-dark">+ Add</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-dark">+ Add</button>
                 </div> <!-- form-group// -->     
             </form>
         </div>
         <div class="remove">
             <h4 style="margin-bottom: 15px;">Remove a rent-a-car admin:</h4>
-            <form class="form">
+            <form class="form" #removeCarAdminForm="ngForm" (ngSubmit)="removeCarAdmin(removeCarAdminForm);">
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user">Admin id:</i> </span>
                     </div>
-                    <input name="" class="form-control" placeholder="eg. 234" type="text">
+                    <input name="id" ngModel required class="form-control" placeholder="eg. 234" type="text">
                 </div>   
                 <div class="form-group">
-                    <button routerLink="/admin/system/register/admin" class="btn btn-primary btn-block btn-dark">- Remove</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-dark">- Remove</button>
                 </div> <!-- form-group// -->     
             </form>
         </div>

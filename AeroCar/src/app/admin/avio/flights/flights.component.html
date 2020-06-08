@@ -3,43 +3,50 @@
 </div>
 <br>
 <div class="container lookBigDiv">
-    <div style="margin: 25px;">
-        <div>
-            <label class="lookLabel">Date and time of departure</label>
-            <input class="lookBox" type="date">
-        </div>
-        <div>
-            <label class="lookLabel">Date and time of lading</label>
-            <input class="lookBox" type="date">
-        </div>
-        <div>
-            <label class="lookLabel">Travel time</label>
-            <input placeholder="h" class="lookBoxSmall" type="text">
-        </div>
-        <div>
-            <label class="lookLabel">Travel lenght</label>
-            <input placeholder="km" class="lookBoxSmall" type="text">
-        </div>
-        <div>
-            <label class="lookLabel">Number and locations of changeover</label>
+    <form class="form" #newFlightForm="ngForm" (ngSubmit)="addNewFlight(newFlightForm);">
+        <div style="margin: 25px;">
+            <div>
+                <label class="lookLabel">Aeroplane:</label>
+                <select name="aeroplane" ngModel required class="lookAddRemoveTextBox">
+                    <option *ngFor="let aeroplane of aeroplanes;" [ngValue]="aeroplane.name">{{aeroplane.name}}</option>
+                </select>
+            </div>
+            <div>
+                <label class="lookLabel">Date and time of departure</label>
+                <input name="departure" ngModel required class="lookBox" type="date">
+            </div>
+            <div>
+                <label class="lookLabel">Date and time of lading</label>
+                <input name="arrival" ngModel required class="lookBox" type="date">
+            </div>
+            <div>
+                <label class="lookLabel">Travel time</label>
+                <input name="travelTime" ngModel required placeholder="h" class="lookBoxSmall" type="number">
+            </div>
+            <div>
+                <label class="lookLabel">Travel length</label>
+                <input name="travelDistance" ngModel required placeholder="km" class="lookBoxSmall" type="number">
+            </div>
+            <div>
+                <label class="lookLabel">Number and locations of changeover</label>
+                <br>
+                <div style="margin: 0% 0% 0% 2%;">
+                    <label class="lookLabel">- Locations</label>
+                    <button type="button" class="lookButtonLocations" style="float: right;" data-toggle="modal" data-target="#locationsList">Click</button>
+                        <br>
+                </div>        
+            </div>
+            <div>
+                <label class="lookLabel">Ticket price</label>
+                <input name="price" ngModel required placeholder="$" class="lookBoxSmall" type="number">
+            </div>
             <br>
-            <div style="margin: 0% 0% 0% 2%;">
-                <label class="lookLabel">- Locations</label>
-                <button type="button" class="lookButtonLocations" style="float: right;" data-toggle="modal" data-target="#locationsList">Click</button>
-                    <br>
-            </div>        
+            <div style="overflow: hidden;">
+                <button class="lookButtonCancel" type="button" routerLink="/admin/avio">Cancel</button>
+                <button class="lookButtonSave" type="submit">Save</button>
+            </div>
         </div>
-        <div>
-            <label class="lookLabel">Ticket price</label>
-            <input placeholder="$" class="lookBoxSmall" type="text">
-        </div>
-        <br>
-        <div style="overflow: hidden;">
-            <button class="lookButtonCancel" type="button">Cancel</button>
-            <button class="lookButtonSave" type="button">Save</button>
-        </div>
-    </div>
-    
+    </form>
 </div>
 <div class="modal fade" id="locationsList" tabindex="0" role="dialog" aria-labelledby="locationsList" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -52,36 +59,21 @@
           </div>
           <div style="margin: 10px;">
             <table class="table" style="background-color: rgb(223, 239, 245);">
-                <tr class="lookRow">
-                    <td class="lookTd">Location1</td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Location2</td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Location4</td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Location5</td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Location6</td>
+                <tr class="lookRow" *ngFor="let location of transit;">
+                    <td class="lookTd">{{location.name}}</td>
                 </tr>
             </table>
             <div>
                 <div style="overflow: hidden;">
-                    <select class="lookAddRemoveTextBox">
-                        <option>Locaton7</option>
-                        <option>Locaton8</option>
-                        <option>Locaton9</option>
-                        <option>Locaton10</option>
-                      </select>
-                      <button class="lookAddButton" type="button">Add</button>
+                    <select name="selectedLocation" #selectedLocation class="lookAddRemoveTextBox">
+                        <option *ngFor="let location of possibleLocations;" [ngValue]="location.name">{{location.name}}</option>
+                    </select>
+                    <button class="lookAddButton" type="button" (click)="addToTransit();">Add</button>
                 </div>
                 <br>
                 <div style="overflow: hidden;">
-                    <input class="lookAddRemoveTextBox" type="text">
-                    <button class="lookRemoveButton" type="button">Remove</button>
+                    <input class="lookAddRemoveTextBox" #removeTextBox type="text" placeholder="Type location name here">
+                    <button class="lookRemoveButton" type="button" (click)="removeFromTransit();">Remove</button>
                 </div> 
           </div>       
           </div>

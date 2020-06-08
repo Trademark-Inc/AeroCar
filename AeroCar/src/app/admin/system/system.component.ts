@@ -12,7 +12,6 @@ export class SystemComponent implements OnInit {
   constructor(public http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
-    console.log("DOING!")
     var ret = this.http.get("http://localhost:62541/api/system/check", { 
       headers: {'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + localStorage.getItem("token")},
@@ -27,7 +26,7 @@ export class SystemComponent implements OnInit {
       err => {
         console.log("ERROR");
         console.log(err);
-        if (err.status == 401) this.router.navigateByUrl("");
+        this.router.navigateByUrl("");
       });
     console.log(ret);
   }
