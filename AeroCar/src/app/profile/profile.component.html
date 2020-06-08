@@ -4,47 +4,59 @@
 </div>
 <br>
 <div class="container lookBigDiv">
-    <div style="display: flex;">
-        <div class="lookLabel">
-            <label>First name</label><br>
-            <input class="lookBorderBox" type="text">
+    <form class="form" #updateProfileForm="ngForm" (ngSubmit)="updateProfile(updateProfileForm);">
+        <div style="display: flex;">
+            <div class="lookLabel">
+                <label>First name</label><br>
+                <input name="name" [(ngModel)]="profile.name" required class="lookBorderBox" type="text" value="{{profile.name}}">
+            </div>
+            <div class="space">
+            </div>
+            <div class="lookLabel">
+                <label>Last name</label><br>
+                <input name="surname" [(ngModel)]="profile.surname" required class="lookBorderBox" type="text" value="{{profile.surname}}">
+            </div>
+            <div class="space">
+            </div>
+            <div class="lookLabel">
+                <label>Phone number</label><br>
+                <input name="phone" [(ngModel)]="profile.phone" required class="lookBorderBox" type="text" value="{{profile.phone}}">
+            </div>
         </div>
-        <div class="space">
+        <br>
+        <div style="display: flex;">
+            <div class="lookLabel">
+                <label>City</label><br>
+                <input name="city" [(ngModel)]="profile.city" required class="lookBorderBox" type="text" value="{{profile.city}}">
+            </div>
+            <div class="space">
+            </div>
+            <div class="lookLabel">
+                <label>E-mail</label><br>
+                <input name="email" [(ngModel)]="profile.email" required class="lookBorderBox" type="text" value="{{profile.email}}">
+            </div>
+            <div class="space">
+            </div>
+            <div class="lookLabel">
+                <label>Friends list</label><br>
+                <button type="button" class="lookButtonArrow" (click)="loadFriends();" data-toggle="modal" data-target="#friendsList">⇩</button>
+            </div>        
         </div>
-        <div class="lookLabel">
-            <label>Last name</label><br>
-            <input class="lookBorderBox" type="text">
+        <br>
+        <div style="overflow: hidden;">
+            <button class="lookButtonSave" type="submit">Save</button>
+            <button class="lookButtonCancel" type="button" (click)="refresh();">Cancel</button>
         </div>
-        <div class="space">
-        </div>
-        <div class="lookLabel">
-            <label>Phone number</label><br>
-            <input class="lookBorderBox" type="text">
-        </div>
+    </form>
+    <hr>
+    <div style="overflow: hidden; margin-top: 20px;">
+        <h5>Check out your <b>dashboard:</b></h5>
+        <button class="lookButtonCancel" style="margin-top: 5px;" routerLink="/dashboard">Dashboard</button>
     </div>
-    <br>
-    <div style="display: flex;">
-        <div class="lookLabel">
-            <label>City</label><br>
-            <input class="lookBorderBox" type="text">
-        </div>
-        <div class="space">
-        </div>
-        <div class="lookLabel">
-            <label>E-mail</label><br>
-            <input class="lookBorderBox" type="text">
-        </div>
-        <div class="space">
-        </div>
-        <div class="lookLabel">
-            <label>Friends list</label><br>
-            <button type="button" class="lookButtonArrow" data-toggle="modal" data-target="#friendsList">⇩</button>
-        </div>        
-    </div>
-    <br>
-    <div style="overflow: hidden;">
-        <button class="lookButtonSave" type="button">Save</button>
-        <button class="lookButtonCancel" type="button">Cancel</button>
+    <hr/>
+    <div style="overflow: hidden; margin-top: 20px;">
+        <h5>Do you want to sign out?</h5>
+        <button class="lookButtonCancel" style="margin-top: 5px;" (click)="signOut();">Sign Out</button>
     </div>
 </div>
 <div class="modal fade" id="friendsList" tabindex="0" role="dialog" aria-labelledby="friendsList" aria-hidden="true">
@@ -57,26 +69,20 @@
             </button>
           </div>
           <table class="lookTable">
-            <tr class="lookRow">
-                <td>Friend1</td>
-            </tr>
-            <tr class="lookRow">
-                <td>Friend2</td>
-            </tr>
-            <tr class="lookRow">
-                <td>Friend3</td>
-            </tr>
-            <tr class="lookRow">
-                <td>Friend4</td>
-            </tr>
-            <tr class="lookRow">
-                <td>Friend5</td>
+            <tr class="lookRow" *ngFor="let friend of friends;">
+                <td>{{friend.username}}</td>
             </tr>
             <tr>
-                <input class="lookAddRemoveTextBox" type="text">
-                <button class="lookAddRemoveButtons" type="button">Add friend</button><br>                
-                <input class="lookAddRemoveTextBox" type="text">
-                <button class="lookAddRemoveButtons" type="button">Remove friend</button>
+                <td>
+                    <form class="form" #addFriendForm="ngForm" (ngSubmit)="addFriend(addFriendForm);">
+                        <input name="username" ngModel required class="lookAddRemoveTextBox" type="text" placeholder="Type username to add">
+                        <button class="lookAddRemoveButtons" type="submit">Add friend</button><br>        
+                    </form>    
+                    <form class="form" #removeFriendForm="ngForm" (ngSubmit)="removeFriend(removeFriendForm);">   
+                        <input name="username" ngModel required class="lookAddRemoveTextBox" type="text" placeholder="Type username to remove">
+                        <button class="lookAddRemoveButtons" type="submit">Remove friend</button>
+                    </form> 
+                </td>
             </tr>
         </table>
         </div>       

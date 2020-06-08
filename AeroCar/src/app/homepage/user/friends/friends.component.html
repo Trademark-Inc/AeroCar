@@ -1,29 +1,21 @@
 <div class="lookTittle animated fadeInDown">
-    Here is list of Your friends.
+    Here is a list of Your friends.
 </div>
 <br>
 <div class="container lookBigDiv">
     <table class="table" style="background-color: rgb(223, 239, 245);">
-        <tr class="lookRow">
-            <td class="lookTd">Friend1</td>
-        </tr>
-        <tr class="lookRow">
-            <td class="lookTd">Friend2</td>
-        </tr>
-        <tr class="lookRow">
-            <td class="lookTd">Friend3</td>
-        </tr>
-        <tr class="lookRow">
-            <td class="lookTd">Friend4</td>
-        </tr>
-        <tr class="lookRow">
-            <td class="lookTd">Friend5</td>
+        <tr class="lookRow" *ngFor="let friend of friends;">
+            <td class="lookTd">{{friend.username}}</td>
         </tr>
     </table>
     <div style="width: 100%; overflow: hidden;">
-        <input class="lookAddRemoveTextBox" type="text">
-        <button class="lookAddRemoveButtons" type="button">Add friend</button><br>
-        <input class="lookAddRemoveTextBox" type="text">
-        <button class="lookAddRemoveButtons" type="button">Remove friend</button>
+        <form class="form" #addFriendForm="ngForm" (ngSubmit)="addFriend(addFriendForm);">
+            <input name="username" ngModel required class="lookAddRemoveTextBox" type="text" placeholder="Type username to add">
+            <button class="lookAddRemoveButtons" type="submit">Add friend</button><br>        
+        </form>    
+        <form class="form" #removeFriendForm="ngForm" (ngSubmit)="removeFriend(removeFriendForm);">   
+            <input name="username" ngModel required class="lookAddRemoveTextBox" type="text" placeholder="Type username to remove">
+            <button class="lookAddRemoveButtons" type="submit">Remove friend</button>
+        </form> 
     </div>
 </div>

@@ -1,93 +1,21 @@
 <div class="container main">
     <h3>You can modify your rent-a-car company list here.</h3>
     <div class="list">
-        <div class="list-item">
+        <div class="list-item" *ngFor="let item of items;">
             <div class="list-item-content">
                 <div class="split-content-left">
                     <div class="office-id">
-                        ID: 43156659 
+                        ID: {{item.id}} 
                     </div>
                     <div class="office-location">
-                        Eurocar
+                        {{item.name}}
                     </div>
                 </div>
                 <div class="split-content-right">
-                    Address: Boulevard of Broken Dreams 33
+                    Address: {{item.address}}
                 </div>
                 <div class="office-additional">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </div>
-            </div>
-        </div>
-        <div class="list-item">
-            <div class="list-item-content">
-                <div class="split-content-left">
-                    <div class="office-id">
-                        ID: 43156659 
-                    </div>
-                    <div class="office-location">
-                        Eurocar
-                    </div>
-                </div>
-                <div class="split-content-right">
-                    Address: Boulevard of Broken Dreams 33
-                </div>
-                <div class="office-additional">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </div>
-            </div>
-        </div>
-        <div class="list-item">
-            <div class="list-item-content">
-                <div class="split-content-left">
-                    <div class="office-id">
-                        ID: 43156659 
-                    </div>
-                    <div class="office-location">
-                        Eurocar
-                    </div>
-                </div>
-                <div class="split-content-right">
-                    Address: Boulevard of Broken Dreams 33
-                </div>
-                <div class="office-additional">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </div>
-            </div>
-        </div>
-        <div class="list-item">
-            <div class="list-item-content">
-                <div class="split-content-left">
-                    <div class="office-id">
-                        ID: 43156659 
-                    </div>
-                    <div class="office-location">
-                        Eurocar
-                    </div>
-                </div>
-                <div class="split-content-right">
-                    Address: Boulevard of Broken Dreams 33
-                </div>
-                <div class="office-additional">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </div>
-            </div>
-        </div>
-        <div class="list-item-last">
-            <div class="list-item-content">
-                <div class="split-content-left">
-                    <div class="office-id">
-                        ID: 43156659 
-                    </div>
-                    <div class="office-location">
-                        Eurocar
-                    </div>
-                </div>
-                <div class="split-content-right">
-                    Address: Boulevard of Broken Dreams 33
-                </div>
-                <div class="office-additional">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    {{item.description}}
                 </div>
             </div>
         </div>
@@ -95,41 +23,41 @@
     <div class="add-remove">
         <div class="add">
             <h4 style="margin-bottom: 15px;">Add a rent-a-car company:</h4>
-            <form class="form">
+            <form class="form" #addForm="ngForm" (ngSubmit)="addCompany(addForm)">
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user">Company name:</i> </span>
                     </div>
-                    <input name="" class="form-control" placeholder="eg. Fastacar" type="text">
+                    <input name="name" ngModel required class="form-control" placeholder="eg. Fastacar" type="text">
                 </div> <!-- form-group// -->
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user">Address:</i> </span>
                     </div>
-                    <input name="" class="form-control" placeholder="eg. Boulevard of Broken Dreams 33/36, New Now" type="text">
+                    <input name="address" ngModel required class="form-control" placeholder="eg. Boulevard of Broken Dreams 33/36, New Now" type="text">
                 </div> <!-- form-group// -->
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-envelope">Description:</i> </span>
                     </div>
-                    <textarea class="form-control" style="height: 90px;" placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when..."></textarea>
+                    <textarea name="description" ngModel required class="form-control" style="height: 90px;" placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when..."></textarea>
                 </div> <!-- form-group// -->   
                 <div class="form-group">
-                    <button routerLink="/admin/system/register/car" class="btn btn-primary btn-block btn-dark">+ Add</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-dark">+ Add</button>
                 </div> <!-- form-group// -->     
             </form>
         </div>
         <div class="remove">
             <h4 style="margin-bottom: 15px;">Remove a rent-a-car company:</h4>
-            <form class="form">
+            <form class="form" #removeForm="ngForm" (ngSubmit)="removeCompany(removeForm)">
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user">Company id:</i> </span>
                     </div>
-                    <input name="" class="form-control" placeholder="eg. 234" type="text">
+                    <input name="id" ngModel required class="form-control" placeholder="eg. 234" type="text">
                 </div>   
                 <div class="form-group">
-                    <button routerLink="/admin/system/register/car" class="btn btn-primary btn-block btn-dark">- Remove</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-dark">- Remove</button>
                 </div> <!-- form-group// -->     
             </form>
         </div>

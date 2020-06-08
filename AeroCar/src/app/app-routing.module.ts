@@ -14,9 +14,9 @@ const routes: Routes = [
   { path: 'flights', loadChildren: () => import('./flights/flights.module').then(m => m.FlightsModule), data: { animation: 'isLeft' } },
   { path: 'cars', loadChildren: () => import('./cars/cars.module').then(m => m.CarsModule), data: { animation: 'isRight' } },
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), data: { animation: 'isLeft' } },
-  { path: 'homepage/user', component: UserComponent},
-  { path: 'homepage/user/friends', component: FriendsComponent},
-  { path: 'homepage/user/notifications', component: NotificationsComponent}
+  { path: 'dashboard', component: UserComponent},
+  { path: 'dashboard/friends', component: FriendsComponent},
+  { path: 'dashboard/notifications', component: NotificationsComponent}
 ];
 
 @NgModule({
