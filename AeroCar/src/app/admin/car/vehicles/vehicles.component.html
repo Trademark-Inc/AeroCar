@@ -101,7 +101,12 @@
                 </div> <!-- form-group// -->
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block btn-dark">+ Add</button>
-                </div> <!-- form-group// -->     
+                </div> <!-- form-group// -->
+                <div style="overflow: hidden;">
+                    <div class="loader" *ngIf="loading"></div> 
+                    <div class="success" *ngIf="success">✓ Successufully.</div> 
+                    <div class="failed" *ngIf="failed">✗ Not successufully.</div>
+                </div> 
             </form>
         </div>
         <div class="remove">

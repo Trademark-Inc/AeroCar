@@ -59,14 +59,14 @@
     height: 30px;
     text-align: center;
     border: 1px solid #444444;
-    background-color: rgb(33, 33, 253);
+    background-color: #343a40;
     color: white;
     border-radius: 20px;    
 }
 
 .lookButton:hover {
     background-color: white;
-    color: rgb(33, 33, 253);
+    color: #343a40;
 }
 
 .lookReservationButton {

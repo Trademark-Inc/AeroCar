@@ -24,6 +24,11 @@
                 <button routerLink="/admin/avio" routerLinkActive="active" class="lookButtonCancel" type="button">Cancel</button>
                 <button class="lookButtonSave" type="submit">Save</button>
             </div>
+            <div style="overflow: hidden;">
+                <div class="loader" *ngIf="loading1"></div> 
+                <div class="success" *ngIf="success1">✓ Successufully.</div> 
+                <div class="failed" *ngIf="failed1">✗ Not successufully.</div>
+            </div>
         </form>   
         <hr>
         <div style="overflow: hidden;">
@@ -40,7 +45,7 @@
         </div>
         <div style="overflow: hidden;">
             <label class="lookLabel">Pricelist</label>
-            <button data-toggle="modal" data-target="#pricelist" class="lookButton" type="button">Edit pricelist</button>
+            <button data-toggle="modal" data-target="#pricelist" class="lookButton" type="button">Pricelist</button>
         </div>
     </div> 
 </div>
@@ -73,6 +78,11 @@
                 <div style="overflow: hidden;">
                     <input name="id" ngModel required class="lookRemoveTextBox" type="text" placeholder="Type an Id here to remove">
                     <button class="lookRemoveButton" type="submit">Remove</button>
+                </div>
+                <div style="overflow: hidden;">
+                    <div class="loader" *ngIf="loading2"></div> 
+                    <div class="success" *ngIf="success2">✓ Successufully.</div> 
+                    <div class="failed" *ngIf="failed2">✗ Not successufully.</div>
                 </div>
             </form>        
           </div>         
@@ -107,6 +117,11 @@
                     </div>                        
                 </div> 
             </form>
+            <div style="overflow: hidden;">
+                <div class="loader" *ngIf="loading4"></div> 
+                <div class="success" *ngIf="success4">✓ Successufully.</div> 
+                <div class="failed" *ngIf="failed4">✗ Not successufully.</div>
+            </div>  
             <br>
             <form class="form" #removeTicketForm="ngForm" (ngSubmit)="removeTicket(removeTicketForm);">
                 <div style="width: 100%; margin: 0% 0% 0% 2%; display: flex;">
@@ -116,9 +131,14 @@
                     <div style="width: 80%; display: inline-block;">
                         <input name="id" ngModel required placeholder="ticket_id" type="text">
                         <button class="lookRemoveButton" type="submit">Remove</button>    
-                    </div>                           
+                    </div>                          
                 </div>  
-            </form>                    
+            </form>
+            <div style="overflow: hidden;">
+                <div class="loader" *ngIf="loading5"></div> 
+                <div class="success" *ngIf="success5">✓ Successufully.</div> 
+                <div class="failed" *ngIf="failed5">✗ Not successufully.</div>
+            </div>     
           </div>
         </div>       
     </div>
@@ -146,31 +166,41 @@
                     </td>
                 </tr>
             </table>
-            <div style="margin: 0% 0% 0% 2%; width: 100%; display: flex;">
-                <div style="width: 20%; display: inline-block;">
-                    <label class="lookLabelTable">Name:</label><br>
-                    <label class="lookLabelTable">Price:</label><br>
-                </div> 
-                <form class="" #addItemForm="ngForm" (ngSubmit)="addItem(addItemForm);">
+            <form class="form" #addItemForm="ngForm" (ngSubmit)="addItem(addItemForm);">
+                <div style="margin: 0% 0% 0% 2%; width: 100%; display: flex;">
+                    <div style="width: 20%; display: inline-block;">
+                        <label class="lookLabelTable">Name:</label><br>
+                        <label class="lookLabelTable">Price:</label><br>
+                    </div> 
                     <div style="width: 80%; display: inline-block;">
                         <input name="name" ngModel required placeholder="eg. Candy 50g" type="text"><br>
                         <input name="price" ngModel required placeholder="$" min="0" type="number">
                         <button class="lookAddButton" type="submit">Add</button> 
-                    </div>  
-                </form>                      
-            </div>  
+                    </div>
+                </div>   
+            </form> 
+            <div style="overflow: hidden;">
+                <div class="loader" *ngIf="loading3"></div> 
+                <div class="success" *ngIf="success3">✓ Successufully.</div> 
+                <div class="failed" *ngIf="failed3">✗ Not successufully.</div>
+            </div>             
             <br>
-            <div style="width: 100%; margin: 0% 0% 0% 2%; display: flex;">
-                <div style="width: 20%; display: inline-block;">
-                    <label class="lookLabelTable">Id:</label>
-                </div>
-                <form class="" #removeItemForm="ngForm" (ngSubmit)="removeItem(removeItemForm);">
-                    <div style="width: 70%; display: inline-block;">
+            <form class="form" #removeItemForm="ngForm" (ngSubmit)="removeItem(removeItemForm);">
+                <div style="width: 100%; margin: 0% 0% 0% 2%; display: flex;">
+                    <div style="width: 20%; display: inline-block;">
+                        <label class="lookLabelTable">Id:</label>
+                    </div>
+                    <div style="width: 80%; display: inline-block;">
                         <input name="id" ngModel required placeholder="id" type="text">
                         <button class="lookRemoveButton" type="submit">Remove</button>    
-                    </div>     
-                </form>                      
-            </div>                      
+                    </div>
+                </div>
+            </form>
+            <div style="overflow: hidden;">
+                <div class="loader" *ngIf="loading6"></div> 
+                <div class="success" *ngIf="success6">✓ Successufully.</div> 
+                <div class="failed" *ngIf="failed6">✗ Not successufully.</div>
+            </div>                                     
           </div>
         </div>       
     </div>

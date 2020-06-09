@@ -45,8 +45,13 @@
         <br>
         <div style="overflow: hidden;">
             <button class="lookButtonSave" type="submit">Save</button>
-            <button class="lookButtonCancel" type="button" (click)="refresh();">Cancel</button>
+            <button class="lookButtonCancel" type="button" (click)="refresh();">Cancel</button><br>         
         </div>
+        <div style="overflow: hidden;">
+            <div class="loader" *ngIf="loading"></div>
+            <div class="success" *ngIf="success">✓ All saved.</div>
+            <div class="failed" *ngIf="failed">✗ Something went wrong. Please try later.</div>  
+        </div> 
     </form>
     <hr>
     <div style="overflow: hidden; margin-top: 20px;">
@@ -68,23 +73,23 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <table class="lookTable">
-            <tr class="lookRow" *ngFor="let friend of friends;">
-                <td>{{friend.username}}</td>
-            </tr>
-            <tr>
-                <td>
-                    <form class="form" #addFriendForm="ngForm" (ngSubmit)="addFriend(addFriendForm);">
-                        <input name="username" ngModel required class="lookAddRemoveTextBox" type="text" placeholder="Type username to add">
-                        <button class="lookAddRemoveButtons" type="submit">Add friend</button><br>        
-                    </form>    
-                    <form class="form" #removeFriendForm="ngForm" (ngSubmit)="removeFriend(removeFriendForm);">   
-                        <input name="username" ngModel required class="lookAddRemoveTextBox" type="text" placeholder="Type username to remove">
-                        <button class="lookAddRemoveButtons" type="submit">Remove friend</button>
-                    </form> 
-                </td>
-            </tr>
-        </table>
+          <div class="container">
+            <table class="table" style="background-color: rgb(223, 239, 245);">
+                <tr class="lookRow" *ngFor="let friend of friends;">
+                    <td class="lookTd">{{friend.username}}</td>
+                </tr>
+            </table>
+            <div style="width: 100%; overflow: hidden;">
+                <form class="form" #addFriendForm="ngForm" (ngSubmit)="addFriend(addFriendForm);">
+                    <input name="username" ngModel required class="lookAddRemoveTextBox" type="text" placeholder="Type username to add">
+                    <button class="lookAddRemoveButtons" type="submit">Add friend</button><br>        
+                </form>    
+                <form class="form" #removeFriendForm="ngForm" (ngSubmit)="removeFriend(removeFriendForm);">   
+                    <input name="username" ngModel required class="lookAddRemoveTextBox" type="text" placeholder="Type username to remove">
+                    <button class="lookAddRemoveButtons" type="submit">Remove friend</button>
+                </form> 
+            </div>
+        </div>
         </div>       
     </div>
 </div>

@@ -11,6 +11,9 @@ import { Router } from '@angular/router';
 export class CarVehiclesComponent implements OnInit {
 
   vehicles: any;
+  public loading: boolean;
+  public success: boolean;
+  public failed: boolean;
 
   constructor(public http: HttpClient, private router: Router, private zone: NgZone) { 
     var ret = this.http.get("http://localhost:62541/api/caradmin/company/get/vehicles", { 
@@ -37,6 +40,9 @@ export class CarVehiclesComponent implements OnInit {
     console.log(form);
     var jsonized = JSON.stringify(form.value);
     console.log(jsonized);
+    this.loading = true;
+    this.success = false;
+    this.failed = false;
     var ret = this.http.post("http://localhost:62541/api/caradmin/company/create/vehicle", jsonized, { 
       headers: {'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + localStorage.getItem("token")},
@@ -46,11 +52,14 @@ export class CarVehiclesComponent implements OnInit {
         console.log(data);
         console.log(data.body);
         console.log(form.value);
-        this.refresh();
+        this.loading = false;
+        this.success = true;
       },
       err => {
         console.log("ERROR");
         console.log(err);
+        this.loading = false;
+        this.failed = true;
       });
     console.log(ret);
   }

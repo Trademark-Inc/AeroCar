@@ -50,7 +50,7 @@
     margin: 1% 0% 1% 1%;
     border: 1px solid #444444;
     background-color: white;
-    color: #202020;
+    color: #343a40;
     border-radius: 10px;
     width: 100px;
     height: 40px;
@@ -58,14 +58,14 @@
 }
 
 .lookButtonCancel:hover {
-    background-color: black;
+    background-color: #343a40;
     color: white;
 }
 
 .lookButtonSave {
     margin: 1% 0% 1% 1%;
     border: 1px solid #444444;
-    background-color: #202020;
+    background-color: #343a40;
     color: white;
     border-radius: 10px;
     width: 100px;
@@ -75,7 +75,7 @@
 
 .lookButtonSave:hover {
     background-color: white;
-    color: black;
+    color: #343a40;
 }
 
 .lookButtonCancelTable {

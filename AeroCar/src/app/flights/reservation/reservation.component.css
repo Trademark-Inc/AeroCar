@@ -54,14 +54,14 @@
     width: 70px;
     height: 40px;
     border-radius: 10px;
-    background-color: #202020;
+    background-color: #343a40;
     color: white;
     float: right;
 }
   
 .lookButtonReseve:hover {
     background-color: white;
-    color: black;
+    color: #343a40;
 }
 
 .lookButtonCancel {
@@ -70,12 +70,12 @@
     height: 40px;
     border-radius: 10px;
     background-color: white;
-    color: #202020;
+    color: #343a40;
     float: left;
 }
   
 .lookButtonCancel:hover {
-    background-color: #202020;
+    background-color: #343a40;
     color: white;
 }
 

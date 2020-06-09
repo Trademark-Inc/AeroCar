@@ -39,7 +39,7 @@
     width: 100%;
     border: 1px solid #444444;
     border-radius: 50px;
-    background-color: #202020;
+    background-color: #343a40;
     color: white;
     font-size: 20px;
     font-weight: bold;
@@ -47,7 +47,7 @@
 
 .lookButtonArrow:hover {
     background-color: white;
-    color: black;
+    color: #343a40;
 }
 
 .lookTable{
@@ -63,7 +63,7 @@
 .lookAddButton {
     border: 3px solid #9a9a9a;
     border-radius: 10px;
-    background-color: #444444;
+    background-color: #343a40;
     color:white;
     width: 195px;
     font-size: 25px;
@@ -71,20 +71,20 @@
 
 .lookAdd:hover {
     background-color:white;
-    color: #1a1a1a;
+    color: #343a40;
 }
 
 .lookRemoveButton {
     border: 3px solid #9a9a9a;
     border-radius: 10px;
     background-color: white;
-    color:#1a1a1a;
+    color:#343a40;
     width: 195px;
     font-size: 25px;
 }
 
 .lookRemove:hover {
-    background-color:#444444;
+    background-color:#343a40;
     color: white;
 }
 
@@ -101,16 +101,16 @@
     width: 120px;
     height: 30px;
     text-align: center;
-    border: 1px solid black;
-    background-color: #202020;
-    color: white;
+    border: 1px solid #444444;
+    background-color: #343a40;
     border-radius: 10px;    
     float: right;
+    color: white;
 }
 
 .lookButtonSave:hover {
     background-color: white;
-    color: black;
+    color: #343a40;
 }
 
 .lookButtonCancel {
@@ -118,13 +118,52 @@
     height: 30px;
     text-align: center;
     background-color: white;
-    border: 1px solid black;
-    color: black;
+    border: 1px solid #444444;
+    color: #343a40;
     border-radius: 10px; 
     float: left;
 }
 
 .lookButtonCancel:hover {
-    background-color: black;
+    background-color: #343a40;
     color: white;
+}
+
+.loader {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #343a40;
+    border-radius: 50%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    float: right;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.success {
+    border: 1px solid darkgreen;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 20%;
+    float: right;
+    color: darkgreen;
+    background-color: lightgreen;
+    padding: 20px;
+}
+
+.failed {
+    border: 1px solid darkred;
+    border-radius: 4px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    color: darkred;
+    background-color: lightcoral;
+    padding: 20px;
 }
