@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlightsRoutingModule } from './flights-routing.module';
+import { FormsModule } from '@angular/forms';
 
 import { FlightsComponent } from './flights.component';
 import { FlightReservationComponent } from './reservation/reservation.component';
@@ -16,7 +17,8 @@ import { FlightsProfileComponent } from './profile/profile.component';
                  FlightsProfileComponent],
   imports: [
     CommonModule,
-    FlightsRoutingModule
+    FlightsRoutingModule,
+    FormsModule
   ]
 })
 

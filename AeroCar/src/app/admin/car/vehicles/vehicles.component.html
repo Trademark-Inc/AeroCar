@@ -61,19 +61,19 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user">Max. passenger number:</i> </span>
                     </div>
-                    <input name="passangers" ngModel required class="form-control" placeholder="eg. 5" type="number">
+                    <input name="passangers" ngModel required class="form-control" min="1" max="10" placeholder="eg. 5" type="number">
                 </div> <!-- form-group// -->
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user">Max. baggage number:</i> </span>
                     </div>
-                    <input name="baggage" ngModel required class="form-control" placeholder="eg. 2" type="number">
+                    <input name="baggage" ngModel required class="form-control" min="1" max="10" placeholder="eg. 2" type="number">
                 </div> <!-- form-group// -->
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user">Number of doors:</i> </span>
                     </div>
-                    <input name="doors" ngModel required class="form-control" placeholder="eg. 5" type="number">
+                    <input name="doors" ngModel required class="form-control" min="1" max="10" placeholder="eg. 5" type="number">
                 </div> <!-- form-group// -->
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
@@ -97,7 +97,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user">Cost per day ($):</i> </span>
                     </div>
-                    <input name="costPerDay" ngModel required class="form-control" placeholder="eg. 24" type="number">
+                    <input name="costPerDay" ngModel required class="form-control" min="5" placeholder="eg. 24" type="number">
                 </div> <!-- form-group// -->
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block btn-dark">+ Add</button>
@@ -106,15 +106,15 @@
         </div>
         <div class="remove">
             <h4 style="margin-bottom: 15px;">Remove a vehicle from your collection:</h4>
-            <form class="form">
+            <form class="form" #removeVehicleForm="ngForm" (ngSubmit)="removeVehicle(removeVehicleForm);">
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user">Vehicle id:</i> </span>
                     </div>
-                    <input name="" class="form-control" placeholder="eg. 234" type="text">
+                    <input name="id" ngModel requried class="form-control" min="1" placeholder="eg. 234" type="number">
                 </div>   
                 <div class="form-group">
-                    <button routerLink="/admin/car/vehicles" class="btn btn-primary btn-block btn-dark">- Remove</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-dark">- Remove</button>
                 </div> <!-- form-group// -->     
             </form>
         </div>

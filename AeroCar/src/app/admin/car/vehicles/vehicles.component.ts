@@ -46,12 +46,31 @@ export class CarVehiclesComponent implements OnInit {
         console.log(data);
         console.log(data.body);
         console.log(form.value);
+        this.refresh();
       },
       err => {
         console.log("ERROR");
         console.log(err);
       });
     console.log(ret);
+  }
+
+  removeVehicle(form: NgForm): void {
+    var ret = this.http.post("http://localhost:62541/api/caradmin/company/remove/vehicle/" + form.value.id, null, { 
+      headers: {'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem("token")},
+      observe: 'response',
+      responseType: 'json' }).subscribe(data => {
+        console.log("DATA");
+        console.log(data);
+        console.log(data.body);
+        console.log(form.value);
+        this.refresh();
+      },
+      err => {
+        console.log("ERROR");
+        console.log(err);
+      });
   }
 
   getVehicleTypeText(vehicleType: any): any {
@@ -63,6 +82,10 @@ export class CarVehiclesComponent implements OnInit {
     }
 
     return "Unknown";
+  }
+
+  refresh(): void {
+    window.location.reload();
   }
 
 }

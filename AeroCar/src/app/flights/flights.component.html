@@ -20,47 +20,47 @@
 </div>
 <div style="display: flex;">
     <div class="lookDivLeft">
-        <form style="padding: 25px;"> 
+        <form style="padding: 25px;" #searchForm="ngForm" (ngSubmit)="search(searchForm);"> 
             <div style="overflow: hidden;">
                 <label class="lookLabel">Origin:</label>
-                <input type="text" class="lookBox form-control" placeholder="from (city)"> 
+                <input name="origin" ngModel required type="text" class="lookBox form-control" placeholder="from (city)"> 
             </div>
             <div style="overflow: hidden;">
                 <label class="lookLabel">Destination:</label>
-                <input type="text" class="lookBox form-control" placeholder="to (city)">
+                <input name="destination" ngModel required type="text" class="lookBox form-control" placeholder="to (city)">
             </div> 
             <div style="overflow: hidden;">
                 <label class="lookLabel">Ticket type:</label>
-            <select id="tickets" class="lookComboBox form-control">
-                <option>Round trip</option>
-                <option>One way</option>
+            <select name="ticket" ngModel requried id="tickets" class="lookComboBox form-control">
+                <option value="2">Round trip</option>
+                <option value="1">One way</option>
             </select>
             </div>
             <div style="overflow: hidden;">
                 <label class="lookLabel">Departure:</label>
-                <input type="date" class="lookBox form-control">
+                <input name="departure" ngModel required type="date" class="lookBox form-control">
             </div>
             <div style="overflow: hidden;">
                 <label class="lookLabel">Arrival:</label>
-                <input type="date" class="lookBox form-control">
+                <input name="arrival" ngModel required type="date" class="lookBox form-control">
             </div>
             <div style="overflow: hidden;">
                 <label class="lookLabel">Passengers:</label>               
             </div>
             <div style="overflow: hidden;">
-                <input type="text" class="lookSmallBox">
+                <input name="adults" ngModel required type="text" class="lookSmallBox">
                 <label style="font-size: 15px;" class="lookLabel" >Adults (15+ years)</label>               
             </div>            
             <div style="overflow: hidden;">
-                <input type="text" class="lookSmallBox">
+                <input name="children" ngModel required type="text" class="lookSmallBox">
                 <label style="font-size: 15px;" class="lookLabel">Children (3-14 years)</label>                
             </div>
             <div style="overflow: hidden;">
-                <input type="text" class="lookSmallBox">
+                <input name="infants" ngModel required type="text" class="lookSmallBox">
                 <label style="font-size: 15px;" class="lookLabel">Infants (0-2 year/s)</label>               
             </div>     
             <div>
-                <button style="margin-bottom: 20px;" type="button" class="lookButtonSearch">Search</button>
+                <button style="margin-bottom: 20px;" type="submit" class="lookButtonSearch">Search</button>
             </div>       
         </form>
     </div>
@@ -143,140 +143,6 @@
                             </div>
                         </div>
                         </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="look-list-item">
-                            <a routerLink="/flights/reservation">
-                                <div class="look-list-content">
-                                    <div class="look-list-content-left-up">
-                                        <label>13.00 - 14.15</label>
-                                    </div>
-                                    <div class="look-list-content-left-down">
-                                        <label>1h 15min</label>
-                                    </div>                         
-                                </div>
-                                <div class="look-list-content">
-                                    <div class="look-list-content-center-up">
-                                        <label>Belgrade -> Vienna</label>
-                                    </div>
-                                    <div class="direct-or-transit">
-                                        <label>Direct flight</label>
-                                    </div>       
-                                    <div class="seats-left">
-                                        <label>4 seats left</label>
-                                    </div>                  
-                                </div>
-                                <div class="look-list-content" style="text-align: right;">
-                                    <div>
-                                        <img src="/../../assets/aerocar_logo.png" width="150px" height="50px">
-                                    </div>
-                                    <div class="price">
-                                        <label>135$</label>
-                                    </div>                         
-                                </div>
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="look-list-item">
-                            <div class="look-list-content">
-                                <div class="look-list-content-left-up">
-                                    <label>13.00 - 14.15</label>
-                                </div>
-                                <div class="look-list-content-left-down">
-                                    <label>1h 15min</label>
-                                </div>                         
-                            </div>
-                            <div class="look-list-content">
-                                <div class="look-list-content-center-up">
-                                    <label>Belgrade -> Vienna</label>
-                                </div>
-                                <div class="direct-or-transit">
-                                    <label>Direct flight</label>
-                                </div>       
-                                <div class="seats-left">
-                                    <label>4 seats left</label>
-                                </div>                  
-                            </div>
-                            <div class="look-list-content" style="text-align: right;">
-                                <div>
-                                    <img src="/../../assets/aerocar_logo.png" width="150px" height="50px">
-                                </div>
-                                <div class="price">
-                                    <label>135$</label>
-                                </div>                         
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="look-list-item">
-                            <div class="look-list-content">
-                                <div class="look-list-content-left-up">
-                                    <label>13.00 - 14.15</label>
-                                </div>
-                                <div class="look-list-content-left-down">
-                                    <label>1h 15min</label>
-                                </div>                         
-                            </div>
-                            <div class="look-list-content">
-                                <div class="look-list-content-center-up">
-                                    <label>Belgrade -> Vienna</label>
-                                </div>
-                                <div class="direct-or-transit">
-                                    <label>Direct flight</label>
-                                </div>       
-                                <div class="seats-left">
-                                    <label>4 seats left</label>
-                                </div>                  
-                            </div>
-                            <div class="look-list-content" style="text-align: right;">
-                                <div>
-                                    <img src="/../../assets/aerocar_logo.png" width="150px" height="50px">
-                                </div>
-                                <div class="price">
-                                    <label>135$</label>
-                                </div>                         
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="look-list-item">
-                            <div class="look-list-content">
-                                <div class="look-list-content-left-up">
-                                    <label>13.00 - 14.15</label>
-                                </div>
-                                <div class="look-list-content-left-down">
-                                    <label>1h 15min</label>
-                                </div>                         
-                            </div>
-                            <div class="look-list-content">
-                                <div class="look-list-content-center-up">
-                                    <label>Belgrade -> Vienna</label>
-                                </div>
-                                <div class="direct-or-transit">
-                                    <label>Direct flight</label>
-                                </div>       
-                                <div class="seats-left">
-                                    <label>4 seats left</label>
-                                </div>                  
-                            </div>
-                            <div class="look-list-content" style="text-align: right;">
-                                <div>
-                                    <img src="/../../assets/aerocar_logo.png" width="150px" height="50px">
-                                </div>
-                                <div class="price">
-                                    <label>135$</label>
-                                </div>                         
-                            </div>
-                        </div>
                     </td>
                 </tr>
             </tbody>
