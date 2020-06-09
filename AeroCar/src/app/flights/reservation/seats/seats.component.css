@@ -31,20 +31,20 @@
     margin: 1% 0% 1% 1%;
     border: 1px solid #444444;
     background-color: white;
-    color: #202020;
+    color: #343a40;
     border-radius: 10px;
     width: 80px;
     float: left;
 }
 
 .lookButtonCancelSmall:hover {
-    background-color: black;
+    background-color: #343a40;
     color: white;
 }
 
 .lookSendButton {
     border: 1px solid #444444;
-    background-color: #202020;
+    background-color: #343a40;
     color: white;
     border-radius: 10px;
     width: 70px;
@@ -53,7 +53,7 @@
 
 .lookSendButton:hover {
     background-color: white;
-    color: black;
+    color: #343a40;
 }
 
 .lookBox {
@@ -89,7 +89,7 @@
 .lookButtonSave {
     margin: 1% 0% 1% 1%;
     border: 1px solid #444444;
-    background-color: #202020;
+    background-color: #343a40;
     color: white;
     border-radius: 10px;
     width: 120px;
@@ -99,14 +99,14 @@
 
 .lookButtonSave:hover {
     background-color: white;
-    color: black;
+    color: #343a40;
 }
 
 .lookButtonCancel {
     margin: 1% 0% 1% 1%;
     border: 1px solid #444444;
     background-color: white;
-    color: #202020;
+    color: #343a40;
     border-radius: 10px;
     width: 120px;
     height: 40px;
@@ -114,6 +114,6 @@
 }
 
 .lookButtonCancel:hover {
-    background-color: black;
+    background-color: #343a40;
     color: white;
 }

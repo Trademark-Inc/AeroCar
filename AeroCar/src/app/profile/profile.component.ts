@@ -13,6 +13,10 @@ export class ProfileComponent implements OnInit {
   profile: any;
   friends: any;
 
+  public loading: boolean;
+  public success: boolean;
+  public failed: boolean;
+
   constructor(public http: HttpClient, private router: Router, public zone: NgZone) {
     var ret = this.http.get("http://localhost:62541/api/user/current", { 
       headers: {'Content-Type': 'application/json',
@@ -31,7 +35,7 @@ export class ProfileComponent implements OnInit {
       err => {
         console.log("ERROR");
         console.log(err);
-        this.router.navigateByUrl("");
+        this.router.navigateByUrl("");    
       });
   }
 
@@ -82,6 +86,9 @@ export class ProfileComponent implements OnInit {
     console.log(form);
     var jsonized = JSON.stringify(form.value);
     console.log(jsonized);
+    this.loading = true;
+    this.success = false;
+    this.failed = false;
     var ret = this.http.post("http://localhost:62541/api/user/update", jsonized, { 
       headers: {'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + localStorage.getItem("token")},
@@ -91,10 +98,14 @@ export class ProfileComponent implements OnInit {
         console.log(data);
         console.log(data.body);
         console.log(form.value);
+        this.loading = false;
+        this.success = true;
       },
       err => {
         console.log("ERROR");
         console.log(err);
+        this.loading = false;
+        this.failed = true;
       });
   }
 

@@ -16,6 +16,9 @@ export class AvioFlightsComponent implements OnInit {
   transit: any = new Array<Object>();
   possibleLocations: any;
   aeroplanes: any;
+  public loading: boolean;
+  public success: boolean;
+  public failed: boolean;
 
   constructor(public http: HttpClient, private router: Router, private zone: NgZone) {
     var ret = this.http.get("http://localhost:62541/api/avioadmin/company/get/profile", { 
@@ -60,6 +63,9 @@ export class AvioFlightsComponent implements OnInit {
   }
 
   addNewFlight(form: NgForm): void {
+    this.loading = true;
+    this.success = false;
+    this.failed = false;
     if (this.transit.length >= 2) {  
       console.log(form);
       form.value.departureLocation = this.transit[0];
@@ -77,11 +83,18 @@ export class AvioFlightsComponent implements OnInit {
           console.log(data);
           console.log(data.body);
           console.log(form.value);
+          this.loading = false;
+          this.success = true;
         },
         err => {
           console.log("ERROR");
           console.log(err);
+          this.loading = false;
+          this.failed = true;
         });
+    }else{
+        this.loading = false;
+        this.failed = true;
     }
   }
 
