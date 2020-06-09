@@ -1,29 +1,29 @@
 <div class="container main">
     <article class="card-body mx-auto" style="max-width: 600px;">
         <h4 class="card-title mt-3 text-center" style="margin: 50px;">Your <b>RENT-A-CAR</b> service profile</h4>
-        <form>
+        <form class="form" #profileForm="ngForm" (ngSubmit)="updateCompanyProfile(profileForm);">
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-user">Service name:</i> </span>
                 </div>
-                <input name="" class="form-control" placeholder="eg. RAC Unlimited™" type="text">
+                <input name="name" [(ngModel)]="profile.carCompanyProfile.name" required class="form-control" placeholder="eg. RAC Unlimited™" type="text">
             </div> <!-- form-group// -->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-user">Address:</i> </span>
                 </div>
-                <input name="" class="form-control" placeholder="eg. Boulevard of Broken Dreams 33/36, Brokeville" type="text">
+                <input name="address" [(ngModel)]="profile.carCompanyProfile.address" required class="form-control" placeholder="eg. Boulevard of Broken Dreams 33/36, Brokeville" type="text">
             </div> <!-- form-group// -->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-envelope">Description:</i> </span>
                 </div>
-                <textarea class="form-control" style="height: 90px;" placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when..."></textarea>
+                <textarea name="promoDescription" [(ngModel)]="profile.carCompanyProfile.promoDescription" required class="form-control" style="height: 90px;" placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when..."></textarea>
             </div> <!-- form-group// -->    
+            <div class="form-group">
+                <button routerLink="/admin/car" class="btn btn-primary btn-block btn-dark btn-negative" type="button">✗ Cancel</button>
+                <button class="btn btn-primary btn-block btn-dark btn-positive" type="submit">✓ Save</button>
+            </div> <!-- form-group// -->  
         </form>                           
-        <div class="form-group">
-            <button routerLink="/admin/car" class="btn btn-primary btn-block btn-dark btn-negative">✗ Cancel</button>
-            <button routerLink="/admin/car" class="btn btn-primary btn-block btn-dark btn-positive">✓ Save</button>
-        </div> <!-- form-group// -->  
     </article>
 </div>
