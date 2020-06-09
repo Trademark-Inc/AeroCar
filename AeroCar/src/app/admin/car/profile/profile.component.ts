@@ -11,6 +11,9 @@ import { NgForm } from '@angular/forms';
 export class CarProfileComponent implements OnInit {
 
   profile: any;
+  public loading: boolean;
+  public success: boolean;
+  public failed: boolean;
 
   constructor(public http: HttpClient, private router: Router, private zone: NgZone) {
     var ret = this.http.get("http://localhost:62541/api/caradmin/company/get/profile", { 
@@ -34,6 +37,9 @@ export class CarProfileComponent implements OnInit {
   }
 
   updateCompanyProfile(form: NgForm): void {
+    this.loading = true;
+    this.success = false;
+    this.failed = false;
     console.log(form);
     var jsonized = JSON.stringify(form.value);
     console.log(jsonized);
@@ -46,10 +52,14 @@ export class CarProfileComponent implements OnInit {
         console.log(data);
         console.log(data.body);
         console.log(form.value);
+        this.loading = false;
+        this.success = true;
       },
       err => {
         console.log("ERROR");
         console.log(err);
+        this.loading = false;
+        this.failed = true;
       });
   }
 
