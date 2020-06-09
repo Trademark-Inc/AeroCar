@@ -36,6 +36,8 @@ export class NavbarComponent implements OnInit {
         this.zone.run(() => 
         {
           this.username = data.body["user"].userName;
+          localStorage.setItem("role",  data.body["userRole"][0]);
+          console.log(localStorage);
           this.showProfileButton = true;
         });
       },
