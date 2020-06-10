@@ -6,19 +6,22 @@
     <div style="margin: 25px;">
         <div>
             <table class="table" style="background-color: white; border-radius: 10px;">
-                <tr *ngFor="let row of [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,
-                26,27,28,29,30]">
-                    <td *ngFor="let col of [0,1,2,3,4,5]">
+                <tr *ngFor="let row of seatCount;">
+                    <td *ngFor="let col of rowCount;">
+                        <button (click)="next(col+row*rowCount.length);" class="lookTdButton" type="button">
+                            {{col+row*rowCount.length}}
+                        </button>         
+                        <!--
                         <button data-toggle="modal" data-target="#seatsList" class="lookTdButton" type="button">
-                            {{col+row*6}}
-                        </button>           
+                            {{col+row*rowCount.length}}
+                        </button>         
+                        -->  
                     </td>
                 </tr>
             </table>
         </div>
         <div style="overflow: hidden;">
-            <button routerLink="/flights/reservation" routerLinkActive="active" class="lookButtonCancel" type="button">Cancel</button>
-            <button routerLink="/flights/reservation/seats/details" routerLinkActive="active" class="lookButtonSave" type="button">Next</button>
+            <button routerLinkActive="active" class="lookButtonCancel" type="button">Cancel</button>
         </div>
     </div>   
 </div>

@@ -9,9 +9,9 @@ import { FlightsProfileComponent } from './profile/profile.component';
 const routes: Routes = [
   { path: '', component: FlightsComponent, data: { animation: 'isRight' } },
   { path: 'profile', component: FlightsProfileComponent, data: { animation: 'isLeft' } },
-  { path: 'reservation', component: FlightReservationComponent},
-  { path: 'reservation/seats', component: FlightSeatsComponent},
-  { path: 'reservation/seats/details', component: FlightDetailsComponent}
+  { path: 'reservation/:id', component: FlightReservationComponent},
+  { path: 'reservation/:id/:reservationId/seats', component: FlightSeatsComponent},
+  { path: 'reservation/:id/:reservationId/details', component: FlightDetailsComponent}
 ]
 
 @NgModule({

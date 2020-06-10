@@ -38,25 +38,25 @@
             </div>
             <div style="overflow: hidden;">
                 <label class="lookLabel">Departure:</label>
-                <input name="departure" ngModel required type="date" class="lookBox form-control">
+                <input name="departure" ngModel required type="datetime-local" class="lookBox form-control">
             </div>
             <div style="overflow: hidden;">
                 <label class="lookLabel">Arrival:</label>
-                <input name="arrival" ngModel required type="date" class="lookBox form-control">
+                <input name="arrival" ngModel required type="datetime-local" class="lookBox form-control">
             </div>
             <div style="overflow: hidden;">
                 <label class="lookLabel">Passengers:</label>               
             </div>
             <div style="overflow: hidden;">
-                <input name="adults" ngModel required type="text" class="lookSmallBox">
+                <input name="adults" ngModel required type="number" min="0" value="0" class="lookSmallBox">
                 <label style="font-size: 15px;" class="lookLabel" >Adults (15+ years)</label>               
             </div>            
             <div style="overflow: hidden;">
-                <input name="children" ngModel required type="text" class="lookSmallBox">
+                <input name="children" ngModel required type="number" min="0" value="0" class="lookSmallBox">
                 <label style="font-size: 15px;" class="lookLabel">Children (3-14 years)</label>                
             </div>
             <div style="overflow: hidden;">
-                <input name="infants" ngModel required type="text" class="lookSmallBox">
+                <input name="infants" ngModel required type="number" min="0" value="0" class="lookSmallBox">
                 <label style="font-size: 15px;" class="lookLabel">Infants (0-2 year/s)</label>               
             </div>     
             <div>
@@ -110,35 +110,41 @@
         </div>
         <table class="table">
             <tbody>
-                <tr>                    
+                <tr *ngFor="let flight of outboundFlights;">                    
                     <td>
-                        <a routerLink="/flights/reservation">
+                        <a (click)="reserve(flight.flightId);">
                         <div class="look-list-item">
                             <div class="look-list-content">
                                 <div class="look-list-content-left-up">
-                                    <label>13.00 - 14.15</label>
+                                    <label> Departing: {{flight.departure.substring(0, 10)}} at {{flight.departure.substring(11, flight.departure.length - 3)}} 
+                                            <br/>
+                                            Arriving: {{flight.arrival.substring(0, 10)}} at {{flight.arrival.substring(11, flight.arrival.length - 3)}}</label>
                                 </div>
                                 <div class="look-list-content-left-down">
-                                    <label>1h 15min</label>
+                                    <label>{{flight.travelTime}}h</label>
                                 </div>                         
                             </div>
                             <div class="look-list-content">
                                 <div class="look-list-content-center-up">
-                                    <label>Belgrade -> Vienna</label>
+                                    <label>{{flight.departureLocation.name}} -> <i *ngFor="let city of flight.transit;">{{city.name}} -> </i>{{flight.arrivalLocation.name}}</label>
                                 </div>
+                                <!--
                                 <div class="direct-or-transit">
                                     <label>Direct flight</label>
-                                </div>       
+                                </div>   
+                                -->    
+                                <!--
                                 <div class="seats-left">
-                                    <label>4 seats left</label>
-                                </div>                  
+                                    <label>TODO...</label>
+                                </div>  
+                                -->                
                             </div>
                             <div class="look-list-content" style="text-align: right;">
                                 <div>
                                     <img src="/../../assets/aerocar_logo.png" width="150px" height="50px">
                                 </div>
                                 <div class="price">
-                                    <label>135$</label>
+                                    <label>${{flight.price}}</label>
                                 </div>                         
                             </div>
                         </div>
@@ -274,3 +280,22 @@
         </table>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('body').bootstrapMaterialDesign();
+        
+        $('.datetimepicker').datetimepicker({
+            icons: {
+                time: "fa fa-clock-o",
+                date: "fa fa-calendar",
+                up: "fa fa-chevron-up",
+                down: "fa fa-chevron-down",
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                today: 'fa fa-screenshot',
+                clear: 'fa fa-trash',
+                close: 'fa fa-remove'
+            }
+            });
+    });
+</script>

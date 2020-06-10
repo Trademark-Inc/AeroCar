@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class FlightsComponent implements OnInit {
 
-  availableFlights: any;
+  outboundFlights: any;
 
   constructor(public http: HttpClient, private router: Router, private zone: NgZone) { }
 
@@ -18,26 +18,37 @@ export class FlightsComponent implements OnInit {
   }
 
   search(form: NgForm) {
+    console.log(form.value);
     let param = new HttpParams();
     for(let key in form.value){
-      param.append(key, form.value[key]);
+      if (key !== "arrival") 
+        param = param.append(key, form.value[key]);
+      else {
+        if (form.value[key] !== "") {
+          param = param.append(key, form.value[key]);
+        }
+      }
     }
+    console.log(param);
     var ret = this.http.get("http://localhost:62541/api/flight/search", {
       params: param,
-      headers: {'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem("token")},
+      headers: {'Content-Type': 'application/json'},
       observe: 'response',
       withCredentials: true,
       responseType: 'json' }).subscribe(data => {
         console.log("DATA");
         console.log(data);
         console.log(data.body);
-        this.zone.run(() => this.availableFlights = data.body);
+        this.zone.run(() => this.outboundFlights = data.body["outboundFlights"]);
       },
       err => {
         console.log("ERROR");
         console.log(err);
       });
+  }
+
+  reserve(id: number) {
+    this.router.navigateByUrl("/flights/reservation/" + id);
   }
 
 }

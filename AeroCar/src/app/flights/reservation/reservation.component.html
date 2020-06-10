@@ -8,24 +8,29 @@
             <label class="lookLabelBig">More information about flight</label><br>
             <div style="width: 45%;">
                 <div style="overflow: hidden;">
-                    <label class="lookLabelLeft">- Flight id</label>
-                    <label class="lookLabelRight">Value</label><br>
+                    <label class="lookLabelLeft">- Flight ID</label>
+                    <label class="lookLabelRight">{{flight.flightId}}</label><br>
                 </div>
                 <div style="overflow: hidden;">
-                    <label class="lookLabelLeft">- Departure date</label>
-                    <label class="lookLabelRight">Value</label><br>
+                    <label class="lookLabelLeft">- Company name</label>
+                    <label class="lookLabelRight">{{companyProfile.Name}}</label><br>
                 </div>
                 <div style="overflow: hidden;">
-                    <label class="lookLabelLeft">- Arrival date</label>        
-                    <label class="lookLabelRight">Value</label>
+                    <label class="lookLabelLeft">- Departure</label>
+                    <label class="lookLabelRight">{{flight.departure}}</label><br>
+                </div>
+                <div style="overflow: hidden;">
+                    <label class="lookLabelLeft">- Arrival</label>        
+                    <label class="lookLabelRight">{{flight.arrival}}</label>
                 </div>
             </div>     
         </div>
         <div>
+            <!--
             <label class="lookLabelBig">Luggage</label>
             <div style="display: flex;">
                 <div style=" display: inline-block; width: 35%;">
-                    <label class="lookLabel">- Number of lauggage</label>
+                    <label class="lookLabel">- Number of luggage</label>
                 </div>          
                 <div style="width: 15px;">
                 </div>
@@ -34,24 +39,23 @@
                     <label class="lookSize">max: 20 kg, max: 75x46x26 cm</label>  
                 </div>   
             </div>
+        -->
         </div>
         <div>
             <label class="lookLabelBig">Additional services</label>
-            <div style="width: 45%;">
+            <form class="form" #chooseItemsForm="ngForm" (ngSubmit)="next(chooseItemsForm);">
+                <div style="width: 45%;">
+                    <div style="overflow: hidden;" *ngFor="let item of company.priceList">
+                        <label class="lookLabelLeft">- {{item.name}} {{item.price}}</label>
+                        <input name="{{item.priceListIdemId}}" ngModel required class="lookCheckBox" type="checkbox">
+                    </div>
+                </div>  
+                <br>
                 <div style="overflow: hidden;">
-                    <label class="lookLabelLeft">- Serving</label>
-                    <input class="lookCheckBox" type="checkbox">
-                </div>
-                <div style="overflow: hidden;">
-                    <label class="lookLabelLeft">- Newspaper</label>
-                    <input class="lookCheckBox" type="checkbox">
-                </div>
-            </div>            
-        </div>
-        <br>
-        <div style="overflow: hidden;">
-            <button routerLink="/flights" routerLinkActive="active" class="lookButtonCancel" type="button">Cancel</button>
-            <button routerLink="/flights/seats" routerLinkActive="active" class="lookButtonReseve" type="button">Reserve</button>
-        </div>       
+                    <button routerLink="/flights" routerLinkActive="active" class="lookButtonCancel" type="button">Cancel</button>
+                    <button class="lookButtonReseve" type="submit">Next</button>
+                </div>    
+            </form>       
+        </div>      
     </div>  
 </div>

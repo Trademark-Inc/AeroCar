@@ -4,49 +4,51 @@
 <br>
 <div class="container lookBigDiv">
     <div style="margin: 25px;">
-        <div style="width: 80%;">
-            <div style="overflow: hidden;">
-                <label class="lookLabel">Seat seat1</label>
+        <form class="form" #detailsForm="ngForm" (ngSubmit)="confirm(detailsForm);">
+            <div style="width: 80%;">
+                <div style="overflow: hidden;">
+                    <label class="lookLabelSmallLeft">Name:</label>
+                    <input name="name" ngModel required placeholder="Name" style="float: right; margin: 1%;" type="text">
+                </div>
+                <div style="overflow: hidden;">
+                    <label class="lookLabelSmallLeft">Surname:</label>
+                    <input name="surname" ngModel required placeholder="Surname" style="float: right; margin: 1%;" type="text">
+                </div>
+                <div style="overflow: hidden;">
+                    <label class="lookLabelSmallLeft">Passport ID:</label>
+                    <input name="passport" ngModel required placeholder="Number of passport" style="float: right; margin: 1%;" type="text">
+                </div>
             </div>
-            <div style="overflow: hidden;">
-                <label class="lookLabelSmallLeft">Name1</label>
-                <input placeholder="Name" style="float: right; margin: 1%;" type="text">
+            <!--
+            <hr>
+            <div style="width: 80%;">
+                <div style="overflow: hidden;">
+                    <label class="lookLabel">Seat seat1</label>
+                </div>
+                <div style="overflow: hidden;">
+                    <label class="lookLabelSmallLeft">Name1</label>
+                    <input placeholder="Name" style="float: right; margin: 1%;" type="text">
+                </div>
+                <div style="overflow: hidden;">
+                    <label class="lookLabelSmallLeft">Surname1</label>
+                    <input placeholder="Surname" style="float: right; margin: 1%;" type="text">
+                </div>
+                <div style="overflow: hidden;">
+                    <label class="lookLabelSmallLeft">Number of passport1</label>
+                    <input placeholder="Number of passport" style="float: right; margin: 1%;" type="text">
+                </div>
             </div>
+            -->
+            <br>
             <div style="overflow: hidden;">
-                <label class="lookLabelSmallLeft">Surname1</label>
-                <input placeholder="Surname" style="float: right; margin: 1%;" type="text">
+                <button routerLink="/flights" routerLinkActive="active" class="lookButtonCancel" type="button">Cancel</button>
+                <!--<button data-toggle="modal" data-target="#confirm" class="lookButtonSave" type="submit">Confirm</button>-->
+                <button class="lookButtonSave" type="submit">Confirm</button>
             </div>
-            <div style="overflow: hidden;">
-                <label class="lookLabelSmallLeft">Number of passport1</label>
-                <input placeholder="Number of passport" style="float: right; margin: 1%;" type="text">
-            </div>
-        </div>
-        <hr>
-        <div style="width: 80%;">
-            <div style="overflow: hidden;">
-                <label class="lookLabel">Seat seat1</label>
-            </div>
-            <div style="overflow: hidden;">
-                <label class="lookLabelSmallLeft">Name1</label>
-                <input placeholder="Name" style="float: right; margin: 1%;" type="text">
-            </div>
-            <div style="overflow: hidden;">
-                <label class="lookLabelSmallLeft">Surname1</label>
-                <input placeholder="Surname" style="float: right; margin: 1%;" type="text">
-            </div>
-            <div style="overflow: hidden;">
-                <label class="lookLabelSmallLeft">Number of passport1</label>
-                <input placeholder="Number of passport" style="float: right; margin: 1%;" type="text">
-            </div>
-        </div>
-        <br>
-        <div style="overflow: hidden;">
-            <button routerLink="/flights/reservation/seats" routerLinkActive="active" class="lookButtonCancel" type="button">Cancel</button>
-            <button data-toggle="modal" data-target="#confirm" class="lookButtonSave" type="button">Confirm</button>
-        </div>
+        </form>
     </div>  
 </div>
-<div class="modal fade" id="confirm" tabindex="0" role="dialog" aria-labelledby="confirm" aria-hidden="true">
+<div #confirm class="modal fade" id="confirm" tabindex="0" role="dialog" aria-labelledby="confirm" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
