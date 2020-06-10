@@ -8,7 +8,10 @@
             <table class="table" style="background-color: white; border-radius: 10px;">
                 <tr *ngFor="let row of seatCount;">
                     <td *ngFor="let col of rowCount;">
-                        <button (click)="next(col+row*rowCount.length);" class="lookTdButton" type="button">
+                        <button *ngIf="isSeatAvailable(col+row*rowCount.length);" (click)="next(col+row*rowCount.length);" class="lookTdButton" type="button">
+                            {{col+row*rowCount.length}}
+                        </button>         
+                        <button *ngIf="!isSeatAvailable(col+row*rowCount.length);" class="lookTdButtonSelected" type="button">
                             {{col+row*rowCount.length}}
                         </button>         
                         <!--
@@ -21,7 +24,7 @@
             </table>
         </div>
         <div style="overflow: hidden;">
-            <button routerLinkActive="active" class="lookButtonCancel" type="button">Cancel</button>
+            <button (click)="cancel();" class="lookButtonCancel" type="button">Cancel</button>
         </div>
     </div>   
 </div>

@@ -12,10 +12,10 @@ import { RoleGuardService as RoleGuard } from './auth/role-guard.service';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
-  { path: 'signup', component: SignUpComponent, canActivate: [AuthGuard], data: { animation: 'isRight' } },
+  { path: 'signup', component: SignUpComponent, data: { animation: 'isRight' } },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], data: { animation: 'isLeft'} },
-  { path: 'flights', loadChildren: () => import('./flights/flights.module').then(m => m.FlightsModule), canActivate: [AuthGuard], data: { animation: 'isLeft' } },
-  { path: 'cars', loadChildren: () => import('./cars/cars.module').then(m => m.CarsModule), canActivate: [AuthGuard], data: { animation: 'isRight' } },
+  { path: 'flights', loadChildren: () => import('./flights/flights.module').then(m => m.FlightsModule), data: { animation: 'isLeft' } },
+  { path: 'cars', loadChildren: () => import('./cars/cars.module').then(m => m.CarsModule), data: { animation: 'isRight' } },
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate: [AuthGuard], data: { animation: 'isLeft'} },
   { path: 'dashboard', component: UserComponent, canActivate: [AuthGuard]},
   { path: 'dashboard/friends', component: FriendsComponent, canActivate: [AuthGuard]},

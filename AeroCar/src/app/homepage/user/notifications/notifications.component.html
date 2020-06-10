@@ -3,31 +3,14 @@
 </div>
 <br>
 <div class="container lookBigDiv">
-    <table class="table" style="background-color: rgb(223, 239, 245);">
-        <tr class="lookRow">
-            <td class="lookTd">Friend 1 has sent You an invitation</td>
-            <td class="lookTd"><button class="lookAcceptButton">Accept</button></td>
-            <td class="lookTd"><button class="lookRejectButton">Reject</button></td>
-        </tr>
-        <tr class="lookRow">
-            <td class="lookTd">Friend 1 has sent You an invitation</td>
-            <td class="lookTd"><button class="lookAcceptButton">Accept</button></td>
-            <td class="lookTd"><button class="lookRejectButton">Reject</button></td>
-        </tr>
-        <tr class="lookRow">
-            <td class="lookTd">Friend 1 has sent You an invitation</td>
-            <td class="lookTd"><button class="lookAcceptButton">Accept</button></td>
-            <td class="lookTd"><button class="lookRejectButton">Reject</button></td>
-        </tr>
-        <tr class="lookRow">
-            <td class="lookTd">Friend 1 has sent You an invitation</td>
-            <td class="lookTd"><button class="lookAcceptButton">Accept</button></td>
-            <td class="lookTd"><button class="lookRejectButton">Reject</button></td>
-        </tr>
-        <tr class="lookRow">
-            <td class="lookTd">Friend 1 has sent You an invitation</td>
-            <td class="lookTd"><button class="lookAcceptButton">Accept</button></td>
-            <td class="lookTd"><button class="lookRejectButton">Reject</button></td>
+    <table *ngIf="flightInvitations != null && flightInvitations.length > 0" class="table" style="background-color: rgb(223, 239, 245);">
+        <tr class="lookRow" *ngFor="let inv of flightInvitations;">
+            <td class="lookTd">{{inv.friendUsername}} has sent You an invitation to fly with them to {{inv.flightDestination}}.</td>
+            <td class="lookTd"><button class="lookAcceptButton" (click)="accept(inv.id, inv.flightId);">Accept</button></td>
+            <td class="lookTd"><button class="lookRejectButton" (click)="reject(inv.id);">Reject</button></td>
         </tr>
     </table>
+    <div *ngIf="flightInvitations == null || flightInvitations.length == 0" >
+        <h2 style="text-align: center;">None.</h2>
+    </div>
 </div>

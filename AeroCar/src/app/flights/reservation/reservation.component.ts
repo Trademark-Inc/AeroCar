@@ -80,4 +80,8 @@ export class FlightReservationComponent implements OnInit {
       });
   }
 
+  cancel(): void {
+    this.router.navigateByUrl("/flights");
+  }
+
 }

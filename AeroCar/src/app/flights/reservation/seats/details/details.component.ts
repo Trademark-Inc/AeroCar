@@ -10,11 +10,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class FlightDetailsComponent implements OnInit {
 
-  @ViewChild('confirm') private confirmModal: ElementRef;
+  @ViewChild('confirmModal') private confirmModal: ElementRef;
 
   reservationId: any;
   reservation: any;
   id: any;
+  flight: any;
+  friends: any;
 
   constructor(private route: ActivatedRoute, public http: HttpClient, private router: Router, private zone: NgZone) {
     this.reservationId = this.route.snapshot.paramMap.get('reservationId');
@@ -27,7 +29,8 @@ export class FlightDetailsComponent implements OnInit {
 
   loadReservationData(): void {
     var ret = this.http.get("http://localhost:62541/api/reservation/flight/" + this.reservationId, {
-      headers: {'Content-Type': 'application/json'},
+      headers: {'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem("token")},
       observe: 'response',
       withCredentials: true,
       responseType: 'json' }).subscribe(data => {
@@ -41,10 +44,30 @@ export class FlightDetailsComponent implements OnInit {
       err => {
         console.log("ERROR");
         console.log(err);
+        this.router.navigateByUrl("/flights");
       });
+
+      var ret = this.http.get("http://localhost:62541/api/flight/" + this.id, {
+        headers: {'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem("token")},
+        observe: 'response',
+        withCredentials: true,
+        responseType: 'json' }).subscribe(data => {
+          console.log("DATA");
+          console.log(data);
+          console.log(data.body);
+          this.zone.run(() => {
+            this.flight = data.body["flight"];
+        });
+        },
+        err => {
+          console.log("ERROR");
+          console.log(err);
+          this.router.navigateByUrl("/flights");
+        });
   }
 
-  confirm(form: NgForm) {
+  confirm(form: NgForm): void {
 
     var data = {
       "reservationId": parseInt(this.reservationId),
@@ -64,12 +87,83 @@ export class FlightDetailsComponent implements OnInit {
         console.log("DATA");
         console.log(data);
         console.log(data.body);
-        // this.confirmModal.nativeElement.click();
       },
       err => {
         console.log("ERROR");
         console.log(err);
       });
+  }
+
+  cancel(): void {
+    var ret = this.http.get("http://localhost:62541/api/reservation/flight/remove/" + this.reservationId, {
+      headers: {'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem("token")},
+      observe: 'response',
+      withCredentials: true,
+      responseType: 'json' }).subscribe(data => {
+        console.log("DATA");
+        console.log(data);
+        console.log(data.body);
+        this.zone.run(() => {
+          this.router.navigateByUrl("/flights");
+      });
+      },
+      err => {
+        console.log("ERROR");
+        console.log(err);
+      });
+  }
+
+  loadFriends(): void {
+    console.log("FRIENDS");
+    var ret = this.http.get("http://localhost:62541/api/user/friends", {
+      headers: {'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem("token")},
+      observe: 'response',
+      withCredentials: true,
+      responseType: 'json' }).subscribe(data => {
+        console.log("DATA");
+        console.log(data);
+        console.log(data.body);
+        this.zone.run(() => {
+          this.friends = data.body;
+      });
+      },
+      err => {
+        console.log("ERROR");
+        console.log(err);
+        this.router.navigateByUrl("/flights");
+      });
+  }
+
+  invite(form: NgForm): void {
+
+    var data = {
+      "flightId": parseInt(this.id),
+      "reservationId": parseInt(this.reservationId),
+      "friendUsername": form.value["username"]
+    };
+
+    console.log(form.value);
+    var jsonized = JSON.stringify(data);
+    console.log(jsonized);
+    var ret = this.http.post("http://localhost:62541/api/reservation/flight/invite", jsonized, { 
+      headers: {'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem("token")},
+      observe: 'response',
+      responseType: 'json' }).subscribe(data => {
+        console.log("DATA");
+        console.log(data);
+        console.log(data.body);
+      },
+      err => {
+        console.log("ERROR");
+        console.log(err);
+      });
+  }
+
+  reserve(): void {
+    this.router.navigateByUrl("/flights/reservation/" + this.id);
   }
 
 }

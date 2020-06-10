@@ -50,8 +50,11 @@ export class AvioReportComponent implements OnInit {
     
     var values = [];
     graphData.forEach(element => {
-      values.push(element.soldTickets);
+      values.push(element.soldCount);
     });
+
+    console.log(months);
+    console.log(values);
 
     var myChart = new Chart(ctx, {
         type: 'bar',

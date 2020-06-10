@@ -8,15 +8,22 @@
             <div style="width: 80%;">
                 <div style="overflow: hidden;">
                     <label class="lookLabelSmallLeft">Name:</label>
-                    <input name="name" ngModel required placeholder="Name" style="float: right; margin: 1%;" type="text">
+                    <input name="name" [(ngModel)]="reservation.name" required placeholder="Name" style="float: right; margin: 1%;" type="text">
                 </div>
                 <div style="overflow: hidden;">
                     <label class="lookLabelSmallLeft">Surname:</label>
-                    <input name="surname" ngModel required placeholder="Surname" style="float: right; margin: 1%;" type="text">
+                    <input name="surname" [(ngModel)]="reservation.surname" required placeholder="Surname" style="float: right; margin: 1%;" type="text">
                 </div>
                 <div style="overflow: hidden;">
                     <label class="lookLabelSmallLeft">Passport ID:</label>
-                    <input name="passport" ngModel required placeholder="Number of passport" style="float: right; margin: 1%;" type="text">
+                    <input name="passport" [(ngModel)]="reservation.passport" required placeholder="Number of passport" style="float: right; margin: 1%;" type="text">
+                </div>
+                <div style="overflow: hidden;">
+                    <label style="margin-left: 2%; font-size: 40px; font-weight: bold;">
+                        Price:
+                        <br/>
+                        ${{flight.price}}
+                    </label>
                 </div>
             </div>
             <!--
@@ -41,14 +48,29 @@
             -->
             <br>
             <div style="overflow: hidden;">
-                <button routerLink="/flights" routerLinkActive="active" class="lookButtonCancel" type="button">Cancel</button>
+                <button (click)="cancel();" routerLinkActive="active" class="lookButtonCancel" type="button">Cancel</button>
                 <!--<button data-toggle="modal" data-target="#confirm" class="lookButtonSave" type="submit">Confirm</button>-->
                 <button class="lookButtonSave" type="submit">Confirm</button>
             </div>
         </form>
+        <div *ngIf="reservation.name != null && reservation.surname != null && reservation.passport != null &&
+                    reservation.name != '' && reservation.surname != '' && reservation.passport !== ''">
+            <hr>
+            <div class="additional">
+                <div style="overflow: hidden;">
+                    <label>Invite other people:</label>
+                    <button type="button" class="btn btn-dark lookButtonSave" (click)="loadFriends();" data-toggle="modal" data-target="#confirm">Invite</button>
+                </div>
+                <br/>
+                <div style="overflow: hidden;">
+                    <label>Reserve for another person:</label>
+                    <button type="button" class="btn btn-dark lookButtonSave" (click)="reserve();">Reserve</button>
+                </div>
+            </div>
+        </div>
     </div>  
 </div>
-<div #confirm class="modal fade" id="confirm" tabindex="0" role="dialog" aria-labelledby="confirm" aria-hidden="true">
+<div #confirmModal class="modal fade" id="confirm" tabindex="0" role="dialog" aria-labelledby="confirm" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -59,17 +81,25 @@
           </div>
           <div style="margin: 10px; background-color: rgb(223, 239, 245);">
             <div style="margin: 15px">
-                <label class="lookLabel">Great!<br>Now you have made a flight reservation.</label>
+                <label class="lookLabel">Great!<br>Choose someone to invite.</label>
             </div>
             <hr>
-            <div style="overflow: hidden; width: 70%;">
-                <label class="lookLabelSmallLeft">Would You like to rent-a-car?</label>
-                <button data-dismiss="modal" routerLink="/cars" routerLinkActive="active" class="lookButtonYes" type="button">Yes</button>
+            <div style="overflow: hidden; width: 90%; margin: 15px;">
+                <form class="form" #inviteForm="ngForm" (ngSubmit)="invite(inviteForm);">
+                    <label class="lookLabelSmallLeft">Friend:</label>
+                    <select name="username" ngModel required class="form-control">
+                        <option *ngFor="let friend of friends;" [ngValue]="friend.username">
+                            {{friend.username}}
+                        </option>
+                    </select>
+                    <br/>
+                    <button class="btn btn-dark lookButtonSave" type="submit">Invite</button>
+                </form>
             </div>
             <br>             
           </div>
           <div style="overflow: hidden;">               
-            <button class="lookButtonCancelSmall" type="button">Cancel</button>
+            <button class="lookButtonCancelSmall" data-dismiss="modal" type="button">Cancel</button>
         </div> 
         </div>       
     </div>

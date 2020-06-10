@@ -12,6 +12,7 @@ export class FlightSeatsComponent implements OnInit {
   reservationId: any;
   reservation: any;
   seats: any;
+  takenSeats: any;
   id: any;
   flight: any;
   company: any;
@@ -44,7 +45,7 @@ export class FlightSeatsComponent implements OnInit {
         console.log(err);
       });
 
-    var ret = this.http.get("http://localhost:62541/api/reservation/flight/" + this.id + "/aeroplane", { 
+    var ret = this.http.get("http://localhost:62541/api/flight/" + this.id + "/aeroplane", { 
       headers: {'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + localStorage.getItem("token")},
       observe: 'response',
@@ -69,7 +70,8 @@ export class FlightSeatsComponent implements OnInit {
 
   loadReservationData(): void {
     var ret = this.http.get("http://localhost:62541/api/reservation/flight/" + this.reservationId, {
-      headers: {'Content-Type': 'application/json'},
+      headers: {'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem("token")},
       observe: 'response',
       withCredentials: true,
       responseType: 'json' }).subscribe(data => {
@@ -83,7 +85,43 @@ export class FlightSeatsComponent implements OnInit {
       err => {
         console.log("ERROR");
         console.log(err);
+        this.router.navigateByUrl("/flights");
       });
+
+      var ret = this.http.get("http://localhost:62541/api/reservation/flight/" + this.id + "/seats/taken", {
+        headers: {'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem("token")},
+        observe: 'response',
+        withCredentials: true,
+        responseType: 'json' }).subscribe(data => {
+          console.log("DATA");
+          console.log(data);
+          console.log(data.body);
+          this.zone.run(() => {
+            this.takenSeats = data.body["takenSeats"];
+        });
+        },
+        err => {
+          console.log("ERROR");
+          console.log(err);
+          this.router.navigateByUrl("/flights");
+        });
+  }
+
+  isSeatAvailable(seat: number): boolean {
+    for (let deleted of this.seats.deletedSeats) {
+      if (deleted.seatNumber == seat) {
+        return false;
+      }
+    }
+
+    for (let takenSeat of this.takenSeats) {
+      if (seat == takenSeat) {
+        return false;
+      }
+    }
+
+    return true;
   }
 
   next(seat: number): void {
@@ -105,6 +143,26 @@ export class FlightSeatsComponent implements OnInit {
         console.log(data);
         console.log(data.body);
         this.router.navigateByUrl("/flights/reservation/" + this.flight.flightId + "/" + this.reservationId + "/details");
+      },
+      err => {
+        console.log("ERROR");
+        console.log(err);
+      });
+  }
+
+  cancel(): void {
+    var ret = this.http.get("http://localhost:62541/api/reservation/flight/remove/" + this.reservationId, {
+      headers: {'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem("token")},
+      observe: 'response',
+      withCredentials: true,
+      responseType: 'json' }).subscribe(data => {
+        console.log("DATA");
+        console.log(data);
+        console.log(data.body);
+        this.zone.run(() => {
+          this.router.navigateByUrl("/flights");
+      });
       },
       err => {
         console.log("ERROR");

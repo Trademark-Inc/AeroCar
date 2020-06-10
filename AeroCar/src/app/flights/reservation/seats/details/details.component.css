@@ -1,3 +1,8 @@
+.additional {
+    margin-top: 20px;
+    margin-left: 2%;
+}
+
 .lookTittle {
     margin: 2% 0% 0% 0%; 
     text-align: center;
@@ -27,7 +32,6 @@
 }
 
 .lookButtonSave {
-    margin: 1% 0% 1% 1%;
     border: 1px solid #444444;
     background-color: #343a40;
     color: white;
@@ -43,7 +47,6 @@
 }
 
 .lookButtonCancel {
-    margin: 1% 0% 1% 1%;
     border: 1px solid #444444;
     background-color: white;
     color: #343a40;
