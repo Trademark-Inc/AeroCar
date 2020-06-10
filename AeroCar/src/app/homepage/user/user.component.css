@@ -97,10 +97,10 @@
 }
 
 .lookLabelBonus {
-    width: 50px;
+    width: 100px;
     height: 30px;
     font-size: 15px;
-    border-radius: 10px;
+    border-radius: 20px;
     border: 2px solid #444444;
     float: right;
     text-align: center;

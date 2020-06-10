@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'avio/flights', component: AvioFlightsComponent, canActivate: [RoleGurad], data: {expectedRole: 'AvioAdmin'}},
   { path: 'avio/report', component: AvioReportComponent, canActivate: [RoleGurad], data: {expectedRole: 'AvioAdmin'}},
   { path: 'avio/user', component: AvioUserComponent, canActivate: [RoleGurad], data: {expectedRole: 'AvioAdmin'}},
-  { path: 'car', component: CarComponent, canActivate: [RoleGurad], data: { animation: 'isLeft' } },
+  { path: 'car', component: CarComponent, canActivate: [RoleGurad], data: { animation: 'isLeft', expectedRole: 'CarAdmin' } },
   { path: 'car/profile', component: CarProfileComponent, canActivate: [RoleGurad], data: { animation: 'isRight', expectedRole: 'CarAdmin' } },
   { path: 'car/vehicles', component: CarVehiclesComponent, canActivate: [RoleGurad], data: { animation: 'isRight', expectedRole: 'CarAdmin' } },
   { path: 'car/offices', component: CarOfficesComponent, canActivate: [RoleGurad], data: { animation: 'isRight', expectedRole: 'CarAdmin' } },

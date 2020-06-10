@@ -44,7 +44,12 @@
                 </div> <!-- form-group// -->   
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block btn-dark">+ Add</button>
-                </div> <!-- form-group// -->     
+                </div> <!-- form-group// -->
+                <div style="overflow: hidden;">
+                    <div class="loader" *ngIf="loading1"></div>
+                    <div class="success" *ngIf="success1">✓ Successufully.</div>
+                    <div class="failed" *ngIf="failed1">✗ Not successufully.</div>  
+                </div>      
             </form>
         </div>
         <div class="remove">
@@ -59,6 +64,11 @@
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block btn-dark">- Remove</button>
                 </div> <!-- form-group// -->     
+                <div style="overflow: hidden;">
+                    <div class="loader" *ngIf="loading2"></div>
+                    <div class="success" *ngIf="success2">✓ Successufully.</div>
+                    <div class="failed" *ngIf="failed2">✗ Not successufully.</div>  
+                </div> 
             </form>
         </div>
     </div>

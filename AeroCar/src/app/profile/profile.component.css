@@ -60,30 +60,19 @@
     color: #444444;
 }
 
-.lookAddButton {
-    border: 3px solid #9a9a9a;
-    border-radius: 10px;
-    background-color: #343a40;
-    color:white;
-    width: 195px;
-    font-size: 25px;
-}
-
-.lookAdd:hover {
-    background-color:white;
-    color: #343a40;
-}
-
-.lookRemoveButton {
+.lookAddRemoveButtons {
+    margin: 0.5% 0% 0% 0%;
     border: 3px solid #9a9a9a;
     border-radius: 10px;
     background-color: white;
     color:#343a40;
-    width: 195px;
-    font-size: 25px;
+    font-size: 17px;
+    width: 40%;
+    float: right;
+    height: 30px;
 }
 
-.lookRemove:hover {
+.lookAddRemoveButtons:hover {
     background-color:#343a40;
     color: white;
 }
@@ -91,7 +80,8 @@
 .lookAddRemoveTextBox {
     border: 1px solid #9a9a9a;
     background-color: white;
-    width: 295px;
+    border-radius: 10px;
+    width: 55%;
     color:#1a1a1a;
     font-size: 25px;
     margin: 0.5%;
