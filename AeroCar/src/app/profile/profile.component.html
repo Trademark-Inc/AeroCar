@@ -81,11 +81,11 @@
             </table>
             <div style="width: 100%; overflow: hidden;">
                 <form class="form" #addFriendForm="ngForm" (ngSubmit)="addFriend(addFriendForm);">
-                    <input name="username" ngModel required class="lookAddRemoveTextBox" type="text" placeholder="Type username to add">
+                    <input name="username" ngModel required class="lookAddRemoveTextBox" type="text" placeholder="Username to add">
                     <button class="lookAddRemoveButtons" type="submit">Add friend</button><br>        
                 </form>    
                 <form class="form" #removeFriendForm="ngForm" (ngSubmit)="removeFriend(removeFriendForm);">   
-                    <input name="username" ngModel required class="lookAddRemoveTextBox" type="text" placeholder="Type username to remove">
+                    <input name="username" ngModel required class="lookAddRemoveTextBox" type="text" placeholder="Username to remove">
                     <button class="lookAddRemoveButtons" type="submit">Remove friend</button>
                 </form> 
             </div>
