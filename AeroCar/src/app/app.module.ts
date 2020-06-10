@@ -14,6 +14,20 @@ import { FooterComponent } from './footer/footer.component';
 import { UserComponent } from './homepage/user/user.component';
 import { FriendsComponent } from './homepage/user/friends/friends.component';
 import { NotificationsComponent } from './homepage/user/notifications/notifications.component';
+import { AuthGuardService } from './auth/auth-guard.service';
+import { RoleGuardService } from './auth/role-guard.service';
+import { AuthService } from './auth/auth.service';
+import { JwtHelperService, JwtModule, JwtModuleOptions } from '@auth0/angular-jwt';
+
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
+
+const JWT_Module_Options : JwtModuleOptions = {
+  config: {
+    tokenGetter : tokenGetter
+  }
+}
 
 @NgModule({
   declarations: [
@@ -33,9 +47,15 @@ import { NotificationsComponent } from './homepage/user/notifications/notificati
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    JwtModule.forRoot(JWT_Module_Options)
   ],
-  providers: [],
+  providers: [
+    AuthGuardService,
+    RoleGuardService,
+    AuthService,
+    JwtHelperService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
