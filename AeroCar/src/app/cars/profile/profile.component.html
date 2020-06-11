@@ -4,192 +4,56 @@
             <img src="../../../assets/aerocar_logo.png" width="250" height="100"/>
         </div>
         <div class="title">
-            <b>Eurocar</b>
+            <b>{{profileDetails.name}}</b>
         </div>
         <div>
-            <img src="../../../assets/ratings/4.png" width="150" height="30"/>
+            <img src="../../../assets/ratings/{{profileDetails.ratingPicture}}.png" width="150" height="30"/>
         </div>
     </div>
     <div class="details">
         <div class="address">
-            Address: Boulevard of Broken Dreams 33/36, Novi Sad
+            Address: {{profileDetails.address}}
             <br/>
-            Has offices in: Novi Sad, Belgrade, Berlin, Bern, London
+            Has offices in: {{profileDetails.offices}}
         </div>
         <div class="description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et porta turpis. Aenean ultricies sem eu metus facilisis, ut tempus eros vehicula. Donec ligula lorem, vulputate non volutpat ut, laoreet quis magna. Proin imperdiet dui vel enim commodo mattis. Vivamus id eros neque. In suscipit lectus a eros facilisis ultricies. Etiam porttitor arcu vel accumsan placerat. Suspendisse imperdiet id orci non rutrum. Vestibulum ac tincidunt eros. Donec nec neque blandit, condimentum eros dictum, varius libero. Nullam at congue erat. Maecenas cursus dolor non lacus luctus, a convallis ante dapibus. Quisque tortor risus, eleifend ac odio in, condimentum vehicula nisi. Duis ut fermentum felis. Vivamus at orci a erat aliquam finibus a lobortis augue. 
+            {{profileDetails.description}}
         </div>
     </div>
     <div class="vehicles">
         <h3>Vehicles from this company.</h3>
         <div class="list">
-            <div class="list-item">
+            <div class="list-item" *ngFor="let vehicle of profileDetails.vehicleList">
                 <div class="list-item-content">
                     <div class="split-content-left">
                         <div class="car-id">
-                            ID: 43156659 
+                            {{vehicle.vehicleId}}
                         </div>
                         <div class="car-name">
-                            Toyota Auris
+                            {{vehicle.name}}
                         </div>
                         <div class="car-cost">
-                            $13 / day
+                            {{vehicle.costPerDay}}
                         </div>
                     </div>
                     <div class="split-content-right">
                         <div style="margin-top: 2.5%; margin-bottom: 2.5%;">
-                            🚗 Hatchback
+                            🚗 {{getVehicleTypeText(vehicle.carType)}}
                             <br/>
-                            👤 5 🧳 2
+                            👤 {{vehicle.passangers}} 🧳 {{vehicle.baggage}}
                             <br/>
-                            Has <b>5</b> doors.
+                            Has <b>{{vehicle.doors}}</b> doors.
                             <br/>
-                            ⛽ Gasoline
+                            ⛽ {{vehicle.fuel}}
                             <br/>
-                            ⚙️ Manual, 5 gears
+                            ⚙️ {{vehicle.transmission}}
                         </div>
                         <div style="float: right;">
-                            <img src="../../../../assets/ratings/5.png" width="150px" height="30px"/>
+                            <img src="../../../../assets/ratings/{{vehicle.rating}}.png" width="150px" height="30px"/>
                         </div>
                     </div>
                     <div class="car-additional">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </div>
-                </div>
-            </div>
-            <div class="list-item">
-                <div class="list-item-content">
-                    <div class="split-content-left">
-                        <div class="car-id">
-                            ID: 43156659 
-                        </div>
-                        <div class="car-name">
-                            Toyota Auris
-                        </div>
-                        <div class="car-cost">
-                            $13 / day
-                        </div>
-                    </div>
-                    <div class="split-content-right">
-                        <div style="margin-top: 2.5%; margin-bottom: 2.5%;">
-                            🚗 Hatchback
-                            <br/>
-                            👤 5 🧳 2
-                            <br/>
-                            Has <b>5</b> doors.
-                            <br/>
-                            ⛽ Gasoline
-                            <br/>
-                            ⚙️ Manual, 5 gears
-                        </div>
-                        <div style="float: right;">
-                            <img src="../../../../assets/ratings/5.png" width="150px" height="30px"/>
-                        </div>
-                    </div>
-                    <div class="car-additional">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </div>
-                </div>
-            </div>
-            <div class="list-item">
-                <div class="list-item-content">
-                    <div class="split-content-left">
-                        <div class="car-id">
-                            ID: 43156659 
-                        </div>
-                        <div class="car-name">
-                            Toyota Auris
-                        </div>
-                        <div class="car-cost">
-                            $13 / day
-                        </div>
-                    </div>
-                    <div class="split-content-right">
-                        <div style="margin-top: 2.5%; margin-bottom: 2.5%;">
-                            🚗 Hatchback
-                            <br/>
-                            👤 5 🧳 2
-                            <br/>
-                            Has <b>5</b> doors.
-                            <br/>
-                            ⛽ Gasoline
-                            <br/>
-                            ⚙️ Manual, 5 gears
-                        </div>
-                        <div style="float: right;">
-                            <img src="../../../../assets/ratings/5.png" width="150px" height="30px"/>
-                        </div>
-                    </div>
-                    <div class="car-additional">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </div>
-                </div>
-            </div>
-            <div class="list-item">
-                <div class="list-item-content">
-                    <div class="split-content-left">
-                        <div class="car-id">
-                            ID: 43156659 
-                        </div>
-                        <div class="car-name">
-                            Toyota Auris
-                        </div>
-                        <div class="car-cost">
-                            $13 / day
-                        </div>
-                    </div>
-                    <div class="split-content-right">
-                        <div style="margin-top: 2.5%; margin-bottom: 2.5%;">
-                            🚗 Hatchback
-                            <br/>
-                            👤 5 🧳 2
-                            <br/>
-                            Has <b>5</b> doors.
-                            <br/>
-                            ⛽ Gasoline
-                            <br/>
-                            ⚙️ Manual, 5 gears
-                        </div>
-                        <div style="float: right;">
-                            <img src="../../../../assets/ratings/5.png" width="150px" height="30px"/>
-                        </div>
-                    </div>
-                    <div class="car-additional">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </div>
-                </div>
-            </div>
-            <div class="list-item-last">
-                <div class="list-item-content">
-                    <div class="split-content-left">
-                        <div class="car-id">
-                            ID: 43156659 
-                        </div>
-                        <div class="car-name">
-                            Toyota Auris
-                        </div>
-                        <div class="car-cost">
-                            $13 / day
-                        </div>
-                    </div>
-                    <div class="split-content-right">
-                        <div style="margin-top: 2.5%; margin-bottom: 2.5%;">
-                            🚗 Hatchback
-                            <br/>
-                            👤 5 🧳 2
-                            <br/>
-                            Has <b>5</b> doors.
-                            <br/>
-                            ⛽ Gasoline
-                            <br/>
-                            ⚙️ Manual, 5 gears
-                        </div>
-                        <div style="float: right;">
-                            <img src="../../../../assets/ratings/5.png" width="150px" height="30px"/>
-                        </div>
-                    </div>
-                    <div class="car-additional">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        {{vehicle.additional}}
                     </div>
                 </div>
             </div>
@@ -198,93 +62,18 @@
     <div class="offices">
         <h3>Offices from this company.</h3>
         <div class="list">
-            <div class="list-item">
+            <div class="list-item" *ngFor="let office of profileDetails.officeList">
                 <div class="list-item-content">
                     <div class="split-content-left">
                         <div class="office-id">
-                            ID: 43156659 
+                            Id: {{office.officeId}}
                         </div>
                         <div class="office-location">
-                            Novi Sad
+                            Location: {{office.location.name}}
                         </div>
                     </div>
                     <div class="split-content-right">
-                        Address: Boulevard of Broken Dreams 33
-                    </div>
-                    <div class="office-additional">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </div>
-                </div>
-            </div>
-            <div class="list-item">
-                <div class="list-item-content">
-                    <div class="split-content-left">
-                        <div class="office-id">
-                            ID: 43156659 
-                        </div>
-                        <div class="office-location">
-                            Novi Sad
-                        </div>
-                    </div>
-                    <div class="split-content-right">
-                        Address: Boulevard of Broken Dreams 33
-                    </div>
-                    <div class="office-additional">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </div>
-                </div>
-            </div>
-            <div class="list-item">
-                <div class="list-item-content">
-                    <div class="split-content-left">
-                        <div class="office-id">
-                            ID: 43156659 
-                        </div>
-                        <div class="office-location">
-                            Novi Sad
-                        </div>
-                    </div>
-                    <div class="split-content-right">
-                        Address: Boulevard of Broken Dreams 33
-                    </div>
-                    <div class="office-additional">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </div>
-                </div>
-            </div>
-            <div class="list-item">
-                <div class="list-item-content">
-                    <div class="split-content-left">
-                        <div class="office-id">
-                            ID: 43156659 
-                        </div>
-                        <div class="office-location">
-                            Novi Sad
-                        </div>
-                    </div>
-                    <div class="split-content-right">
-                        Address: Boulevard of Broken Dreams 33
-                    </div>
-                    <div class="office-additional">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </div>
-                </div>
-            </div>
-            <div class="list-item-last">
-                <div class="list-item-content">
-                    <div class="split-content-left">
-                        <div class="office-id">
-                            ID: 43156659 
-                        </div>
-                        <div class="office-location">
-                            Novi Sad
-                        </div>
-                    </div>
-                    <div class="split-content-right">
-                        Address: Boulevard of Broken Dreams 33
-                    </div>
-                    <div class="office-additional">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        Address: {{office.address}}
                     </div>
                 </div>
             </div>

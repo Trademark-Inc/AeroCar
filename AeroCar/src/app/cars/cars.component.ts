@@ -17,6 +17,7 @@ export class CarsComponent implements OnInit {
 
   btnFiltersText: string;
 
+  informationProfile: any;
   availableCars: any;
 
   reservationDetails: any;
@@ -26,6 +27,23 @@ export class CarsComponent implements OnInit {
     this.listContainsItems = false;
     this.filtersShown = false;
     this.btnFiltersText = "+ Filters";
+
+    var ret = this.http.get("http://localhost:62541/api/car/company/get", {
+      headers: {'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem("token")},
+      observe: 'response',
+      withCredentials: true,
+      responseType: 'json' }).subscribe(data => {
+        console.log("DATA");
+        console.log(data);
+        console.log(data.body);
+        this.zone.run(() => this.informationProfile = data.body["carCompanyProfileDTOList"]);
+      },
+      err => {
+        console.log("ERROR");
+        console.log(err);
+    });
+
   }
 
   ngOnInit(): void {
