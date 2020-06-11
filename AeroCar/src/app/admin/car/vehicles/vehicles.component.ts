@@ -94,10 +94,10 @@ export class CarVehiclesComponent implements OnInit {
 
   getVehicleTypeText(vehicleType: any): any {
     switch (vehicleType) {
-      case 0: return "HatchBack";
-      case 1: return "Sedan";
-      case 2: return "Coupe";
-      case 3: return "SUV";
+      case 1: return "HatchBack";
+      case 2: return "Sedan";
+      case 3: return "Coupe";
+      case 4: return "SUV";
     }
 
     return "Unknown";

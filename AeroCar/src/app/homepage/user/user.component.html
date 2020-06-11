@@ -33,8 +33,8 @@
             <label class="lookLabel" style="font-size: 20px;">- Cars</label>
         </div>
         <div style="float: right;">
-            <button class="lookButton" type="button" style="float: right;  margin: 1% 0% 0% 0%;" data-toggle="modal" data-target="#flightsList">Click here</button><br><br>      
-            <button class="lookButton" type="button" style="float: right;  margin: 1% 0% 0% 0%;" data-toggle="modal" data-target="#carsList">Click here</button>
+            <button class="lookButton" (click)="loadFlightsHistory();" data-toggle="modal" data-target="#flightsList" type="button" style="float: right;  margin: 1% 0% 0% 0%;">Click here</button><br><br>      
+            <button class="lookButton" (click)="loadCarsHistory();" type="button" style="float: right;  margin: 1% 0% 0% 0%;" data-toggle="modal" data-target="#carsList">Click here</button>
         </div>        
     </div>
     <div class="space">
@@ -58,8 +58,8 @@
             <label class="lookLabel" style="font-size: 20px;">- Cars</label>
         </div>
         <div style="float: right;">
-            <button class="lookButton" type="button" style="float: right; margin: 1% 0% 0% 0%;" data-toggle="modal" data-target="#reservationFlightsList">Click here</button><br><br>            
-            <button class="lookButton" type="button" style="float: right; margin: 1% 0% 0% 0%;" data-toggle="modal" data-target="#reservationCarsList">Click here</button>
+            <button class="lookButton" (click)="loadFlightsReservations();" type="button" style="float: right; margin: 1% 0% 0% 0%;" data-toggle="modal" data-target="#reservationFlightsList">Click here</button><br><br>            
+            <button class="lookButton" (click)="loadCarsReservations();" type="button" style="float: right; margin: 1% 0% 0% 0%;" data-toggle="modal" data-target="#reservationCarsList">Click here</button>
         </div>
     </div>
     <div class="space">
@@ -76,6 +76,8 @@
         </div>
     </div>
 </div>
+
+<!-- HISTORY OF FLIGHTS -->
 <div class="modal fade" id="flightsList" tabindex="0" role="dialog" aria-labelledby="flightsList" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -86,25 +88,15 @@
             </button>
           </div>
             <table class="table" style="background-color: rgb(223, 239, 245);">
-                <tr class="lookRow">
-                    <td class="lookTd">Berlin - Beograd,<br>01.02.2003,<br>FirmaAvioFirma</td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Berlin - Beograd,<br>01.02.2003,<br>FirmaAvioFirma</td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Berlin - Beograd,<br>01.02.2003,<br>FirmaAvioFirma</td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Berlin - Beograd,<br>01.02.2003,<br>FirmaAvioFirma</td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Berlin - Beograd,<br>01.02.2003,<br>FirmaAvioFirma</td>
+                <tr class="lookRow" *ngFor="let flight of flightsHistory;">
+                    <td class="lookTd">{{flight.departureLocation.name}} - {{flight.arrivalLocation.name}},<br>{{flight.departure}},<br>{{flight.avioCompanyName}}</td>
                 </tr>
             </table>
         </div>       
     </div>
 </div>
+
+<!-- HISTORY OF CARS -->
 <div class="modal fade" id="carsList" tabindex="0" role="dialog" aria-labelledby="carsList" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -115,30 +107,16 @@
             </button>
           </div>
             <table class="table" style="background-color: rgb(223, 239, 245);">
-                <tr class="lookRow">
-                    <td class="lookTd">Berlin (Preuzeto),<br>01.02.2003,<br>FirmaAvioFirma</td>
-                    <td class="lookTd">Minhen (Predato),<br>10.02.2003,<br> FirmaAvioFirma</td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Berlin (Preuzeto),<br>01.02.2003,<br>FirmaAvioFirma</td>
-                    <td class="lookTd">Minhen (Predato),<br>10.02.2003,<br> FirmaAvioFirma</td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Berlin (Preuzeto),<br>01.02.2003,<br>FirmaAvioFirma</td>
-                    <td class="lookTd">Minhen (Predato),<br>10.02.2003,<br> FirmaAvioFirma</td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Berlin (Preuzeto),<br>01.02.2003,<br>FirmaAvioFirma</td>
-                    <td class="lookTd">Minhen (Predato),<br>10.02.2003,<br> FirmaAvioFirma</td>              
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Berlin (Preuzeto),<br>01.02.2003,<br>FirmaAvioFirma</td>
-                    <td class="lookTd">Minhen (Predato),<br>10.02.2003,<br> FirmaAvioFirma</td>             
+                <tr class="lookRow" *ngFor="let car of carsHistory;">
+                    <td class="lookTd">{{car.pickUpLocation}} (Picked up),<br>{{car.pickUpDate}},<br>Company: {{car.carCompanyName}}<br/>Car: {{car.vehicleName}}</td>
+                    <td class="lookTd">{{car.returnLocation}} (Will return/Returned),<br>{{car.returnDate}}</td>
                 </tr>
             </table>
         </div>       
     </div>
 </div>
+
+<!-- TERMINABLE RESERVATIONS FLIGHT LIST -->
 <div class="modal fade" id="reservationFlightsList" tabindex="0" role="dialog" aria-labelledby="reservationFlightsList" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -149,34 +127,23 @@
             </button>
           </div>
             <table class="table" style="background-color: rgb(223, 239, 245);">
-                <tr class="lookRow">
-                    <td class="lookTd">Berlin - Beograd,<br>01.02.2003,<br>FirmaAvioFirma</td>
+                <tr class="lookRow" *ngFor="let flight of flightsHistory;">
+                    <td class="lookTd"><b>ID: {{flight.reservationId}}</b><br>{{flight.departureLocation.name}} - {{flight.arrivalLocation.name}},<br>{{flight.departure}},<br>{{flight.avioCompanyName}}</td>
                 </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Berlin - Beograd,<br>01.02.2003,<br>FirmaAvioFirma</td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Berlin - Beograd,<br>01.02.2003,<br>FirmaAvioFirma</td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Berlin - Beograd,<br>01.02.2003,<br>FirmaAvioFirma</td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Berlin - Beograd,<br>01.02.2003,<br>FirmaAvioFirma</td>
-                </tr>
-            </table>            
-            <div style="display: flex; margin: 0% 0% 1% 0%;">
-                <select class="lookReservationBox">
-                    <option>Reservation1</option>
-                    <option>Reservation2</option>
-                    <option>Reservation3</option>
-                    <option>Reservation4</option>
-                </select>
-                <button class="lookReservationButton" type="button">Cancel reservation</button>         
-            </div>
+            </table>       
+            <form #cancelReservationFlightForm="ngForm" (ngSubmit)="cancelReservationFlight(cancelReservationFlightForm);">     
+                <div style="display: flex; margin: 0% 0% 1% 0%;">
+                    <select class="lookReservationBox" name="reservationId" ngModel required>
+                        <option value="{{flight.reservationId}}" *ngFor="let flight of flightsHistory;">{{flight.reservationId}}</option>
+                    </select>
+                    <button class="lookReservationButton" type="submit">Cancel reservation</button>  
+                </div>
+            </form>       
         </div>       
     </div>
 </div>
+
+<!-- TERMINABLE RESERVATIONS CARS LIST -->
 <div class="modal fade" id="reservationCarsList" tabindex="0" role="dialog" aria-labelledby="reservationCarsList" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -187,36 +154,19 @@
             </button>
           </div>
             <table class="table" style="background-color: rgb(223, 239, 245);">
-                <tr class="lookRow">
-                    <td class="lookTd">Berlin (Preuzeto),<br>01.02.2003,<br>FirmaAvioFirma</td>
-                    <td class="lookTd">Minhen (Predato),<br>10.02.2003,<br> FirmaAvioFirma</td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Berlin (Preuzeto),<br>01.02.2003,<br>FirmaAvioFirma</td>
-                    <td class="lookTd">Minhen (Predato),<br>10.02.2003,<br> FirmaAvioFirma</td>             
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Berlin (Preuzeto),<br>01.02.2003,<br>FirmaAvioFirma</td>
-                    <td class="lookTd">Minhen (Predato),<br>10.02.2003,<br> FirmaAvioFirma</td>           
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Berlin (Preuzeto),<br>01.02.2003,<br>FirmaAvioFirma</td>
-                    <td class="lookTd">Minhen (Predato),<br>10.02.2003,<br> FirmaAvioFirma</td>               
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Berlin (Preuzeto),<br>01.02.2003,<br>FirmaAvioFirma</td>
-                    <td class="lookTd">Minhen (Predato),<br>10.02.2003,<br> FirmaAvioFirma</td>               
+                <tr class="lookRow" *ngFor="let car of carsHistory;">
+                    <td class="lookTd"><b>ID: {{car.reservationId}}</b><br/>{{car.pickUpLocation}} (Picked up),<br>{{car.pickUpDate}},<br>Company: {{car.carCompanyName}}<br/>Car: {{car.vehicleName}}</td>
+                    <td class="lookTd">{{car.returnLocation}} (Will return/Returned),<br>{{car.returnDate}}</td>
                 </tr>
             </table>
-            <div style="display: flex; margin: 0% 0% 1% 0%;">
-                <select class="lookReservationBox">
-                    <option>Reservation1</option>
-                    <option>Reservation2</option>
-                    <option>Reservation3</option>
-                    <option>Reservation4</option>
-                </select>
-                <button class="lookReservationButton" type="button">Cancel reservation</button>         
-            </div>            
+            <form #cancelReservationCarForm="ngForm" (ngSubmit)="cancelReservationCar(cancelReservationCarForm);">
+                <div style="display: flex; margin: 0% 0% 1% 0%;">
+                    <select class="lookReservationBox" name="reservationId" ngModel required>
+                        <option value="{{car.reservationId}}" *ngFor="let car of carsHistory;">{{car.reservationId}}</option>
+                    </select>
+                    <button class="lookReservationButton" type="submit">Cancel reservation</button>   
+                </div>      
+            </form> 
         </div>       
     </div>
 </div>

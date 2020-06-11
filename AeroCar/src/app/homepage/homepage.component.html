@@ -13,11 +13,11 @@
 		</div>
     </div>
     <div class="ps animated fadeInDown">
-        Please select one of the following or <a href="#" data-toggle="modal" data-target="#userSignIn">sign in</a>.
+        Please select one of the following<span *ngIf="!loggedIn"> or <a href="#" data-toggle="modal" data-target="#userSignIn">sign in</a></span>.
     </div>
     <div style="text-align: center;">
         <div class="btnAeroplaneCar">
-            <a routerLink="/flights" routerLinkActive="active" style="color: black;">
+            <a routerLink="/flights" routerLinkActive="active" style="color: #333333;">
                 <button type="button" class="btn animated fadeInUp">
                     <img src="/../../assets/aeroplane.png" width="200" height="200" style="margin: 25px 25px 0px 25px;">
                 </button>
