@@ -127,17 +127,7 @@
                             <div class="look-list-content">
                                 <div class="look-list-content-center-up">
                                     <label>{{flight.departureLocation.name}} -> <i *ngFor="let city of flight.transit;">{{city.name}} -> </i>{{flight.arrivalLocation.name}}</label>
-                                </div>
-                                <!--
-                                <div class="direct-or-transit">
-                                    <label>Direct flight</label>
-                                </div>   
-                                -->    
-                                <!--
-                                <div class="seats-left">
-                                    <label>TODO...</label>
-                                </div>  
-                                -->                
+                                </div>         
                             </div>
                             <div class="look-list-content" style="text-align: right;">
                                 <div>
@@ -163,114 +153,29 @@
     </div>
     <div>
         <table class="table">
-            <tr>
+            <tr *ngFor="let profileInfo of informationProfile;">
                 <td>
-                    <a routerLink="profile">
+                    <a routerLink="profile/{{profileInfo.id}}">
                         <div class="details-item">
                             <div style="text-align: center; display: inline-block; width: 30%;">
-                                <div>
-                                    <img src="/../../assets/aerocar_logo.png" width="170px" height="70px">
+                                <div style="font-size: 35px; font-weight: bold;">
+                                    {{profileInfo.name}}
                                 </div>
                                 <div class="rating">
                                     <label>Rating</label>
                                 </div>
                                 <div>
-                                    <img src="/../../assets/ratings/5.png" width="170px" height="35px">
+                                    <img src="/../../assets/ratings/{{profileInfo.ratingPicture}}.png" width="170px" height="35px">
                                 </div>
                                 <div style="color: #444444;">
-                                    <label>4.6/5</label>
+                                    <label>{{profileInfo.rating}} / 5</label>
                                 </div>
                             </div>
                             <div style="display: inline-block; width: 60%;">
-                                <b>Address: Some Address XY/Z, Somecity</b><br>
-                                <b>Travels to: Belgrade, Vienna, London, Zurich, Berlin</b>                           
+                                <b>Address: {{profileInfo.address}}</b><br>
+                                <b>Travels to: {{profileInfo.destinations}}</b>                           
                                 <p class="text">
-                                    Lorem Ipsum is simply dummy text of the printing and
-                                    typesetting industry. Lorem Ipsum has been the industry's
-                                    standard dummy text ever since the 1500s, when an unknown
-                                    printer took a galley of type and scrambled it to make a
-                                    type specimen book. It has survived not only five centuries,
-                                    but also the leap into electronic typesetting, remaining
-                                    essentially unchanged. It was popularised in the 1960s with
-                                    the release of Letraset sheets containing Lorem Ipsum passages,
-                                    and more recently with desktop publishing software like Aldus
-                                    PageMaker including versions of Lorem Ipsum.
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a routerLink="profile">
-                        <div class="details-item">
-                            <div style="text-align: center; display: inline-block; width: 30%;">
-                                <div>
-                                    <img src="/../../assets/aerocar_logo.png" width="170px" height="70px">
-                                </div>
-                                <div class="rating">
-                                    <label>Rating</label>
-                                </div>
-                                <div>
-                                    <img src="/../../assets/ratings/3.png" width="170px" height="35px">
-                                </div>
-                                <div style="color: #444444;">
-                                    <label>3.0/5</label>
-                                </div>
-                            </div>
-                            <div style="display: inline-block; width: 60%;">
-                                <b>Address: Some Address XY/Z, Somecity</b><br>
-                                <b>Travels to: Belgrade, Vienna, London, Zurich, Berlin</b>                           
-                                <p class="text">
-                                    Lorem Ipsum is simply dummy text of the printing and
-                                    typesetting industry. Lorem Ipsum has been the industry's
-                                    standard dummy text ever since the 1500s, when an unknown
-                                    printer took a galley of type and scrambled it to make a
-                                    type specimen book. It has survived not only five centuries,
-                                    but also the leap into electronic typesetting, remaining
-                                    essentially unchanged. It was popularised in the 1960s with
-                                    the release of Letraset sheets containing Lorem Ipsum passages,
-                                    and more recently with desktop publishing software like Aldus
-                                    PageMaker including versions of Lorem Ipsum.
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a routerLink="profile">
-                        <div class="details-item">
-                            <div style="text-align: center; display: inline-block; width: 30%;">
-                                <div>
-                                    <img src="/../../assets/aerocar_logo.png" width="170px" height="70px">
-                                </div>
-                                <div class="rating">
-                                    <label>Rating</label>
-                                </div>
-                                <div>
-                                    <img src="/../../assets/ratings/0.png" width="170px" height="35px">
-                                </div>
-                                <div style="color: #444444;">
-                                    <label>0/5</label>
-                                </div>
-                            </div>
-                            <div style="display: inline-block; width: 60%;">
-                                <b>Address: Some Address XY/Z, Somecity</b><br>
-                                <b>Travels to: Belgrade, Vienna, London, Zurich, Berlin</b>                           
-                                <p class="text">
-                                    Lorem Ipsum is simply dummy text of the printing and
-                                    typesetting industry. Lorem Ipsum has been the industry's
-                                    standard dummy text ever since the 1500s, when an unknown
-                                    printer took a galley of type and scrambled it to make a
-                                    type specimen book. It has survived not only five centuries,
-                                    but also the leap into electronic typesetting, remaining
-                                    essentially unchanged. It was popularised in the 1960s with
-                                    the release of Letraset sheets containing Lorem Ipsum passages,
-                                    and more recently with desktop publishing software like Aldus
-                                    PageMaker including versions of Lorem Ipsum.
+                                    {{profileInfo.description}}
                                 </p>
                             </div>
                         </div>
