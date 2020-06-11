@@ -5,7 +5,7 @@ import { CarsProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
     { path: '', component: CarsComponent, data: { animation: 'isRight' } },
-    { path: 'profile', component: CarsProfileComponent, data: { animation: 'isLeft' } }
+    { path: 'profile/:id', component: CarsProfileComponent, data: { animation: 'isLeft' } }
 ]
 
 @NgModule({
