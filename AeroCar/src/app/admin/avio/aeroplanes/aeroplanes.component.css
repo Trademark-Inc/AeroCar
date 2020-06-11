@@ -19,6 +19,8 @@
     width: 120px;
     height: 40px;
     float: right;
+    margin: auto;
+    vertical-align: middle;
 }
 
 .lookButton:hover {

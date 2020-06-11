@@ -1,34 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { SystemService } from 'src/app/services/system.service';
 
 @Component({
   selector: 'app-system',
   templateUrl: './system.component.html',
-  styleUrls: ['./system.component.css']
+  styleUrls: ['./system.component.css'],
+  providers: [SystemService]
 })
 export class SystemComponent implements OnInit {
 
-  constructor(public http: HttpClient, private router: Router) { }
+  constructor(private systemService: SystemService, private router: Router) { }
 
   ngOnInit(): void {
-    var ret = this.http.get("http://localhost:62541/api/system/check", { 
-      headers: {'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem("token")},
-      observe: 'response',
-      withCredentials: true,
-      responseType: 'json' }).subscribe(data => {
-        console.log("DATA");
-        console.log(data);
-        console.log(data.body);
-        if (data.status != 200) this.router.navigateByUrl("");
-      },
-      err => {
-        console.log("ERROR");
-        console.log(err);
-        this.router.navigateByUrl("");
-      });
-    console.log(ret);
+    var ret = this.systemService.isSystemAdmin();
+
+    ret.subscribe(data => {
+      if (data.status != 200) this.router.navigateByUrl("");
+    },
+    err => {
+      this.router.navigateByUrl("");
+    });
   }
 
 }
