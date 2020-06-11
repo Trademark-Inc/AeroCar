@@ -11,8 +11,25 @@ import { Router } from '@angular/router';
 export class FlightsComponent implements OnInit {
 
   outboundFlights: any;
+  informationProfile: any;
 
-  constructor(public http: HttpClient, private router: Router, private zone: NgZone) { }
+  constructor(public http: HttpClient, private router: Router, private zone: NgZone) { 
+    var ret = this.http.get("http://localhost:62541/api/avio/company/get", {
+      headers: {'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem("token")},
+      observe: 'response',
+      withCredentials: true,
+      responseType: 'json' }).subscribe(data => {
+        console.log("DATA");
+        console.log(data);
+        console.log(data.body);
+        this.zone.run(() => this.informationProfile = data.body["avioCompanyProfileDTOList"]);
+      },
+      err => {
+        console.log("ERROR");
+        console.log(err);
+    });
+  }
 
   ngOnInit(): void {
   }
@@ -44,11 +61,10 @@ export class FlightsComponent implements OnInit {
       err => {
         console.log("ERROR");
         console.log(err);
-      });
+    });
   }
 
   reserve(id: number) {
     this.router.navigateByUrl("/flights/reservation/" + id);
   }
-
 }
