@@ -23,259 +23,104 @@
                 Look for available cars
             </h4>
             <hr>
-            <form class="form">
+            <form class="form" #searchCarsForm="ngForm" (ngSubmit)="searchForCars(searchCarsForm);">
                 <div class="form-group row">
-                    <label for="lat" class="col-sm-4 col-form-label">Location:</label>
+                    <label for="lat" class="col-sm-4 col-form-label">Pickup:</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="location" placeholder="Enter the location">
+                        <input type="text" ngModel required name="pickUpLocation" class="form-control" id="location" placeholder="Enter the location">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="lat" class="col-sm-4 col-form-label">Pickup date:</label>
                     <div class="col-sm-8">
-                        <input type="date" class="form-control" id="pickupDate">
+                        <input type="date" ngModel required name="pickUpDate" class="form-control" id="pickupDate">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="lat" class="col-sm-4 col-form-label">Pickup hour:</label>
                     <div class="col-sm-8">
-                        <input type="time" class="form-control" id="pickupHour" value="12:00">
+                        <input type="time" ngModel required name="pickUpTime" class="form-control" id="pickupHour" value="12:00">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="lat" class="col-sm-4 col-form-label">Return:</label>
+                    <div class="col-sm-8">
+                        <input type="text" ngModel required name="returnLocation" class="form-control" id="location" placeholder="Enter the location">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="lat" class="col-sm-4 col-form-label">Return date:</label>
                     <div class="col-sm-8">
-                        <input type="date" class="form-control" id="returnDate">
+                        <input type="date" ngModel required name="returnDate" class="form-control" id="returnDate">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="lat" class="col-sm-4 col-form-label">Return hour:</label>
                     <div class="col-sm-8">
-                        <input type="time" class="form-control" id="returnHour" value="20:00">
+                        <input type="time" ngModel required name="returnTime" class="form-control" id="returnHour" value="20:00">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="lat" class="col-sm-4 col-form-label">Car type:</label>
                     <div class="col-sm-8">
-                        <select class="form-control">
-                            <option>Hatchback</option>
-                            <option>Sedan</option>
-                            <option>Coupe</option>
-                            <option>SUV</option>
+                        <select name="carType" ngModel required class="form-control">
+                            <option value="1" selected>Hatchback</option>
+                            <option value="2">Sedan</option>
+                            <option value="3">Coupe</option>
+                            <option value="4">SUV</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="lat" class="col-sm-4 col-form-label">Passanger number:</label>
                     <div class="col-sm-8">
-                        <select class="form-control">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5+</option>
-                        </select>
+                        <input type="number" ngModel required name="passangers" class="form-control" id="passangers" placeholder="eg. 4">
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col">
-                        <button type="button" class="btn btn-primary" (click)="searchForFlights()">Search</button>
+                        <button type="submit" class="btn btn-dark">Search</button>
                     </div>
                 </div>
             </form>
         </div>
         <div class="list">
-            <div class="list-text" *ngIf="!listContainsItems" [@hidden]>
+            <div class="list-text" *ngIf="!listContainsItems">
                 The list contains no items.
             </div>
-            <div class="list-items" *ngIf="listContainsItems" [@hidden]>
+            <div class="list-items" *ngIf="listContainsItems">
                 <table class="table">
                     <tbody>
-                        <tr>
-                            <td>
+                        <tr *ngFor="let car of availableCars;">
+                            <td (click)="showConfirmDialog(car.vehicleId);">
                                 <div class="list-item">
                                     <div class="list-item-content">
                                         <div class="split-content-left">
                                             <div class="car-id">
-                                                ID: 43156659 
+                                                ID: {{car.vehicleId}} 
                                             </div>
                                             <div class="car-name">
-                                                Toyota Auris
+                                                {{car.name}}
                                             </div>
                                             <div class="car-cost">
-                                                $13 / day
+                                                ${{car.costPerDay}} / day
                                             </div>
                                         </div>
                                         <div class="split-content-right">
                                             <div style="margin-top: 2.5%; margin-bottom: 2.5%;">
-                                                🚗 Hatchback
+                                                🚗 {{getVehicleTypeText(car.carType)}}
                                                 <br/>
-                                                👤 5 🧳 2
+                                                👤 {{car.passangers}} 🧳 {{car.luggage}}
                                                 <br/>
-                                                Has <b>5</b> doors.
+                                                Has <b>{{car.doors}}</b> doors.
                                                 <br/>
-                                                ⛽ Gasoline
+                                                ⛽ {{car.fuel}}
                                                 <br/>
-                                                ⚙️ Manual, 5 gears
+                                                ⚙️ {{car.transmission}}
                                             </div>
                                             <div style="float: right;">
-                                                <img src="../../../../assets/ratings/5.png" width="150px" height="30px"/>
+                                                <img src="../../../../assets/ratings/{{car.rating}}.png" width="150px" height="30px"/>
                                             </div>
-                                        </div>
-                                        <div class="car-additional">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="list-item">
-                                    <div class="list-item-content">
-                                        <div class="split-content-left">
-                                            <div class="car-id">
-                                                ID: 43156659 
-                                            </div>
-                                            <div class="car-name">
-                                                Toyota Auris
-                                            </div>
-                                            <div class="car-cost">
-                                                $13 / day
-                                            </div>
-                                        </div>
-                                        <div class="split-content-right">
-                                            <div style="margin-top: 2.5%; margin-bottom: 2.5%;">
-                                                🚗 Hatchback
-                                                <br/>
-                                                👤 5 🧳 2
-                                                <br/>
-                                                Has <b>5</b> doors.
-                                                <br/>
-                                                ⛽ Gasoline
-                                                <br/>
-                                                ⚙️ Manual, 5 gears
-                                            </div>
-                                            <div style="float: right;">
-                                                <img src="../../../../assets/ratings/5.png" width="150px" height="30px"/>
-                                            </div>
-                                        </div>
-                                        <div class="car-additional">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="list-item">
-                                    <div class="list-item-content">
-                                        <div class="split-content-left">
-                                            <div class="car-id">
-                                                ID: 43156659 
-                                            </div>
-                                            <div class="car-name">
-                                                Toyota Auris
-                                            </div>
-                                            <div class="car-cost">
-                                                $13 / day
-                                            </div>
-                                        </div>
-                                        <div class="split-content-right">
-                                            <div style="margin-top: 2.5%; margin-bottom: 2.5%;">
-                                                🚗 Hatchback
-                                                <br/>
-                                                👤 5 🧳 2
-                                                <br/>
-                                                Has <b>5</b> doors.
-                                                <br/>
-                                                ⛽ Gasoline
-                                                <br/>
-                                                ⚙️ Manual, 5 gears
-                                            </div>
-                                            <div style="float: right;">
-                                                <img src="../../../../assets/ratings/5.png" width="150px" height="30px"/>
-                                            </div>
-                                        </div>
-                                        <div class="car-additional">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="list-item">
-                                    <div class="list-item-content">
-                                        <div class="split-content-left">
-                                            <div class="car-id">
-                                                ID: 43156659 
-                                            </div>
-                                            <div class="car-name">
-                                                Toyota Auris
-                                            </div>
-                                            <div class="car-cost">
-                                                $13 / day
-                                            </div>
-                                        </div>
-                                        <div class="split-content-right">
-                                            <div style="margin-top: 2.5%; margin-bottom: 2.5%;">
-                                                🚗 Hatchback
-                                                <br/>
-                                                👤 5 🧳 2
-                                                <br/>
-                                                Has <b>5</b> doors.
-                                                <br/>
-                                                ⛽ Gasoline
-                                                <br/>
-                                                ⚙️ Manual, 5 gears
-                                            </div>
-                                            <div style="float: right;">
-                                                <img src="../../../../assets/ratings/5.png" width="150px" height="30px"/>
-                                            </div>
-                                        </div>
-                                        <div class="car-additional">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="list-item-last">
-                                    <div class="list-item-content">
-                                        <div class="split-content-left">
-                                            <div class="car-id">
-                                                ID: 43156659 
-                                            </div>
-                                            <div class="car-name">
-                                                Toyota Auris
-                                            </div>
-                                            <div class="car-cost">
-                                                $13 / day
-                                            </div>
-                                        </div>
-                                        <div class="split-content-right">
-                                            <div style="margin-top: 2.5%; margin-bottom: 2.5%;">
-                                                🚗 Hatchback
-                                                <br/>
-                                                👤 5 🧳 2
-                                                <br/>
-                                                Has <b>5</b> doors.
-                                                <br/>
-                                                ⛽ Gasoline
-                                                <br/>
-                                                ⚙️ Manual, 5 gears
-                                            </div>
-                                            <div style="float: right;">
-                                                <img src="../../../../assets/ratings/5.png" width="150px" height="30px"/>
-                                            </div>
-                                        </div>
-                                        <div class="car-additional">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                                         </div>
                                     </div>
                                 </div>
@@ -359,7 +204,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="col">
-                                <button type="button" class="btn btn-primary" (click)="searchForFlights()">Search</button>
+                                <button type="button" class="btn btn-primary">Search</button>
                             </div>
                         </div>
                     </form>
@@ -476,5 +321,55 @@
                 </table>
             </div>
         </div>
+    </div>
+</div>
+<button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#confirmReservation">Open Modal</button>
+<div #confirmReservationModal class="modal fade" id="confirmReservation" tabindex="0" role="dialog" aria-labelledby="confirmReservation" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmReservation">Do you want to confirm your reservation?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="tab-content">
+            <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-dark" data-dismiss="modal" (click)="confirm()">Confirm</button>
+          </div>
+          <!--
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="signIn()">Sign In</button>
+          </div>
+          -->
+        </div>
+      </div>
+    </div>
+</div>
+<button id="openErrorButton" [hidden]="true" data-toggle="modal" data-target="#notLoggedInError">Open Modal</button>
+<div class="modal fade" id="notLoggedInError" tabindex="0" role="dialog" aria-labelledby="notLoggedInError" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" style="color: red;" id="notLoggedInError">You haven't signed in.</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h5>Please <a href="" data-dismiss="modal" data-toggle="modal" data-target="#userSignIn">sign in</a> first.</h5>
+          <div class="tab-content">
+            <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+          </div>
+          <!--
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="signIn()">Sign In</button>
+          </div>
+          -->
+        </div>
+      </div>
     </div>
 </div>

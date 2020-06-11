@@ -140,7 +140,7 @@ export class FlightDetailsComponent implements OnInit {
 
     var data = {
       "flightId": parseInt(this.id),
-      "reservationId": parseInt(this.reservationId),
+      "id": parseInt(this.reservationId),
       "friendUsername": form.value["username"]
     };
 

@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor() { }
+  loggedIn: boolean;
+
+  constructor() {
+    this.loggedIn = this.userLoggedIn();
+  }
 
   ngOnInit(): void {
+  }
+
+  userLoggedIn(): boolean {
+    if (localStorage.getItem("token") != null) {
+      return true;
+    }
+
+    return false;
   }
 
 }

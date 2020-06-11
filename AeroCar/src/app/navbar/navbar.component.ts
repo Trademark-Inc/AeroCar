@@ -24,6 +24,14 @@ export class NavbarComponent implements OnInit {
     this.redirectUrl = "";
     this.showProfileButton = false;
 
+    this.loadUserInfo();
+  }
+
+  ngOnInit(): void {
+    
+  }
+
+  loadUserInfo(): void {
     var ret = this.http.get("http://localhost:62541/api/user/current", { 
       headers: {'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + localStorage.getItem("token")},
@@ -45,10 +53,6 @@ export class NavbarComponent implements OnInit {
         console.log("ERROR");
         console.log(err);
       });
-  }
-
-  ngOnInit(): void {
-    
   }
 
   signIn(form: NgForm): void {
@@ -73,6 +77,7 @@ export class NavbarComponent implements OnInit {
         localStorage.setItem("username", form.value.username);
         this.router.navigateByUrl(data.body["redirectUrl"].toLocaleString());
         this.closeModal.nativeElement.click();
+        this.loadUserInfo();
       },
       err => {
         console.log("ERROR");
