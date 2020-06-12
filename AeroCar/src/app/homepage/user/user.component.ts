@@ -15,6 +15,7 @@ export class UserComponent implements OnInit {
   flightsHistory: any;
   carsHistory: any;
   flightRate: any;
+  vehicleRate: any;
 
   constructor(private userService: UserService, private router: Router, public zone: NgZone) {
     this.loadUserProfile();
@@ -115,19 +116,6 @@ export class UserComponent implements OnInit {
       });
   }
 
-  loadRateableFlights(): void {
-    var ret = this.userService.getRateableFlights();
-    
-    ret.subscribe(data => {
-        this.zone.run(() => 
-        {
-          this.flightRate = data.body["flightsHistory"];
-        });
-      },
-      err => {
-      });
-  }
-
   rateAvioFlight(form: NgForm, id: number): void {
 
     form.value.ratingAvioCompany = parseInt(form.value.ratingAvioCompany);
@@ -140,6 +128,47 @@ export class UserComponent implements OnInit {
       },
       err => {
       });
+
   }
+
+  rateCarVehicle(form: NgForm, id: number): void {
+
+    form.value.ratingCarCompany = parseInt(form.value.ratingCarCompany);
+    form.value.ratingVehicle = parseInt(form.value.ratingVehicle);
+
+    var jsonized = JSON.stringify(form.value);
+    var ret = this.userService.rateCarVehicle(jsonized, id);
+    
+    ret.subscribe(data => { }, err => { });
+  }
+
+  rateFlight() : void {
+    var ret = this.userService.getRateableFlights();
+    
+    ret.subscribe(data => {
+        this.zone.run(() => 
+        {
+          this.flightRate = data.body["flightsHistory"];
+        });
+      },
+      err => {
+      });
+  }
+
+  rateVehicle() : void {
+    var ret = this.userService.getRateableCars();
+    
+    ret.subscribe(data => {
+        this.zone.run(() => 
+        {
+          this.vehicleRate = data.body["vehicleRate"];
+        });
+      },
+      err => {
+      });
+  }
+  
+
+  
 
 }

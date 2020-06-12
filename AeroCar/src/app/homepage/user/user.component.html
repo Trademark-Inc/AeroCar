@@ -71,8 +71,8 @@
             <label class="lookLabel" style="font-size: 20px;">- Cars</label>
         </div>
         <div style="float: right;">
-            <button class="lookButton" (click)="loadRateableFlights();" type="button" style="float: right; margin: 1% 0% 0% 0%;" data-toggle="modal" data-target="#rateFlightsList">Click here</button><br><br>            
-            <button class="lookButton" type="button" style="float: right; margin: 1% 0% 0% 0%;" data-toggle="modal" data-target="#rateCarsList">Click here</button>
+            <button class="lookButton" (click)="rateFlight();" type="button" style="float: right; margin: 1% 0% 0% 0%;" data-toggle="modal" data-target="#rateFlightsList">Click here</button><br><br>            
+            <button class="lookButton" (click)="rateVehicle();" type="button" style="float: right; margin: 1% 0% 0% 0%;" data-toggle="modal" data-target="#rateCarsList">Click here</button>
         </div>
     </div>
 </div>
@@ -230,23 +230,39 @@
             </button>
           </div>
             <table class="table" style="background-color: rgb(223, 239, 245);">
-                <tr class="lookRow" *ngFor="let car of carsHistory;">
-                    <td class="lookTd">{{car.pickUpLocation}} (Picked up),<br>{{car.pickUpDate}},<br>Company: {{car.carCompanyName}}<br/>Car: {{car.vehicleName}}</td>
-                    <td class="lookTd">{{car.returnLocation}} (Will return/Returned),<br>{{car.returnDate}}</td>                    
-                    <td class="lookTdRating">
-                        <div style="overflow: hidden;">
-                            <label style="font-size: 15px; float: left;">Rating</label>
-                                <select class="lookRating">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                        </div>                    
-                    </td>
-                    <td class="lookTdConfirm">
-                        <button class="lookButtonConfirm" type="button">Confirm</button>  
+                <tr class="lookRow" *ngFor="let vehicleR of vehicleRate">
+                    <td>
+                    <form #rateCarVehicleForm="ngForm" (ngSubmit)="rateCarVehicle(rateCarVehicleForm, vehicleR.reservationId)">
+                        <td class="lookTd">{{vehicleR.pickUpLocation}} (Picked up),<br>{{vehicleR.pickUpDate}},<br>Company: {{vehicleR.carCompanyName}}</td>
+                        <td class="lookTd">{{vehicleR.returnLocation}} (Will return/Returned),<br>{{vehicleR.returnDate}}</td>                    
+                        <td class="lookTdRating">
+                            <div style="overflow: hidden;">
+                                <label style="font-size: 15px; float: left;">Rating Car: {{vehicleR.vehicleName}}</label>
+                                    <select class="lookRating" name="ratingCarCompany" ngModel required>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                            </div>                    
+                        </td>
+                        <td class="lookTdRating">
+                            <div style="overflow: hidden;">
+                                <label style="font-size: 15px; float: left;">Rate this vehicle</label>
+                                    <select class="lookRating" name="ratingVehicle" ngModel required>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                            </div>                    
+                        </td>
+                        <td class="lookTdConfirm">
+                            <button class="lookButtonConfirm" type="button">Confirm</button>  
+                        </td>
+                    </form>
                     </td>
                 </tr>
             </table>            
