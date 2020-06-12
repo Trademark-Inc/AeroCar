@@ -180,13 +180,13 @@
             </button>
           </div>
             <table class="table" style="background-color: rgb(223, 239, 245);">               
-                <tr class="lookRow" *ngFor="let flight of flightsHistory">
+                <tr class="lookRow" *ngFor="let flightR of flightRate">
                     <td>
-                    <form #rateAvioFlightForm="ngForm" (ngSubmit)="rateAvioFlight(rateAvioFlightForm, flight.reservationId)">
-                        <td class="lookTd">{{flight.departureLocation.name}} - {{flight.arrivalLocation.name}},<br>{{flight.departure}}</td>
+                    <form #rateAvioFlightForm="ngForm" (ngSubmit)="rateAvioFlight(rateAvioFlightForm, flightR.reservationId)">
+                        <td class="lookTd">{{flightR.departureLocation.name}} - {{flightR.arrivalLocation.name}},<br>{{flightR.departure}}</td>
                         <td class="lookTdRating">
                             <div style="overflow: hidden;">
-                                <label style="font-size: 15px; float: left;">Rate <br>{{flight.avioCompanyName}}</label>
+                                <label style="font-size: 15px; float: left;">Rate <br>{{flightR.avioCompanyName}}</label>
                                     <select class="lookRating" name="ratingAvioCompany" ngModel required>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -194,7 +194,7 @@
                                         <option value="4">4</option>
                                         <option value="5">5</option>
                                     </select>
-                            </div>                    
+                            </div>
                         </td>
                         <td class="lookTdRating">
                             <div style="overflow: hidden;">

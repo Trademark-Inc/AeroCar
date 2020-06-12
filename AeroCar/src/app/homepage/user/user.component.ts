@@ -13,6 +13,7 @@ export class UserComponent implements OnInit {
   profile: any;
   flightsHistory: any;
   carsHistory: any;
+  flightRate: any;
 
   constructor(public http: HttpClient, private router: Router, public zone: NgZone) {
     var ret = this.http.get("http://localhost:62541/api/user/current", { 
@@ -191,5 +192,28 @@ export class UserComponent implements OnInit {
         console.log("ERROR");
         console.log(err);
       });
-    }
+  }
+
+  rateFlight() : void {
+    console.log("LOADING FLIGHTS HISTORY");
+    var ret = this.http.get("http://localhost:62541/api/user/history/flights/rating", { 
+      headers: {'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem("token")},
+      observe: 'response',
+      withCredentials: true,
+      responseType: 'json' }).subscribe(data => {
+        console.log("DATA");
+        console.log(data);
+        console.log(data.body);
+        this.zone.run(() => 
+        {
+          this.flightRate = data.body["flightRate"];
+        });
+      },
+      err => {
+        console.log("ERROR");
+        console.log(err);
+      });
+  }
+
 }
