@@ -124,14 +124,14 @@ export class UserComponent implements OnInit {
     var jsonized = JSON.stringify(form.value);
     var ret = this.userService.rateAvioFlight(jsonized, id);
     
-    ret.subscribe(data => {
-      },
-      err => {
-      });
+    ret.subscribe(data => { this.rateFlight(); }, err => { });
 
   }
 
   rateCarVehicle(form: NgForm, id: number): void {
+
+    console.log(form.value);
+    console.log(id);
 
     form.value.ratingCarCompany = parseInt(form.value.ratingCarCompany);
     form.value.ratingVehicle = parseInt(form.value.ratingVehicle);
@@ -139,7 +139,7 @@ export class UserComponent implements OnInit {
     var jsonized = JSON.stringify(form.value);
     var ret = this.userService.rateCarVehicle(jsonized, id);
     
-    ret.subscribe(data => { }, err => { });
+    ret.subscribe(data => { this.rateVehicle(); }, err => { });
   }
 
   rateFlight() : void {
@@ -161,14 +161,11 @@ export class UserComponent implements OnInit {
     ret.subscribe(data => {
         this.zone.run(() => 
         {
-          this.vehicleRate = data.body["vehicleRate"];
+          this.vehicleRate = data.body["carsHistory"];
         });
       },
       err => {
       });
   }
-  
-
-  
 
 }

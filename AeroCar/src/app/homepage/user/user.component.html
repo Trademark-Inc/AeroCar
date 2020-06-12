@@ -222,7 +222,7 @@
 </div>
 <div class="modal fade" id="rateCarsList" tabindex="0" role="dialog" aria-labelledby="rateCarsList" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content" style="width: 100%;" >
           <div class="modal-header">
             <h5 class="modal-title" id="rateCarsList" style="font-size: 25px; color: #444444;">Rate (cars)</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -237,7 +237,7 @@
                         <td class="lookTd">{{vehicleR.returnLocation}} (Will return/Returned),<br>{{vehicleR.returnDate}}</td>                    
                         <td class="lookTdRating">
                             <div style="overflow: hidden;">
-                                <label style="font-size: 15px; float: left;">Rating Car: {{vehicleR.vehicleName}}</label>
+                                <label style="font-size: 15px; float: left;">Rating Car Company: {{vehicleR.carCompanyName}}</label>
                                     <select class="lookRating" name="ratingCarCompany" ngModel required>
                                         <option>1</option>
                                         <option>2</option>
@@ -260,7 +260,7 @@
                             </div>                    
                         </td>
                         <td class="lookTdConfirm">
-                            <button class="lookButtonConfirm" type="button">Confirm</button>  
+                            <button class="lookButtonConfirm" type="submit">Confirm</button>  
                         </td>
                     </form>
                     </td>

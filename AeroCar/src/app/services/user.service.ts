@@ -181,7 +181,7 @@ export class UserService {
   }
 
   rateCarVehicle(jsonized: string, reservationId: number) {
-    var ret = this.http.post("http://localhost:62541/api/user/rate/vehicle" + reservationId, jsonized, { 
+    var ret = this.http.post("http://localhost:62541/api/user/rate/vehicle/" + reservationId, jsonized, { 
       headers: {'Content-Type': 'application/json', 
       'Authorization': 'Bearer ' + localStorage.getItem("token")},    
       observe: 'response',
