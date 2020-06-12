@@ -171,7 +171,7 @@ export class UserService {
   }
 
   rateAvioFlight(jsonized: string, reservationId: number) {
-    var ret = this.http.post("http://localhost:62541/api/user/rate/" + reservationId, jsonized, { 
+    var ret = this.http.post("http://localhost:62541/api/user/rate/flight/" + reservationId, jsonized, { 
       headers: {'Content-Type': 'application/json', 
       'Authorization': 'Bearer ' + localStorage.getItem("token")},    
       observe: 'response',
