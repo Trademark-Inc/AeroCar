@@ -1,6 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-notifications',
@@ -11,7 +12,7 @@ export class NotificationsComponent implements OnInit {
 
   flightInvitations: any;
 
-  constructor(public http: HttpClient, private router: Router, private zone: NgZone) { 
+  constructor(private userService: UserService, private router: Router, private zone: NgZone) { 
     this.loadInvitations();
   }
 
@@ -19,22 +20,14 @@ export class NotificationsComponent implements OnInit {
   }
 
   loadInvitations(): void {
-    var ret = this.http.get("http://localhost:62541/api/user/flight/invitations", { 
-      headers: {'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem("token")},
-      observe: 'response',
-      withCredentials: true,
-      responseType: 'json' }).subscribe(data => {
-        console.log("DATA");
-        console.log(data);
-        console.log(data.body);
+    var ret = this.userService.getInvitations();
+    
+    ret.subscribe(data => {
         this.zone.run(() => {
           this.flightInvitations = data.body["flightInvitations"];
         });
       },
       err => {
-        console.log("ERROR");
-        console.log(err);
       });
   }
 
@@ -46,20 +39,12 @@ export class NotificationsComponent implements OnInit {
     };
 
     var jsonized = JSON.stringify(data);
-    console.log(jsonized);
-    var ret = this.http.post("http://localhost:62541/api/reservation/flight/invite/response", jsonized, { 
-      headers: {'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem("token")},
-      observe: 'response',
-      responseType: 'json' }).subscribe(data => {
-        console.log("DATA");
-        console.log(data);
-        console.log(data.body);
+    var ret = this.userService.acceptInvitation(jsonized);
+    
+    ret.subscribe(data => {
         this.router.navigateByUrl("/flights/reservation/" + flightId);
       },
       err => {
-        console.log("ERROR");
-        console.log(err);
       });
 
   }
@@ -72,20 +57,12 @@ export class NotificationsComponent implements OnInit {
     };
 
     var jsonized = JSON.stringify(data);
-    console.log(jsonized);
-    var ret = this.http.post("http://localhost:62541/api/reservation/flight/invite/response", jsonized, { 
-      headers: {'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem("token")},
-      observe: 'response',
-      responseType: 'json' }).subscribe(data => {
-        console.log("DATA");
-        console.log(data);
-        console.log(data.body);
+    var ret = this.userService.rejectInvitation(jsonized);
+    
+    ret.subscribe(data => {
         this.loadInvitations();
       },
       err => {
-        console.log("ERROR");
-        console.log(err);
       });
 
   }

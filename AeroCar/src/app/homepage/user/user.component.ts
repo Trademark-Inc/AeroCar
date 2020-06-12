@@ -1,7 +1,8 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-user',
@@ -9,166 +10,121 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-
+  
   profile: any;
   flightsHistory: any;
   carsHistory: any;
   flightRate: any;
 
-  constructor(public http: HttpClient, private router: Router, public zone: NgZone) {
-    var ret = this.http.get("http://localhost:62541/api/user/current", { 
-      headers: {'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem("token")},
-      observe: 'response',
-      withCredentials: true,
-      responseType: 'json' }).subscribe(data => {
-        console.log("DATA");
-        console.log(data);
-        console.log(data.body);
+  constructor(private userService: UserService, private router: Router, public zone: NgZone) {
+    this.loadUserProfile();
+  }
+
+  ngOnInit(): void {
+  }
+
+  loadUserProfile(): void {
+    var ret = this.userService.getUserProfile();
+    
+    ret.subscribe(data => {
         this.zone.run(() => 
         {
           this.profile = data.body["user"];
         });
       },
       err => {
-        console.log("ERROR");
-        console.log(err);
         this.router.navigateByUrl("");
       });
   }
 
-  ngOnInit(): void {
-  }
-
   loadFlightsHistory(): void {
-    console.log("LOADING FLIGHTS HISTORY");
-    var ret = this.http.get("http://localhost:62541/api/user/history/flights", { 
-      headers: {'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem("token")},
-      observe: 'response',
-      withCredentials: true,
-      responseType: 'json' }).subscribe(data => {
-        console.log("DATA");
-        console.log(data);
-        console.log(data.body);
+    var ret = this.userService.getFlightHistory();
+    
+    ret.subscribe(data => {
         this.zone.run(() => 
         {
           this.flightsHistory = data.body["flightsHistory"];
         });
       },
       err => {
-        console.log("ERROR");
-        console.log(err);
       });
   }
 
   loadCarsHistory(): void {
-    console.log("LOADING FLIGHTS HISTORY");
-    var ret = this.http.get("http://localhost:62541/api/user/history/cars", { 
-      headers: {'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem("token")},
-      observe: 'response',
-      withCredentials: true,
-      responseType: 'json' }).subscribe(data => {
-        console.log("DATA");
-        console.log(data);
-        console.log(data.body);
+    var ret = this.userService.getCarsHistory();
+    
+    ret.subscribe(data => {
         this.zone.run(() => 
         {
           this.carsHistory = data.body["carsHistory"];
         });
       },
       err => {
-        console.log("ERROR");
-        console.log(err);
       });
   }
 
   loadFlightsReservations(): void {
-    console.log("LOADING FLIGHTS HISTORY");
-    var ret = this.http.get("http://localhost:62541/api/user/reservations/flights", { 
-      headers: {'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem("token")},
-      observe: 'response',
-      withCredentials: true,
-      responseType: 'json' }).subscribe(data => {
-        console.log("DATA");
-        console.log(data);
-        console.log(data.body);
+   var ret = this.userService.getFlightReservations();
+   
+   ret.subscribe(data => {
         this.zone.run(() => 
         {
           this.flightsHistory = data.body["flightsHistory"];
         });
       },
       err => {
-        console.log("ERROR");
-        console.log(err);
       });
   }
 
   loadCarsReservations(): void {
-    console.log("LOADING FLIGHTS HISTORY");
-    var ret = this.http.get("http://localhost:62541/api/user/reservations/cars", { 
-      headers: {'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem("token")},
-      observe: 'response',
-      withCredentials: true,
-      responseType: 'json' }).subscribe(data => {
-        console.log("DATA");
-        console.log(data);
-        console.log(data.body);
+    var ret = this.userService.getCarReservations();
+    
+    ret.subscribe(data => {
         this.zone.run(() => 
         {
           this.carsHistory = data.body["carsHistory"];
         });
       },
       err => {
-        console.log("ERROR");
-        console.log(err);
       });
   }
 
   cancelReservationFlight(form: NgForm): void {
-    var id = form.value["reservationId"];
     console.log(form.value);
-    var ret = this.http.get("http://localhost:62541/api/reservation/flight/remove/" + id, {
-      headers: {'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + localStorage.getItem("token")},
-      observe: 'response',
-      withCredentials: true,
-      responseType: 'json' }).subscribe(data => {
-        console.log("DATA");
-        console.log(data);
-        console.log(data.body);
+    var id = parseInt(form.value["reservationId"]);
+    var ret = this.userService.cancelFlightReservation(id);
+    
+    ret.subscribe(data => {
         this.zone.run(() => {
           this.loadFlightsReservations();
       });
       },
       err => {
-        console.log("ERROR");
-        console.log(err);
       });
   }
 
   cancelReservationCar(form: NgForm): void {
-    var id = form.value["reservationId"];
-    console.log(form.value);
-    var ret = this.http.get("http://localhost:62541/api/reservation/car/remove/" + id, {
-      headers: {'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + localStorage.getItem("token")},
-      observe: 'response',
-      withCredentials: true,
-      responseType: 'json' }).subscribe(data => {
-        console.log("DATA");
-        console.log(data);
-        console.log(data.body);
+    var id = parseInt(form.value["reservationId"]);
+    var ret = this.userService.cancelCarReservation(id);
+    ret.subscribe(data => {
         this.zone.run(() => {
           this.loadCarsReservations();
       });
       },
       err => {
-        console.log("ERROR");
-        console.log(err);
+      });
+  }
+
+  loadRateableFlights(): void {
+    var ret = this.userService.getRateableFlights();
+    
+    ret.subscribe(data => {
+        this.zone.run(() => 
+        {
+          this.flightRate = data.body["flightsHistory"];
+        });
+      },
+      err => {
       });
   }
 
@@ -178,41 +134,11 @@ export class UserComponent implements OnInit {
     form.value.ratingFlight = parseInt(form.value.ratingFlight);
 
     var jsonized = JSON.stringify(form.value);
-    console.log(jsonized);
-    var ret = this.http.post("http://localhost:62541/api/user/rate/" + id, jsonized, { 
-      headers: {'Content-Type': 'application/json', 
-      'Authorization': 'Bearer ' + localStorage.getItem("token")},    
-      observe: 'response',
-      responseType: 'json' }).subscribe(data => {
-        console.log("DATA");
-        console.log(data);
-        console.log(data.body);
+    var ret = this.userService.rateAvioFlight(jsonized, id);
+    
+    ret.subscribe(data => {
       },
       err => {
-        console.log("ERROR");
-        console.log(err);
-      });
-  }
-
-  rateFlight() : void {
-    console.log("LOADING FLIGHTS HISTORY");
-    var ret = this.http.get("http://localhost:62541/api/user/history/flights/rating", { 
-      headers: {'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem("token")},
-      observe: 'response',
-      withCredentials: true,
-      responseType: 'json' }).subscribe(data => {
-        console.log("DATA");
-        console.log(data);
-        console.log(data.body);
-        this.zone.run(() => 
-        {
-          this.flightRate = data.body["flightRate"];
-        });
-      },
-      err => {
-        console.log("ERROR");
-        console.log(err);
       });
   }
 
