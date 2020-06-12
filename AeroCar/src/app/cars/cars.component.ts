@@ -58,6 +58,7 @@ export class CarsComponent implements OnInit {
     var ret = this.carService.searchCars(param);
   
     ret.subscribe(data => {
+      console.log(data);
         this.zone.run(() => {
           this.searching = false;
           this.availableCars = data.body;
@@ -68,6 +69,7 @@ export class CarsComponent implements OnInit {
         });
       },
       err => {
+        console.log(err);
         this.searching = false;
       });
   }

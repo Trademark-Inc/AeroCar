@@ -14,6 +14,7 @@ export class UserComponent implements OnInit {
   flightsHistory: any;
   carsHistory: any;
   flightRate: any;
+  vehicleRate: any;
 
   constructor(public http: HttpClient, private router: Router, public zone: NgZone) {
     var ret = this.http.get("http://localhost:62541/api/user/current", { 
@@ -179,7 +180,29 @@ export class UserComponent implements OnInit {
 
     var jsonized = JSON.stringify(form.value);
     console.log(jsonized);
-    var ret = this.http.post("http://localhost:62541/api/user/rate/" + id, jsonized, { 
+    var ret = this.http.post("http://localhost:62541/api/user/rate/flight" + id, jsonized, { 
+      headers: {'Content-Type': 'application/json', 
+      'Authorization': 'Bearer ' + localStorage.getItem("token")},    
+      observe: 'response',
+      responseType: 'json' }).subscribe(data => {
+        console.log("DATA");
+        console.log(data);
+        console.log(data.body);
+      },
+      err => {
+        console.log("ERROR");
+        console.log(err);
+      });
+  }
+
+  rateCarVehicle(form: NgForm, id: number): void {
+
+    form.value.ratingCarCompany = parseInt(form.value.ratingCarCompany);
+    form.value.ratingVehicle = parseInt(form.value.ratingVehicle);
+
+    var jsonized = JSON.stringify(form.value);
+    console.log(jsonized);
+    var ret = this.http.post("http://localhost:62541/api/user/rate/vehicle" + id, jsonized, { 
       headers: {'Content-Type': 'application/json', 
       'Authorization': 'Bearer ' + localStorage.getItem("token")},    
       observe: 'response',
@@ -215,5 +238,30 @@ export class UserComponent implements OnInit {
         console.log(err);
       });
   }
+
+  rateVehicle() : void {
+    console.log("LOADING FLIGHTS HISTORY");
+    var ret = this.http.get("http://localhost:62541/api/user/history/vehicles/rating", { 
+      headers: {'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem("token")},
+      observe: 'response',
+      withCredentials: true,
+      responseType: 'json' }).subscribe(data => {
+        console.log("DATA");
+        console.log(data);
+        console.log(data.body);
+        this.zone.run(() => 
+        {
+          this.vehicleRate = data.body["vehicleRate"];
+        });
+      },
+      err => {
+        console.log("ERROR");
+        console.log(err);
+      });
+  }
+  
+
+  
 
 }
