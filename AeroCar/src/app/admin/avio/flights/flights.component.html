@@ -16,16 +16,16 @@
                 <input name="departure" ngModel required class="lookBox" type="datetime-local">
             </div>
             <div>
-                <label class="lookLabel">Date and time of lading</label>
+                <label class="lookLabel">Date and time of landing</label>
                 <input name="arrival" ngModel required class="lookBox" type="datetime-local">
             </div>
             <div>
                 <label class="lookLabel">Travel time</label>
-                <input name="travelTime" ngModel required placeholder="h" class="lookBoxSmall" type="number">
+                <input name="travelTime" ngModel required placeholder="h" min="0.01" class="lookBoxSmall" type="number">
             </div>
             <div>
                 <label class="lookLabel">Travel length</label>
-                <input name="travelDistance" ngModel required placeholder="km" class="lookBoxSmall" type="number">
+                <input name="travelDistance" ngModel required placeholder="km" min="1" class="lookBoxSmall" type="number">
             </div>
             <div>
                 <label class="lookLabel">Number and locations of changeover</label>
@@ -38,7 +38,7 @@
             </div>
             <div>
                 <label class="lookLabel">Ticket price</label>
-                <input name="price" ngModel required placeholder="$" class="lookBoxSmall" type="number">
+                <input name="price" ngModel required placeholder="$" min="1" class="lookBoxSmall" type="number">
             </div>
             <br>
             <div style="overflow: hidden;">
