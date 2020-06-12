@@ -171,4 +171,25 @@ export class UserComponent implements OnInit {
       });
   }
 
+  rateAvioFlight(form: NgForm, id: number): void {
+
+    form.value.ratingAvioCompany = parseInt(form.value.ratingAvioCompany);
+    form.value.ratingFlight = parseInt(form.value.ratingFlight);
+
+    var jsonized = JSON.stringify(form.value);
+    console.log(jsonized);
+    var ret = this.http.post("http://localhost:62541/api/user/rate/" + id, jsonized, { 
+      headers: {'Content-Type': 'application/json', 
+      'Authorization': 'Bearer ' + localStorage.getItem("token")},    
+      observe: 'response',
+      responseType: 'json' }).subscribe(data => {
+        console.log("DATA");
+        console.log(data);
+        console.log(data.body);
+      },
+      err => {
+        console.log("ERROR");
+        console.log(err);
+      });
+    }
 }
