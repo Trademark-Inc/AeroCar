@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, NgZone } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AvioAdminService } from 'src/app/services/avioadmin.service';
 
 @Component({
   selector: 'app-flights',
@@ -19,29 +20,27 @@ export class AvioFlightsComponent implements OnInit {
   public loading: boolean;
   public success: boolean;
   public failed: boolean;
+  public errorCreateFlight: string;
+  public errorCreateFlightInfo: string;
 
-  constructor(public http: HttpClient, private router: Router, private zone: NgZone) {
-    var ret = this.http.get("http://localhost:62541/api/avioadmin/company/get/profile", { 
-      headers: {'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem("token")},
-      observe: 'response',
-      withCredentials: true,
-      responseType: 'json' }).subscribe(data => {
-        console.log("DATA");
-        console.log(data);
-        console.log(data.body);
+  constructor(private avioAdminService: AvioAdminService, private router: Router, private zone: NgZone) {
+    this.loadCompanyData();
+  }
+
+  ngOnInit(): void {
+  }
+
+  loadCompanyData(): void {
+    var ret = this.avioAdminService.getCompanyProfile();
+    
+    ret.subscribe(data => {
         this.zone.run(() => { 
           this.possibleLocations = data.body["avioCompany"].destinations;
           this.aeroplanes = data.body["avioCompany"].aeroplanes;
         });
       },
       err => {
-        console.log("ERROR");
-        console.log(err);
       });
-  }
-
-  ngOnInit(): void {
   }
 
   addToTransit(): void {
@@ -67,34 +66,29 @@ export class AvioFlightsComponent implements OnInit {
     this.success = false;
     this.failed = false;
     if (this.transit.length >= 2) {  
-      console.log(form);
       form.value.departureLocation = this.transit[0];
       form.value.arrivalLocation = this.transit[this.transit.length - 1];
       var trans = this.transit.filter(item => item.name !== form.value.departureLocation.name && item.name !== form.value.arrivalLocation.name);
       form.value.transit = trans;
+
       var jsonized = JSON.stringify(form.value);
-      console.log(jsonized);
-      var ret = this.http.post("http://localhost:62541/api/avioadmin/company/create/flight", jsonized, { 
-        headers: {'Content-Type': 'application/json',
-                  'Authorization': 'Bearer ' + localStorage.getItem("token")},
-        observe: 'response',
-        responseType: 'json' }).subscribe(data => {
-          console.log("DATA");
-          console.log(data);
-          console.log(data.body);
-          console.log(form.value);
+      var ret = this.avioAdminService.addFlight(jsonized);
+      
+      ret.subscribe(data => {
           this.loading = false;
           this.success = true;
         },
         err => {
-          console.log("ERROR");
-          console.log(err);
           this.loading = false;
           this.failed = true;
+          this.errorCreateFlight = err.error;
+          this.errorCreateFlightInfo = err.status + " " + err.statusText;
         });
-    }else{
+    } else {
         this.loading = false;
         this.failed = true;
+        this.errorCreateFlight = "Not enough transit airports.";
+        this.errorCreateFlightInfo = "400 Bad Request";
     }
   }
 

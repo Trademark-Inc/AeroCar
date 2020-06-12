@@ -2,6 +2,7 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import Chart from 'chart.js';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AvioAdminService } from 'src/app/services/avioadmin.service';
 
 @Component({
   selector: 'app-report',
@@ -13,28 +14,24 @@ export class AvioReportComponent implements OnInit {
   public report: any;
   public graph = false;
 
-  constructor(public http: HttpClient, private router: Router, private zone: NgZone) {
-    var ret = this.http.get("http://localhost:62541/api/avioadmin/company/get/report", { 
-      headers: {'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem("token")},
-      observe: 'response',
-      withCredentials: true,
-      responseType: 'json' }).subscribe(data => {
-        console.log("DATA");
-        console.log(data);
-        console.log(data.body);
+  constructor(private avioAdminService: AvioAdminService, private router: Router, private zone: NgZone) {
+    this.loadCompanyReport();
+  }
+
+  ngOnInit(): void {    
+  }
+
+  loadCompanyReport(): void {
+    var ret = this.avioAdminService.getCompanyReport();
+    
+    ret.subscribe(data => {
         this.zone.run(() => {
           this.report = data.body;
           this.CreateChart();
         });
       },
       err => {
-        console.log("ERROR");
-        console.log(err);
       });
-  }
-
-  ngOnInit(): void {    
   }
 
   CreateChart(): void {
@@ -52,9 +49,6 @@ export class AvioReportComponent implements OnInit {
     graphData.forEach(element => {
       values.push(element.soldCount);
     });
-
-    console.log(months);
-    console.log(values);
 
     var myChart = new Chart(ctx, {
         type: 'bar',
@@ -96,7 +90,6 @@ export class AvioReportComponent implements OnInit {
 
   ShowChart(): void{
     this.graph = !this.graph;
-    
   }
 
 }

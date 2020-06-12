@@ -1,6 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { CarService } from 'src/app/services/car.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,7 +13,7 @@ export class CarsProfileComponent implements OnInit {
   id: any;
   profileDetails: any;
 
-  constructor(private route: ActivatedRoute, public http: HttpClient, private router: Router, private zone: NgZone) {
+  constructor(private route: ActivatedRoute, private carService: CarService, private router: Router, private zone: NgZone) {
     this.id = this.route.snapshot.paramMap.get('id');
     this.loadProfileData();
    }
@@ -21,23 +22,17 @@ export class CarsProfileComponent implements OnInit {
   }
 
   loadProfileData(): void {
-    var ret = this.http.get("http://localhost:62541/api/car/company/details/get/" + this.id, {
-      headers: {'Content-Type': 'application/json'},
-      observe: 'response',
-      withCredentials: true,
-      responseType: 'json' }).subscribe(data => {
-        console.log("DATA");
-        console.log(data);
-        console.log(data.body);
+    var ret = this.carService.getCompany(this.id);
+    
+    ret.subscribe(data => {
         this.zone.run(() => { 
           this.profileDetails = data.body["carCompanyProfileDTO"]
       });
       },
       err => {
-        console.log("ERROR");
-        console.log(err);
       });
   }
+  
   getVehicleTypeText(vehicleType: any): any {
     switch (vehicleType) {
       case 0: return "HatchBack";

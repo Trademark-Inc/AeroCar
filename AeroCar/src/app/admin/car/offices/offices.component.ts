@@ -2,6 +2,7 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { CarAdminService } from 'src/app/services/caradmin.service';
 
 @Component({
   selector: 'app-offices',
@@ -10,71 +11,77 @@ import { NgForm } from '@angular/forms';
 })
 export class CarOfficesComponent implements OnInit {
 
+  public loaded: boolean;
   offices: any;
+  public loading1: boolean;
+  public success1: boolean;
+  public failed1: boolean;
+  public errorAddOffice: string;
+  public errorAddOfficeInfo: string;
+  public loading2: boolean;
+  public success2: boolean;
+  public failed2: boolean;
+  public errorRemoveOffice: string;
+  public errorRemoveOfficeInfo: string;
 
-  constructor(public http: HttpClient, private router: Router, private zone: NgZone) { 
-    var ret = this.http.get("http://localhost:62541/api/caradmin/company/get/offices", { 
-      headers: {'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem("token")},
-      observe: 'response',
-      withCredentials: true,
-      responseType: 'json' }).subscribe(data => {
-        console.log("DATA");
-        console.log(data);
-        console.log(data.body);
-        this.zone.run(() => this.offices = data.body);
-      },
-      err => {
-        console.log("ERROR");
-        console.log(err);
-      });
+  constructor(private carAdminService: CarAdminService, private router: Router, private zone: NgZone) { 
+    this.loadCompanyOffices();
   }
 
   ngOnInit(): void {
   }
 
-  addOffice(form: NgForm) {
-    console.log(form);
-    var jsonized = JSON.stringify(form.value);
-    console.log(jsonized);
-    var ret = this.http.post("http://localhost:62541/api/caradmin/company/create/office", jsonized, { 
-      headers: {'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem("token")},
-      observe: 'response',
-      responseType: 'json' }).subscribe(data => {
-        console.log("DATA");
-        console.log(data);
-        console.log(data.body);
-        console.log(form.value);
-        this.refresh();
+  loadCompanyOffices(): void {
+    this.loaded = false;
+    var ret = this.carAdminService.getOffices();
+    
+    ret.subscribe(data => {
+        this.zone.run(() => this.offices = data.body);
+        this.loaded = true;
       },
       err => {
-        console.log("ERROR");
-        console.log(err);
       });
-    console.log(ret);
+  }
+
+  addOffice(form: NgForm) {
+    var jsonized = JSON.stringify(form.value);
+
+    this.loading1 = true;
+    this.success1 = false;
+    this.failed1 = false;
+    
+    var ret = this.carAdminService.addOffice(jsonized);
+    ret.subscribe(data => {
+      this.loadCompanyOffices();
+      this.success1 = true;
+      this.loading1 = false;
+      },
+      err => {
+        this.loading1 = false;
+        this.failed1 = true;
+        this.errorAddOffice = err.error;
+        this.errorAddOfficeInfo = err.status + " " + err.statusText;
+      });
   }
 
   removeOffice(form: NgForm): void {
-    var ret = this.http.post("http://localhost:62541/api/caradmin/company/remove/office/" + form.value.id, null, { 
-      headers: {'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem("token")},
-      observe: 'response',
-      responseType: 'json' }).subscribe(data => {
-        console.log("DATA");
-        console.log(data);
-        console.log(data.body);
-        console.log(form.value);
-        this.refresh();
-      },
-      err => {
-        console.log("ERROR");
-        console.log(err);
+    var ret = this.carAdminService.removeOffice(form.value.id);
+    
+    this.loading2 = true;
+    this.success2 = false;
+    this.failed2 = false;
+
+    ret.subscribe(data => {
+        this.loadCompanyOffices();
+        this.success2 = true;
+        this.loading2 = false;
+        },
+        err => {
+          this.loading2 = false;
+          this.failed2 = true;
+          this.errorRemoveOffice = err.error;
+          this.errorRemoveOfficeInfo = err.status + " " + err.statusText;
       });
   }
-
-  refresh(): void {
-    window.location.reload();
-  }
-
+  
 }

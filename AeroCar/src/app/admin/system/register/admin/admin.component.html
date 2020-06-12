@@ -54,8 +54,8 @@
                 </div> <!-- form-group// -->
                 <div style="overflow: hidden;">
                     <div class="loader" *ngIf="loading1"></div>
-                    <div class="success" *ngIf="success1">✓ Successufully.</div>
-                    <div class="failed" *ngIf="failed1">✗ Not successufully.</div>  
+                    <div class="success" *ngIf="success1">✓ Successufully added an avio admin.</div>
+                    <div class="failed" *ngIf="failed1">✗ An error occured.<br><b>Error: {{errorAddAvio}}</b><br>Additional info: {{errorAddAvioInfo}}</div>  
                 </div>      
             </form>
         </div>
@@ -73,8 +73,8 @@
                 </div> <!-- form-group// -->     
                 <div style="overflow: hidden;">
                     <div class="loader" *ngIf="loading2"></div>
-                    <div class="success" *ngIf="success2">✓ Successufully.</div>
-                    <div class="failed" *ngIf="failed2">✗ Not successufully.</div>  
+                    <div class="success" *ngIf="success2">✓ Successufully removed an avio admin.</div>
+                    <div class="failed" *ngIf="failed2">✗ An error occured.<br><b>Error: {{errorRemoveAvio}}</b><br>Additional info: {{errorRemoveAvioInfo}}</div>  
                 </div> 
             </form>
         </div>
@@ -115,7 +115,7 @@
                 <div style="overflow: hidden;">
                     <div class="loader" *ngIf="loading3"></div>
                     <div class="success" *ngIf="success3">✓ Successufully.</div>
-                    <div class="failed" *ngIf="failed3">✗ Not successufully.</div>  
+                    <div class="failed" *ngIf="failed3">✗ An error occured.<br><b>Error: {{errorAddCar}}</b><br>Additional info: {{errorAddCarInfo}}</div>  
                 </div> 
             </form>
         </div>
@@ -134,7 +134,7 @@
                 <div style="overflow: hidden;">
                     <div class="loader" *ngIf="loading4"></div>
                     <div class="success" *ngIf="success4">✓ Successufully.</div>
-                    <div class="failed" *ngIf="failed4">✗ Not successufully.</div>  
+                    <div class="failed" *ngIf="failed4">✗ An error occured.<br><b>Error: {{errorRemoveCar}}</b><br>Additional info: {{errorRemoveCarInfo}}</div>  
                 </div>    
             </form>
         </div>

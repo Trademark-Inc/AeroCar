@@ -26,8 +26,8 @@
             </div>
             <div style="overflow: hidden;">
                 <div class="loader" *ngIf="loading1"></div> 
-                <div class="success" *ngIf="success1">✓ Successufully.</div> 
-                <div class="failed" *ngIf="failed1">✗ Not successufully.</div>
+                <div class="success" *ngIf="success1">✓ Successufully saved company's profile.</div> 
+                <div class="failed" *ngIf="failed1">✗ An error occured.<br><b>Error: {{errorSaveProfile}}</b><br>Additional info: {{errorSaveProfileInfo}}</div>
             </div>
         </form>   
         <hr>
@@ -81,8 +81,8 @@
                 </div>
                 <div style="overflow: hidden;">
                     <div class="loader" *ngIf="loading2"></div> 
-                    <div class="success" *ngIf="success2">✓ Successufully.</div> 
-                    <div class="failed" *ngIf="failed2">✗ Not successufully.</div>
+                    <div class="success" *ngIf="success2">✓ Successufully removed a flight.</div> 
+                    <div class="failed" *ngIf="failed2">✗ An error occured.<br><b>Error: {{errorRemoveFlight}}</b><br>Additional info: {{errorRemoveFlightInfo}}</div>
                 </div>
             </form>        
           </div>         
@@ -119,8 +119,8 @@
             </form>
             <div style="overflow: hidden;">
                 <div class="loader" *ngIf="loading4"></div> 
-                <div class="success" *ngIf="success4">✓ Successufully.</div> 
-                <div class="failed" *ngIf="failed4">✗ Not successufully.</div>
+                <div class="success" *ngIf="success4">✓ Successufully added a bonus ticket.</div> 
+                <div class="failed" *ngIf="failed4">✗ An error occured.<br><b>Error: {{errorAddTicket}}</b><br>Additional info: {{errorAddTicketInfo}}</div>
             </div>  
             <br>
             <form class="form" #removeTicketForm="ngForm" (ngSubmit)="removeTicket(removeTicketForm);">
@@ -136,8 +136,8 @@
             </form>
             <div style="overflow: hidden;">
                 <div class="loader" *ngIf="loading5"></div> 
-                <div class="success" *ngIf="success5">✓ Successufully.</div> 
-                <div class="failed" *ngIf="failed5">✗ Not successufully.</div>
+                <div class="success" *ngIf="success5">✓ Successufully removed a bonus ticket.</div> 
+                <div class="failed" *ngIf="failed5">✗ An error occured.<br><b>Error: {{errorRemoveTicket}}</b><br>Additional info: {{errorRemoveTicketInfo}}</div>
             </div>     
           </div>
         </div>       
@@ -181,8 +181,8 @@
             </form> 
             <div style="overflow: hidden;">
                 <div class="loader" *ngIf="loading3"></div> 
-                <div class="success" *ngIf="success3">✓ Successufully.</div> 
-                <div class="failed" *ngIf="failed3">✗ Not successufully.</div>
+                <div class="success" *ngIf="success3">✓ Successufully added a pricelist item.</div> 
+                <div class="failed" *ngIf="failed3">✗ An error occured.<br><b>Error: {{errorAddItem}}</b><br>Additional info: {{errorAddItemInfo}}</div>
             </div>             
             <br>
             <form class="form" #removeItemForm="ngForm" (ngSubmit)="removeItem(removeItemForm);">
@@ -198,8 +198,8 @@
             </form>
             <div style="overflow: hidden;">
                 <div class="loader" *ngIf="loading6"></div> 
-                <div class="success" *ngIf="success6">✓ Successufully.</div> 
-                <div class="failed" *ngIf="failed6">✗ Not successufully.</div>
+                <div class="success" *ngIf="success6">✓ Successufully removed a pricelist item.</div> 
+                <div class="failed" *ngIf="failed6">✗ An error occured.<br><b>Error: {{errorRemoveItem}}</b><br>Additional info: {{errorRemoveItemInfo}}</div>
             </div>                                     
           </div>
         </div>       

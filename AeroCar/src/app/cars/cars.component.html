@@ -74,7 +74,7 @@
                 <div class="form-group row">
                     <label for="lat" class="col-sm-4 col-form-label">Passanger number:</label>
                     <div class="col-sm-8">
-                        <input type="number" ngModel required name="passangers" class="form-control" id="passangers" placeholder="eg. 4">
+                        <input type="number" ngModel required name="passangers" class="form-control" id="passangers" min="1" placeholder="eg. 4">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -85,10 +85,14 @@
             </form>
         </div>
         <div class="list">
-            <div class="list-text" *ngIf="!listContainsItems">
+            <div class="loader-container" *ngIf="searching">
+                <div class="loader">
+                </div>
+            </div>
+            <div class="list-text" *ngIf="!listContainsItems && !searching">
                 The list contains no items.
             </div>
-            <div class="list-items" *ngIf="listContainsItems">
+            <div class="list-items" *ngIf="listContainsItems && !searching">
                 <table class="table">
                     <tbody>
                         <tr *ngFor="let car of availableCars;">
@@ -218,15 +222,15 @@
                                 <a routerLink="profile/{{profileInfo.id}}">
                                     <div class="details-list-item">
                                         <div class="dli-logo-n-rating">
-                                            <div style="font-size: 35px; font-weight: bold;">
+                                            <div style="font-size: 25px; font-weight: bold;">
                                                 {{profileInfo.name}}
                                             </div>
                                             <br>
                                             <span>Rating</span>
                                             <br>
-                                            <img src="../../assets/ratings/{{profileInfo.ratingPicture}}.png" width="100%" height="18%">
+                                            <img src="../../assets/ratings/{{profileInfo.ratingPicture}}.png" width="150px" height="30px">
                                             <br>
-                                            <span>{{profileInfo.rating}} / 5</span>
+                                            <span>{{profileInfo.rating}}/5</span>
                                         </div>
                                         <div class="dli-text">
                                             <b>Address: {{profileInfo.address}}</b>

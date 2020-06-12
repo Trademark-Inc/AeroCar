@@ -37,6 +37,11 @@
                     <button type="submit" class="btn btn-primary btn-block btn-dark">+ Add</button>
                 </div> <!-- form-group// -->     
             </form>
+            <div style="overflow: hidden;">
+                <div class="loader" *ngIf="loading1"></div> 
+                <div class="success" *ngIf="success1">✓ Successufully added an office.</div> 
+                <div class="failed" *ngIf="failed1">✗ An error occured.<br><b>Error: {{errorAddOffice}}</b><br>Additional info: {{errorAddOfficeInfo}}</div>
+            </div> 
         </div>
         <div class="remove">
             <h4 style="margin-bottom: 15px;">Remove an office from your collection:</h4>
@@ -51,6 +56,11 @@
                     <button type="submit" class="btn btn-primary btn-block btn-dark">- Remove</button>
                 </div> <!-- form-group// -->     
             </form>
+            <div style="overflow: hidden;">
+                <div class="loader" *ngIf="loading2"></div> 
+                <div class="success" *ngIf="success2">✓ Successufully removed an office.</div> 
+                <div class="failed" *ngIf="failed2">✗ An error occured.<br><b>Error: {{errorRemoveOffice}}</b><br>Additional info: {{errorRemoveOfficeInfo}}</div>
+            </div> 
         </div>
     </div>
     <div class="back">

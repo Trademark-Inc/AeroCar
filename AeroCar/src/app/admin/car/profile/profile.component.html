@@ -26,8 +26,8 @@
             </div> <!-- form-group// -->
             <div style="overflow: hidden;">
                 <div class="loader" *ngIf="loading"></div> 
-                <div class="success" *ngIf="success">✓ Successufully.</div> 
-                <div class="failed" *ngIf="failed">✗ Not successufully.</div>
+                <div class="success" *ngIf="success">✓ Successufully changed company's profile.</div> 
+                <div class="failed" *ngIf="failed">✗ An error occured.<br><b>Error: {{errorUpdateProfile}}</b><br>Additional info: {{errorUpdateProfileInfo}}</div>
             </div> 
         </form>                          
     </article>
