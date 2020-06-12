@@ -2,6 +2,7 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { Chart } from 'chart.js';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { CarAdminService } from 'src/app/services/caradmin.service';
 
 @Component({
   selector: 'app-car',
@@ -12,28 +13,24 @@ export class CarComponent implements OnInit {
 
   public report: any;
 
-  constructor(public http: HttpClient, private router: Router, private zone: NgZone) { 
-    var ret = this.http.get("http://localhost:62541/api/caradmin/company/get/report", { 
-      headers: {'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem("token")},
-      observe: 'response',
-      withCredentials: true,
-      responseType: 'json' }).subscribe(data => {
-        console.log("DATA");
-        console.log(data);
-        console.log(data.body);
+  constructor(private carAdminService: CarAdminService, private router: Router, private zone: NgZone) { 
+    this.getCompanyReport();
+  }
+
+  ngOnInit(): void {
+  }
+
+  getCompanyReport(): void {
+    var ret = this.carAdminService.getCompanyReport();
+    
+    ret.subscribe(data => {
         this.zone.run(() => {
           this.report = data.body;
           this.CreateChart();
         });
       },
       err => {
-        console.log("ERROR");
-        console.log(err);
       });
-  }
-
-  ngOnInit(): void {
   }
 
   CreateChart(): void {

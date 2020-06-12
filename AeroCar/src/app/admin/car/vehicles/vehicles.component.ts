@@ -2,6 +2,7 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { CarAdminService } from 'src/app/services/caradmin.service';
 
 @Component({
   selector: 'app-vehicles',
@@ -14,81 +15,72 @@ export class CarVehiclesComponent implements OnInit {
   public loading1: boolean;
   public success1: boolean;
   public failed1: boolean;
+  public errorAddCar: string;
+  public errorAddCarInfo: string;
   public loading2: boolean;
   public success2: boolean;
   public failed2: boolean;
+  public errorRemoveCar: string;
+  public errorRemoveCarInfo: string;
 
-  constructor(public http: HttpClient, private router: Router, private zone: NgZone) { 
-    var ret = this.http.get("http://localhost:62541/api/caradmin/company/get/vehicles", { 
-      headers: {'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem("token")},
-      observe: 'response',
-      withCredentials: true,
-      responseType: 'json' }).subscribe(data => {
-        console.log("DATA");
-        console.log(data);
-        console.log(data.body);
-        this.zone.run(() => this.vehicles = data.body);
-      },
-      err => {
-        console.log("ERROR");
-        console.log(err);
-      });
+  constructor(private carAdminService: CarAdminService, private router: Router, private zone: NgZone) { 
+    this.loadCompanyVehicles();
   }
 
   ngOnInit(): void {
   }
 
+  loadCompanyVehicles() {
+    var ret = this.carAdminService.getVehicles();
+    
+    ret.subscribe(data => {
+        this.zone.run(() => this.vehicles = data.body);
+      },
+      err => {
+      });
+  }
+
   addVehicle(form: NgForm) {
-    console.log(form);
+
+    form.value.carType = parseInt(form.value.carType);
+
     var jsonized = JSON.stringify(form.value);
-    console.log(jsonized);
+
     this.loading1 = true;
     this.success1 = false;
     this.failed1 = false;
-    var ret = this.http.post("http://localhost:62541/api/caradmin/company/create/vehicle", jsonized, { 
-      headers: {'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem("token")},
-      observe: 'response',
-      responseType: 'json' }).subscribe(data => {
-        console.log("DATA");
-        console.log(data);
-        console.log(data.body);
-        console.log(form.value);
+
+    var ret = this.carAdminService.addVehicle(jsonized);
+    ret.subscribe(data => {
         this.loading1 = false;
         this.success1 = true;
+        this.loadCompanyVehicles();
       },
       err => {
-        console.log("ERROR");
         console.log(err);
         this.loading1 = false;
         this.failed1 = true;
+        this.errorAddCar = err.error;
+        this.errorAddCarInfo = err.status + " " + err.statusText;
       });
-    console.log(ret);
   }
 
   removeVehicle(form: NgForm): void {
     this.loading2 = true;
     this.success2 = false;
     this.failed2 = false;
-    var ret = this.http.post("http://localhost:62541/api/caradmin/company/remove/vehicle/" + form.value.id, null, { 
-      headers: {'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem("token")},
-      observe: 'response',
-      responseType: 'json' }).subscribe(data => {
-        console.log("DATA");
-        console.log(data);
-        console.log(data.body);
-        console.log(form.value);
+    
+    var ret = this.carAdminService.removeVehicle(form.value.id);
+    ret.subscribe(data => {
         this.loading2 = false;
         this.success2 = true;
-        this.refresh();
+        this.loadCompanyVehicles();
       },
       err => {
-        console.log("ERROR");
-        console.log(err);
         this.loading2 = false;
         this.failed2 = true;
+        this.errorRemoveCar = err.error;
+        this.errorRemoveCarInfo = err.status + " " + err.statusText;
       });
   }
 
@@ -102,9 +94,5 @@ export class CarVehiclesComponent implements OnInit {
 
     return "Unknown";
   }
-
-  refresh(): void {
-    window.location.reload();
-  }
-
+  
 }

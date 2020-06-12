@@ -104,8 +104,8 @@
                 </div> <!-- form-group// -->
                 <div style="overflow: hidden;">
                     <div class="loader" *ngIf="loading1"></div> 
-                    <div class="success" *ngIf="success1">✓ Successufully.</div> 
-                    <div class="failed" *ngIf="failed1">✗ Not successufully.</div>
+                    <div class="success" *ngIf="success1">✓ Successufully added a vehicle.</div> 
+                    <div class="failed" *ngIf="failed1">✗ An error occured.<br><b>Error: {{errorAddCar}}</b><br>Additional info: {{errorAddCarInfo}}</div>
                 </div> 
             </form>
         </div>
@@ -123,8 +123,8 @@
                 </div> <!-- form-group// -->  
                 <div style="overflow: hidden;">
                     <div class="loader" *ngIf="loading2"></div> 
-                    <div class="success" *ngIf="success2">✓ Successufully.</div> 
-                    <div class="failed" *ngIf="failed2">✗ Not successufully.</div>
+                    <div class="success" *ngIf="success2">✓ Successufully removed a vehicle.</div> 
+                    <div class="failed" *ngIf="failed2">✗ An error occured.<br><b>Error: {{errorRemoveCar}}</b><br>Additional info: {{errorRemoveCarInfo}}</div>
                 </div>    
             </form>
         </div>
