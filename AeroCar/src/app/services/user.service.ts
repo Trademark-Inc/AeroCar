@@ -86,6 +86,17 @@ export class UserService {
     return ret;
   }
 
+  getRateableCars() {
+    var ret = this.http.get("http://localhost:62541/api/user/history/vehicles/rating", { 
+      headers: {'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem("token")},
+      observe: 'response',
+      withCredentials: true,
+      responseType: 'json' });
+
+    return ret;
+  }
+
   getInvitations() {
     var ret = this.http.get("http://localhost:62541/api/user/flight/invitations", { 
       headers: {'Content-Type': 'application/json',
@@ -161,6 +172,16 @@ export class UserService {
 
   rateAvioFlight(jsonized: string, reservationId: number) {
     var ret = this.http.post("http://localhost:62541/api/user/rate/" + reservationId, jsonized, { 
+      headers: {'Content-Type': 'application/json', 
+      'Authorization': 'Bearer ' + localStorage.getItem("token")},    
+      observe: 'response',
+      responseType: 'json' });
+
+    return ret;
+  }
+
+  rateCarVehicle(jsonized: string, reservationId: number) {
+    var ret = this.http.post("http://localhost:62541/api/user/rate/vehicle" + reservationId, jsonized, { 
       headers: {'Content-Type': 'application/json', 
       'Authorization': 'Bearer ' + localStorage.getItem("token")},    
       observe: 'response',
