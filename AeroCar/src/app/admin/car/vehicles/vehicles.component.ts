@@ -57,7 +57,6 @@ export class CarVehiclesComponent implements OnInit {
         this.loadCompanyVehicles();
       },
       err => {
-        console.log(err);
         this.loading1 = false;
         this.failed1 = true;
         this.errorAddCar = err.error;

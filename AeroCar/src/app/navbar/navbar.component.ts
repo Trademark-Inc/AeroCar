@@ -75,9 +75,10 @@ export class NavbarComponent implements OnInit {
         this.username = form.value.username;
         this.showProfileButton = true;
         localStorage.setItem("username", form.value.username);
-        this.router.navigateByUrl(data.body["redirectUrl"].toLocaleString());
         this.closeModal.nativeElement.click();
         this.loadUserInfo();
+        if (data.body["redirectUrl"] != "")
+          this.router.navigateByUrl(data.body["redirectUrl"].toLocaleString());
       },
       err => {
         console.log("ERROR");
