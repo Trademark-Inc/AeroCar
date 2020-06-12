@@ -1,6 +1,8 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { AvioService } from 'src/app/services/avio.service';
+import { ReservationService } from 'src/app/services/reservation.service';
 
 @Component({
   selector: 'app-seats',
@@ -20,92 +22,59 @@ export class FlightSeatsComponent implements OnInit {
   seatCount: number[];
   rowCount: number[];
 
-  constructor(private route: ActivatedRoute, public http: HttpClient, private router: Router, private zone: NgZone) {
+  constructor(private route: ActivatedRoute, private avioService: AvioService, private reservationService: ReservationService, private router: Router, private zone: NgZone) {
     this.reservationId = this.route.snapshot.paramMap.get('reservationId');
     this.id = this.route.snapshot.paramMap.get('id');
     this.loadReservationData();
   }
 
   ngOnInit(): void {
-    var ret = this.http.get("http://localhost:62541/api/flight/" + this.id, {
-      headers: {'Content-Type': 'application/json'},
-      observe: 'response',
-      withCredentials: true,
-      responseType: 'json' }).subscribe(data => {
-        console.log("DATA");
-        console.log(data);
-        console.log(data.body);
+    var ret = this.avioService.getFlight(this.id);
+    
+    ret.subscribe(data => {
         this.zone.run(() => {
           this.flight = data.body["flight"];
           this.company = data.body["company"];
       });
       },
       err => {
-        console.log("ERROR");
-        console.log(err);
       });
 
-    var ret = this.http.get("http://localhost:62541/api/flight/" + this.id + "/aeroplane", { 
-      headers: {'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem("token")},
-      observe: 'response',
-      withCredentials: true,
-      responseType: 'json' }).subscribe(data => {
-        console.log("DATA");
-        console.log(data);
-        console.log(data.body);
-        console.log(this.id);
+    var ret = this.avioService.getAeroplaneByFlightId(this.id);
+    
+    ret.subscribe(data => {
         this.zone.run(() => {
           this.seats = data.body["aeroplane"].seats;
-          // this.seats = data.body["avioCompany"].aeroplanes.filter(item => item.aeroplaneId === this.id).seats;
           this.seatCount = Array.from(Array(this.seats.seatCount / this.seats.inOneRow).keys());
           this.rowCount = Array.from(Array(this.seats.inOneRow).keys());
         });
       },
       err => {
-        console.log("ERROR");
-        console.log(err);
       });
   }
 
   loadReservationData(): void {
-    var ret = this.http.get("http://localhost:62541/api/reservation/flight/" + this.reservationId, {
-      headers: {'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + localStorage.getItem("token")},
-      observe: 'response',
-      withCredentials: true,
-      responseType: 'json' }).subscribe(data => {
-        console.log("DATA");
-        console.log(data);
-        console.log(data.body);
+    var ret = this.reservationService.loadFlightReservationData(this.reservationId);
+    
+    ret.subscribe(data => {
         this.zone.run(() => {
           this.reservation = data.body["reservation"];
       });
       },
       err => {
-        console.log("ERROR");
-        console.log(err);
         this.router.navigateByUrl("/flights");
       });
 
-      var ret = this.http.get("http://localhost:62541/api/reservation/flight/" + this.id + "/seats/taken", {
-        headers: {'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + localStorage.getItem("token")},
-        observe: 'response',
-        withCredentials: true,
-        responseType: 'json' }).subscribe(data => {
-          console.log("DATA");
-          console.log(data);
-          console.log(data.body);
-          this.zone.run(() => {
-            this.takenSeats = data.body["takenSeats"];
-        });
-        },
-        err => {
-          console.log("ERROR");
-          console.log(err);
-          this.router.navigateByUrl("/flights");
-        });
+    var ret = this.reservationService.loadFlightSeatsTaken(this.id);
+    
+    ret.subscribe(data => {
+        this.zone.run(() => {
+          this.takenSeats = data.body["takenSeats"];
+      });
+      },
+      err => {
+        this.router.navigateByUrl("/flights");
+      });
   }
 
   isSeatAvailable(seat: number): boolean {
@@ -125,48 +94,30 @@ export class FlightSeatsComponent implements OnInit {
   }
 
   next(seat: number): void {
-    console.log(seat);
-
     var data = {
       "reservationId": parseInt(this.reservationId),
       "seat": seat
     };
 
     var jsonized = JSON.stringify(data);
-    console.log(jsonized);
-    var ret = this.http.post("http://localhost:62541/api/reservation/flight/step/2", jsonized, { 
-      headers: {'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem("token")},
-      observe: 'response',
-      responseType: 'json' }).subscribe(data => {
-        console.log("DATA");
-        console.log(data);
-        console.log(data.body);
+    var ret = this.reservationService.reserveFlightStepTwo(jsonized);
+    
+    ret.subscribe(data => {
         this.router.navigateByUrl("/flights/reservation/" + this.flight.flightId + "/" + this.reservationId + "/details");
       },
       err => {
-        console.log("ERROR");
-        console.log(err);
       });
   }
 
   cancel(): void {
-    var ret = this.http.get("http://localhost:62541/api/reservation/flight/remove/" + this.reservationId, {
-      headers: {'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + localStorage.getItem("token")},
-      observe: 'response',
-      withCredentials: true,
-      responseType: 'json' }).subscribe(data => {
-        console.log("DATA");
-        console.log(data);
-        console.log(data.body);
+    var ret = this.reservationService.cancelFlightReservation(this.reservationId);
+    
+    ret.subscribe(data => {
         this.zone.run(() => {
           this.router.navigateByUrl("/flights");
       });
       },
       err => {
-        console.log("ERROR");
-        console.log(err);
       });
   }
 

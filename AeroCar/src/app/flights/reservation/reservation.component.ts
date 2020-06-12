@@ -2,6 +2,8 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
+import { AvioService } from 'src/app/services/avio.service';
+import { ReservationService } from 'src/app/services/reservation.service';
 
 @Component({
   selector: 'app-reservation',
@@ -15,7 +17,12 @@ export class FlightReservationComponent implements OnInit {
   company: any;
   companyProfile: any;
 
-  constructor(private route: ActivatedRoute, public http: HttpClient, private router: Router, private zone: NgZone) {
+  loading: boolean;
+  failed: boolean;
+  errorNext: string;
+  errorNextInfo: string;
+
+  constructor(private route: ActivatedRoute, private avioService: AvioService, private reservationService: ReservationService, private router: Router, private zone: NgZone) {
     this.id = this.route.snapshot.paramMap.get('id');
     this.loadReservationData();
   }
@@ -24,14 +31,9 @@ export class FlightReservationComponent implements OnInit {
   }
 
   loadReservationData(): void {
-    var ret = this.http.get("http://localhost:62541/api/flight/" + this.id, {
-      headers: {'Content-Type': 'application/json'},
-      observe: 'response',
-      withCredentials: true,
-      responseType: 'json' }).subscribe(data => {
-        console.log("DATA");
-        console.log(data);
-        console.log(data.body);
+    var ret = this.avioService.getFlight(this.id);
+    
+    ret.subscribe(data => {
         this.zone.run(() => {
           this.flight = data.body["flight"];
           this.company = data.body["company"];
@@ -39,12 +41,13 @@ export class FlightReservationComponent implements OnInit {
       });
       },
       err => {
-        console.log("ERROR");
-        console.log(err);
       });
   }
 
   next(form: NgForm): void {
+
+    this.loading = true;
+    this.failed = false;
 
     var items = [];
     this.company.priceList.forEach(element => {
@@ -59,24 +62,17 @@ export class FlightReservationComponent implements OnInit {
       "selectedPriceListItems": items
     }
 
-    console.log(form.value);
-    console.log(json);
     var jsonized = JSON.stringify(json);
-    console.log(jsonized);
-    var ret = this.http.post("http://localhost:62541/api/reservation/flight/step/1", jsonized, { 
-      headers: {'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem("token")},
-      observe: 'response',
-      responseType: 'json' }).subscribe(data => {
-        console.log("DATA");
-        console.log(data);
-        console.log(data.body);
-        console.log(form.value);
+    var ret = this.reservationService.reserveFlightStepOne(jsonized);
+    ret.subscribe(data => {
+        this.loading = false;
         this.router.navigateByUrl("/flights/reservation/" + this.flight.flightId + "/" + data.body["reservation"].flightReservationId + "/seats");
       },
       err => {
-        console.log("ERROR");
-        console.log(err);
+        this.loading = false;
+        this.failed = true;
+        this.errorNext = err.error;
+        this.errorNextInfo = err.status + " " + err.statusText;
       });
   }
 

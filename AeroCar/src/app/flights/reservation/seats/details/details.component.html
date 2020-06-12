@@ -53,8 +53,14 @@
                 <button class="lookButtonSave" type="submit">Confirm</button>
             </div>
         </form>
+        <div style="overflow: hidden;">
+            <div class="loader" *ngIf="loading"></div> 
+            <div class="success" *ngIf="success">✓ Successufully confirmed a reservation.</div> 
+            <div class="failed" *ngIf="failed">✗ An error occured.<br><b>Error: {{errorConfirmReservation}}</b><br>Additional info: {{errorConfirmReservationInfo}}</div>
+        </div> 
         <div *ngIf="reservation.name != null && reservation.surname != null && reservation.passport != null &&
-                    reservation.name != '' && reservation.surname != '' && reservation.passport !== ''">
+                    reservation.name != '' && reservation.surname != '' && reservation.passport !== '' &&
+                    showAdditional">
             <hr>
             <div class="additional">
                 <div style="overflow: hidden;">
@@ -66,6 +72,45 @@
                     <label>Reserve for another person:</label>
                     <button type="button" class="btn btn-dark lookButtonSave" (click)="reserve();">Reserve</button>
                 </div>
+            </div>
+            <hr>
+            <div style="overflow: hidden;" *ngIf="returnFlights != null;">
+                <label>Choose a return flight:</label>
+                <table class="table">
+                    <tbody>
+                        <tr *ngFor="let flight of returnFlights;">                    
+                            <td>
+                                <a (click)="reserveReturn(flight.flightId);">
+                                <div class="look-list-item">
+                                    <div class="look-list-content">
+                                        <div class="look-list-content-left-up">
+                                            <label> Departing: {{flight.departure.substring(0, 10)}} at {{flight.departure.substring(11, flight.departure.length - 3)}} 
+                                                    <br/>
+                                                    Arriving: {{flight.arrival.substring(0, 10)}} at {{flight.arrival.substring(11, flight.arrival.length - 3)}}</label>
+                                        </div>
+                                        <div class="look-list-content-left-down">
+                                            <label>{{flight.travelTime}}h</label>
+                                        </div>                         
+                                    </div>
+                                    <div class="look-list-content">
+                                        <div class="look-list-content-center-up">
+                                            <label>{{flight.departureLocation.name}} -> <i *ngFor="let city of flight.transit;">{{city.name}} -> </i>{{flight.arrivalLocation.name}}</label>
+                                        </div>         
+                                    </div>
+                                    <div class="look-list-content" style="text-align: right;">
+                                        <div>
+                                            <img src="/../../assets/aerocar_logo.png" width="150px" height="50px">
+                                        </div>
+                                        <div class="price">
+                                            <label>${{flight.price}}</label>
+                                        </div>                         
+                                    </div>
+                                </div>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>   
             </div>
         </div>
     </div>  

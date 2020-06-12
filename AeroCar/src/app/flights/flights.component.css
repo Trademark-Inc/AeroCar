@@ -48,7 +48,7 @@
 
 .lookButtonSearch {
   border: 1px solid #444444;
-  width: 70px;
+  width: 100px;
   height: 40px;
   border-radius: 10px;
   float: right;
@@ -73,14 +73,11 @@
 
 .look-list-no-content {
   text-align: center;
-  font-size: 40px;
+  font-size: 30px;
   color: #9a9a9a;
   vertical-align: middle;
-  position: relative;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .table td {
@@ -210,6 +207,41 @@
 .address-and-travels {
   color: #1a1a1a;
   font-weight: bold;
+}
+
+.loader-container {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #343a40;
+    border-radius: 50%;
+    margin:auto;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.failed {
+    border: 1px solid darkred;
+    border-radius: 4px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 80%;
+    color: darkred;
+    background-color: lightcoral;
+    padding: 20px;
 }
 
 *, *:before, *:after {
