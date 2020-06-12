@@ -71,7 +71,7 @@
             <label class="lookLabel" style="font-size: 20px;">- Cars</label>
         </div>
         <div style="float: right;">
-            <button class="lookButton" type="button" style="float: right; margin: 1% 0% 0% 0%;" data-toggle="modal" data-target="#rateFlightsList">Click here</button><br><br>            
+            <button class="lookButton" (click)="loadFlightsHistory();" type="button" style="float: right; margin: 1% 0% 0% 0%;" data-toggle="modal" data-target="#rateFlightsList">Click here</button><br><br>            
             <button class="lookButton" type="button" style="float: right; margin: 1% 0% 0% 0%;" data-toggle="modal" data-target="#rateCarsList">Click here</button>
         </div>
     </div>
@@ -179,89 +179,41 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-            <table class="table" style="background-color: rgb(223, 239, 245);">
-                <tr class="lookRow">
-                    <td class="lookTd">Berlin - Beograd,<br>01.02.2003,<br>FirmaAvioFirma</td>
-                    <td class="lookTdRating">
-                        <div style="overflow: hidden;">
-                            <label style="font-size: 15px; float: left;">Rating</label>
-                                <select class="lookRating">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                        </div>                    
+            <table class="table" style="background-color: rgb(223, 239, 245);">               
+                <tr class="lookRow" *ngFor="let flight of flightsHistory">
+                    <td>
+                    <form #rateAvioFlightForm="ngForm" (ngSubmit)="rateAvioFlight(rateAvioFlightForm, flight.reservationId)">
+                        <td class="lookTd">{{flight.departureLocation.name}} - {{flight.arrivalLocation.name}},<br>{{flight.departure}}</td>
+                        <td class="lookTdRating">
+                            <div style="overflow: hidden;">
+                                <label style="font-size: 15px; float: left;">Rate <br>{{flight.avioCompanyName}}</label>
+                                    <select class="lookRating" name="ratingAvioCompany" ngModel required>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                            </div>                    
+                        </td>
+                        <td class="lookTdRating">
+                            <div style="overflow: hidden;">
+                                <label style="font-size: 15px; float: left;">Rate this flight</label>
+                                    <select class="lookRating" name="ratingFlight" ngModel required>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                            </div>                    
+                        </td>
+                        <td class="lookTdConfirm">
+                            <button class="lookButtonConfirm" type="submit">Confirm</button>  
+                        </td>
+                    </form>
                     </td>
-                    <td class="lookTdConfirm">
-                        <button class="lookButtonConfirm" type="button">Confirm</button>  
-                    </td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Berlin - Beograd,<br>01.02.2003,<br>FirmaAvioFirma</td>
-                    <td class="lookTdRating">
-                        <label style="font-size: 15px;">Rating </label>
-                            <select class="lookRating">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                    </td>
-                    <td class="lookTdConfirm">
-                        <button class="lookButtonConfirm" type="button">Confirm</button>  
-                    </td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Berlin - Beograd,<br>01.02.2003,<br>FirmaAvioFirma</td>
-                    <td class="lookTdRating">
-                        <label style="font-size: 15px;">Rating </label>
-                            <select class="lookRating">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                    </td>
-                    <td class="lookTdConfirm">
-                        <button class="lookButtonConfirm" type="button">Confirm</button>  
-                    </td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Berlin - Beograd,<br>01.02.2003,<br>FirmaAvioFirma</td>
-                    <td class="lookTdRating">
-                        <label style="font-size: 15px;">Rating </label>
-                            <select class="lookRating">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                    </td>
-                    <td class="lookTdConfirm">
-                        <button class="lookButtonConfirm" type="button">Confirm</button>  
-                    </td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Berlin - Beograd,<br>01.02.2003,<br>FirmaAvioFirma</td>
-                    <td class="lookTdRating">
-                        <label style="font-size: 15px;">Rating </label>
-                            <select class="lookRating">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                    </td>
-                    <td class="lookTdConfirm">
-                        <button class="lookButtonConfirm" type="button">Confirm</button>  
-                    </td>
-                </tr>
+                </tr>           
             </table>            
         </div>       
     </div>
@@ -276,9 +228,9 @@
             </button>
           </div>
             <table class="table" style="background-color: rgb(223, 239, 245);">
-                <tr class="lookRow">
-                    <td class="lookTd">Berlin (Preuzeto),<br>01.02.2003,<br>FirmaAvioFirma</td>
-                    <td class="lookTd">Minhen (Predato),<br>10.02.2003,<br>FirmaAvioFirma</td>                    
+                <tr class="lookRow" *ngFor="let car of carsHistory;">
+                    <td class="lookTd">{{car.pickUpLocation}} (Picked up),<br>{{car.pickUpDate}},<br>Company: {{car.carCompanyName}}<br/>Car: {{car.vehicleName}}</td>
+                    <td class="lookTd">{{car.returnLocation}} (Will return/Returned),<br>{{car.returnDate}}</td>                    
                     <td class="lookTdRating">
                         <div style="overflow: hidden;">
                             <label style="font-size: 15px; float: left;">Rating</label>
@@ -290,74 +242,6 @@
                                     <option>5</option>
                                 </select>
                         </div>                    
-                    </td>
-                    <td class="lookTdConfirm">
-                        <button class="lookButtonConfirm" type="button">Confirm</button>  
-                    </td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Berlin (Preuzeto),<br>01.02.2003,<br>FirmaAvioFirma</td>
-                    <td class="lookTd">Minhen (Predato),<br>10.02.2003,<br>FirmaAvioFirma</td>
-                    <td class="lookTdRating">
-                        <label style="font-size: 15px;">Rating </label>
-                            <select class="lookRating">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                    </td>
-                    <td class="lookTdConfirm">
-                        <button class="lookButtonConfirm" type="button">Confirm</button>  
-                    </td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Berlin (Preuzeto),<br>01.02.2003,<br>FirmaAvioFirma</td>
-                    <td class="lookTd">Minhen (Predato),<br>10.02.2003,<br>FirmaAvioFirma</td>
-                    <td class="lookTdRating">
-                        <label style="font-size: 15px;">Rating </label>
-                            <select class="lookRating">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                    </td>
-                    <td class="lookTdConfirm">
-                        <button class="lookButtonConfirm" type="button">Confirm</button>  
-                    </td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Berlin (Preuzeto),<br>01.02.2003,<br>FirmaAvioFirma</td>
-                    <td class="lookTd">Minhen (Predato),<br>10.02.2003,<br>FirmaAvioFirma</td>
-                    <td class="lookTdRating">
-                        <label style="font-size: 15px;">Rating </label>
-                            <select class="lookRating">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                    </td>
-                    <td class="lookTdConfirm">
-                        <button class="lookButtonConfirm" type="button">Confirm</button>  
-                    </td>
-                </tr>
-                <tr class="lookRow">
-                    <td class="lookTd">Berlin (Preuzeto),<br>01.02.2003,<br>FirmaAvioFirma</td>
-                    <td class="lookTd">Minhen (Predato),<br>10.02.2003,<br>FirmaAvioFirma</td>
-                    <td class="lookTdRating">
-                        <label style="font-size: 15px;">Rating </label>
-                            <select class="lookRating">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
                     </td>
                     <td class="lookTdConfirm">
                         <button class="lookButtonConfirm" type="button">Confirm</button>  

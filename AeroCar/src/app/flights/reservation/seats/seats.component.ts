@@ -57,6 +57,7 @@ export class FlightSeatsComponent implements OnInit {
         console.log(this.id);
         this.zone.run(() => {
           this.seats = data.body["aeroplane"].seats;
+          console.log((this.seats.seatCount / this.seats.inOneRow).toFixed(0));
           // this.seats = data.body["avioCompany"].aeroplanes.filter(item => item.aeroplaneId === this.id).seats;
           this.seatCount = Array.from(Array(this.seats.seatCount / this.seats.inOneRow).keys());
           this.rowCount = Array.from(Array(this.seats.inOneRow).keys());
