@@ -11,11 +11,21 @@
     <div style="width: 100%; overflow: hidden;">
         <form class="form" #addFriendForm="ngForm" (ngSubmit)="addFriend(addFriendForm);">
             <input name="username" ngModel required class="lookAddRemoveTextBox" type="text" placeholder="Type username to add">
-            <button class="lookAddRemoveButtons" type="submit">Add friend</button><br>        
+            <button class="lookAddRemoveButtons" type="submit">Add friend</button><br> 
+            <div style="overflow: hidden;">
+                <div class="loader" *ngIf="loading1"></div> 
+                <div class="success" *ngIf="success1">✓ Successufully added a friend.</div> 
+                <div class="failed" *ngIf="failed1">✗ An error occured.<br><b>Error: {{errorAddFriend}}</b><br>Additional info: {{errorAddFriendInfo}}</div>
+            </div>        
         </form>    
         <form class="form" #removeFriendForm="ngForm" (ngSubmit)="removeFriend(removeFriendForm);">   
             <input name="username" ngModel required class="lookAddRemoveTextBox" type="text" placeholder="Type username to remove">
             <button class="lookAddRemoveButtons" type="submit">Remove friend</button>
+            <div style="overflow: hidden;">
+                <div class="loader" *ngIf="loading2"></div> 
+                <div class="success" *ngIf="success2">✓ Successufully removed a friend.</div> 
+                <div class="failed" *ngIf="failed2">✗ An error occured.<br><b>Error: {{errorRemoveFriend}}</b><br>Additional info: {{errorRemoveFriendInfo}}</div>
+            </div> 
         </form> 
     </div>
 </div>

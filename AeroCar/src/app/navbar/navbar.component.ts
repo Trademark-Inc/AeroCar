@@ -69,6 +69,7 @@ export class NavbarComponent implements OnInit {
       err => {
         this.loading = false;
         this.failed = true;
+        console.log(err);
       });
   }
 

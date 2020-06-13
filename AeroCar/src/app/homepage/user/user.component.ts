@@ -17,6 +17,18 @@ export class UserComponent implements OnInit {
   flightRate: any;
   vehicleRate: any;
 
+  public loading1: boolean;
+  public failed1: boolean;
+  public success1: boolean;
+  public errorCancelReservationFlight: string;
+  public errorCancelReservationFlightInfo: string;
+
+  public loading2: boolean;
+  public failed2: boolean;
+  public success2: boolean;
+  public errorCancelReservationVehicle: string;
+  public errorCancelReservationVehicleInfo: string;
+
   constructor(private userService: UserService, private router: Router, public zone: NgZone) {
     this.loadUserProfile();
   }
@@ -100,7 +112,10 @@ export class UserComponent implements OnInit {
   }
 
   cancelReservationFlight(form: NgForm): void {
-    console.log(form.value);
+    this.loading1 = true;
+    this.failed1 = false;
+    this.success1 = false;
+
     var id = parseInt(form.value["reservationId"]);
     var ret = this.userService.cancelFlightReservation(id);
     
@@ -108,20 +123,36 @@ export class UserComponent implements OnInit {
         this.zone.run(() => {
           this.loadFlightsReservations();
       });
+        this.loading1 = false;
+        this.success1 = true;
       },
       err => {
+        this.loading1 = false;
+        this.failed1 = true;
+        this.errorCancelReservationFlight = err.error;
+        this.errorCancelReservationFlightInfo = err.status + " " + err.statusText;
       });
   }
 
   cancelReservationCar(form: NgForm): void {
+    this.loading2 = true;
+    this.failed2 = false;
+    this.success2 = false;
+
     var id = parseInt(form.value["reservationId"]);
     var ret = this.userService.cancelCarReservation(id);
     ret.subscribe(data => {
         this.zone.run(() => {
           this.loadCarsReservations();
       });
+        this.loading2 = false;
+        this.success2 = true;
       },
       err => {
+        this.loading2 = false;
+        this.failed2 = true;
+        this.errorCancelReservationVehicle = err.error;
+        this.errorCancelReservationVehicleInfo = err.status + " " + err.statusText;
       });
   }
 
@@ -133,7 +164,11 @@ export class UserComponent implements OnInit {
     var jsonized = JSON.stringify(form.value);
     var ret = this.userService.rateAvioFlight(jsonized, id);
     
-    ret.subscribe(data => { this.rateFlight(); }, err => { });
+    ret.subscribe(data => { 
+      this.rateFlight(); 
+    }, 
+      err => { 
+      });
 
   }
 

@@ -26,6 +26,11 @@ export class CarsComponent implements OnInit {
   reservationDetails: any;
   selectedReservationVehicleId: any;
 
+  public loading1: boolean;
+  public failed1: boolean;
+  public errorSearchForCars: string;
+  public errorSearchForCarsInfo: string;
+
   constructor(private carService: CarService, private reservationService: ReservationService, private router: Router, private zone: NgZone) {
     this.listContainsItems = false;
     this.filtersShown = false;
@@ -47,6 +52,9 @@ export class CarsComponent implements OnInit {
   }
 
   searchForCars(form: NgForm): void {
+    this.loading1 = true;
+    this.failed1 = false;
+
     this.searching = true;
     this.reservationDetails = form.value;
     
@@ -58,7 +66,6 @@ export class CarsComponent implements OnInit {
     var ret = this.carService.searchCars(param);
   
     ret.subscribe(data => {
-      console.log(data);
         this.zone.run(() => {
           this.searching = false;
           this.availableCars = data.body;
@@ -67,10 +74,14 @@ export class CarsComponent implements OnInit {
           else
             this.listContainsItems = false;
         });
+        this.loading1 = false;
       },
       err => {
-        console.log(err);
         this.searching = false;
+        this.loading1 = false;
+        this.failed1 = true;
+        this.errorSearchForCars = err.error;
+        this.errorSearchForCarsInfo = err.status + " " + err.statusText;
       });
   }
 

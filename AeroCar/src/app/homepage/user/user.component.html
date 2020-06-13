@@ -143,6 +143,11 @@
                     </select>
                     <button class="lookReservationButton" type="submit">Cancel reservation</button>  
                 </div>
+                <div style="overflow: hidden;">
+                    <div class="loader" *ngIf="loading1"></div> 
+                    <div class="loader" *ngIf="success1">✓ Successufully cancelled a reservation.</div>  
+                    <div class="failed" *ngIf="failed1">✗ An error occured.<br><b>Error: {{errorCancelReservationFlight}}</b><br>Additional info: {{errorCancelReservationFlightInfo}}</div>
+                </div> 
             </form>       
         </div>       
     </div>
@@ -170,7 +175,12 @@
                         <option *ngFor="let car of carsHistory;" [value]="car.reservationId">{{car.reservationId}}</option>
                     </select>
                     <button class="lookReservationButton" type="submit">Cancel reservation</button> 
-                </div>      
+                </div>     
+                <div style="overflow: hidden;">
+                    <div class="loader" *ngIf="loading2"></div> 
+                    <div class="success" *ngIf="success2">✓ Successufully cancelled a reservation.</div> 
+                    <div class="failed" *ngIf="failed2">✗ An error occured.<br><b>Error: {{errorCancelReservationVehicle}}</b><br>Additional info: {{errorCancelReservationVehicleInfo}}</div>
+                </div>  
             </form> 
         </div>       
     </div>
