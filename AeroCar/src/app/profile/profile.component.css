@@ -1,5 +1,5 @@
 .titleStyle {
-    font-size: 45px;
+    font-size: 35px;
     text-align: center;
     color: #444444;
 }
@@ -15,6 +15,7 @@
 .lookBorderBox {
     text-align: center;
     width: 100%;
+    padding: 10px;
     border: 2px solid #9a9a9a;
     border-radius: 10px;
     background-color: white;
@@ -43,6 +44,7 @@
     color: white;
     font-size: 20px;
     font-weight: bold;
+    padding: 10px;
 }
 
 .lookButtonArrow:hover {
@@ -69,7 +71,7 @@
     font-size: 17px;
     width: 40%;
     float: right;
-    height: 30px;
+    padding: 5px;
 }
 
 .lookAddRemoveButtons:hover {
@@ -85,11 +87,12 @@
     color:#1a1a1a;
     font-size: 25px;
     margin: 0.5%;
+    padding: 10px;
 }
 
 .lookButtonSave {
     width: 120px;
-    height: 30px;
+    padding: 10px;
     text-align: center;
     border: 1px solid #444444;
     background-color: #343a40;
@@ -105,7 +108,7 @@
 
 .lookButtonCancel {
     width: 120px;
-    height: 30px;
+    padding: 10px;
     text-align: center;
     background-color: white;
     border: 1px solid #444444;

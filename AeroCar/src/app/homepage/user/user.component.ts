@@ -38,6 +38,15 @@ export class UserComponent implements OnInit {
       });
   }
 
+  refreshBonusPoints(): void {
+    var ret = this.userService.refreshBonusPoints();
+  
+    ret.subscribe(data => {
+      this.loadUserProfile();
+    },
+    err => { });
+  }
+
   loadFlightsHistory(): void {
     var ret = this.userService.getFlightHistory();
     

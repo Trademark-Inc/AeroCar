@@ -34,5 +34,7 @@ namespace AeroCar.Models.Reservation
         public bool Canceled { get; set; }
 
         public bool Finished { get; set; }
+
+        public bool BonusTaken { get; set; }
     }
 }

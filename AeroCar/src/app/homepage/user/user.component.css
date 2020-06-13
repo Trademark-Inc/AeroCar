@@ -104,7 +104,40 @@
     border: 2px solid #444444;
     float: right;
     text-align: center;
+    position: relative;
 }
+
+.lookLabelBonus:hover {
+    cursor: pointer;
+    background-color: #343a40;
+    color: white;
+}
+
+/*******************************************************************************************************************/
+
+/* Tooltip text */
+.lookLabelBonus .tooltiptext {
+  visibility: hidden;
+  width: 150px;
+  background-color: #474a4d73;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1; 
+  top: -15px;
+  right: 108%; 
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.lookLabelBonus:hover .tooltiptext {
+  visibility: visible;
+}
+
+/*******************************************************************************************************************/
 
 .space {
     width: 10%;

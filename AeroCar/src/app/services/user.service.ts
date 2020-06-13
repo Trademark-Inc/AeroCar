@@ -9,6 +9,34 @@ export class UserService {
 
   constructor(public http: HttpClient) { }
 
+  register(jsonized: string) {
+    var ret = this.http.post("http://localhost:62541/api/user/register", jsonized, { 
+      headers: {'Content-Type': 'application/json'},
+      observe: 'response',
+      responseType: 'json' });
+
+    return ret;
+  }
+
+  login(jsonized: string) {
+    var ret = this.http.post("http://localhost:62541/api/user/login", jsonized, { 
+      headers: {'Content-Type': 'application/json'},
+      observe: 'response',
+      responseType: 'json' });
+
+    return ret;
+  }
+
+  logout() {
+    var ret = this.http.post("http://localhost:62541/api/user/logout", null, { 
+      headers: {'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem("token")},
+      observe: 'response',
+      responseType: 'json' });
+
+    return ret;
+  }
+
   getUserProfile() {
     var ret = this.http.get("http://localhost:62541/api/user/current", { 
       headers: {'Content-Type': 'application/json',
@@ -103,6 +131,26 @@ export class UserService {
                 'Authorization': 'Bearer ' + localStorage.getItem("token")},
       observe: 'response',
       withCredentials: true,
+      responseType: 'json' });
+
+    return ret;
+  }
+
+  updateUserProfile(jsonized: string) {
+    var ret = this.http.post("http://localhost:62541/api/user/update", jsonized, { 
+      headers: {'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem("token")},
+      observe: 'response',
+      responseType: 'json' });
+
+    return ret;
+  }
+
+  refreshBonusPoints() {
+    var ret = this.http.get("http://localhost:62541/api/user/refresh/points", { 
+      headers: {'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem("token")},
+      observe: 'response',
       responseType: 'json' });
 
     return ret;

@@ -21,6 +21,7 @@ using AeroCar.Models.Reservation;
 using AeroCar.Models.Users;
 using AeroCar.Services;
 using AeroCar.Utility;
+using GeoCoordinatePortable;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -181,6 +182,61 @@ namespace AeroCar.Controllers
             }
 
             return BadRequest("Not enough data provided.");
+        }
+
+        [HttpGet]
+        [Route("refresh/points")]
+        public async Task<IActionResult> RefreshBonusPoints()
+        {
+            var user = await _userService.GetCurrentUser();
+
+            if (user != null)
+            {
+                var reservations = user.ReservedFlights;
+
+                if (reservations != null)
+                {
+                    List<FlightHistoryDTO> flightsHistory = new List<FlightHistoryDTO>();
+
+                    foreach (FlightReservation fr in reservations)
+                    {
+                        if (!fr.BonusTaken)
+                        {
+                            var flight = await _flightService.GetFlight(fr.FlightId);
+
+                            if (flight != null)
+                            {
+                                if (DateTime.Now > (flight.Departure.AddHours(-3)))
+                                {
+                                    var company = await _avioService.GetCompany(flight.AvioCompanyId);
+
+                                    if (company != null)
+                                    {
+                                        var companyProfile = await _avioService.GetCompanyProfile(company.AvioCompanyProfileId);
+
+                                        if (companyProfile != null)
+                                        {
+                                            var sCoord = new GeoCoordinate(flight.DepartureLocation.Latitude, flight.DepartureLocation.Longitude);
+                                            var eCoord = new GeoCoordinate(flight.ArrivalLocation.Latitude, flight.ArrivalLocation.Longitude);
+
+                                            user.Bonus += (int)(sCoord.GetDistanceTo(eCoord) / 100000);
+                                            fr.BonusTaken = true;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    await _userService.UpdateUser(user);
+
+                    return Ok(200);
+                }
+
+                return BadRequest("No reservations found!");
+            }
+
+            return BadRequest("User not found.");
         }
 
         // GET api/user/friends

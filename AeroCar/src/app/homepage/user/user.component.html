@@ -22,12 +22,17 @@
         </div>
         <div style="float: right;">
             <button routerLink="/dashboard/notifications" routerLinkActive="active" class="lookButton" style="margin: 5% 0% 0% 0%;" type="button">More</button><br><br> 
-            <label class="lookLabelBonus">{{profile.bonus}}</label>
+            <label class="lookLabelBonus" (click)="refreshBonusPoints();">
+                {{profile.bonus}}
+                <div class="tooltiptext">
+                    Click to refresh Your points!
+                </div>
+            </label>
         </div>                   
     </div>   
     <hr>  
     <div style="display: inline-block; width: 45%; vertical-align: top;">
-        <label class="lookLabel">View history of Your flights and rented cars</label><br>
+        <label class="lookLabel"><b>History</b> of Your flights and rented cars</label><br>
         <div style="float: left;">
             <label class="lookLabel" style="font-size: 20px;">- Flights</label><br>
             <label class="lookLabel" style="font-size: 20px;">- Cars</label>
@@ -52,7 +57,7 @@
     </div>
     <hr>
     <div style="display: inline-block; width: 45%;">
-        <label class="lookLabel">Your reservation of flights and cars</label><br>
+        <label class="lookLabel"><b>Reservations</b> of flights and cars</label><br>
         <div style="float: left;" >
             <label class="lookLabel" style="font-size: 20px;">- Flights</label><br>
             <label class="lookLabel" style="font-size: 20px;">- Cars</label>
@@ -65,7 +70,7 @@
     <div class="space">
     </div>
     <div style="display: inline-block; width: 45%;">
-        <label class="lookLabel">Rating of flights and cars</label><br>
+        <label class="lookLabel"><b>Rate</b> your flights and rented cars</label><br>
         <div style="float: left;">
             <label class="lookLabel" style="font-size: 20px;">- Flights</label><br>
             <label class="lookLabel" style="font-size: 20px;">- Cars</label>

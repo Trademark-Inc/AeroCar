@@ -163,25 +163,8 @@ namespace AeroCar.Controllers
 
                     if (reservation != null)
                     {
-                        bool finished = true;
-                        if (!reservation.Finished)
-                        {
-                            finished = false;
-                        }
-
                         reservation.SeatNumber = model.Seat;
                         await ReservationService.UpdateFlightReservation(reservation);
-
-                        if (!finished && reservation.Finished)
-                        {
-                            var flight = await FlightService.GetFlight(reservation.FlightId);
-
-                            var sCoord = new GeoCoordinate(flight.DepartureLocation.Latitude, flight.DepartureLocation.Longitude);
-                            var eCoord = new GeoCoordinate(flight.ArrivalLocation.Latitude, flight.ArrivalLocation.Longitude);
-
-                            user.Bonus += (int)(sCoord.GetDistanceTo(eCoord) / 100000);
-                            await UserService.UpdateUser(user);
-                        }
 
                         return Ok(new { reservation });
                     }
@@ -210,24 +193,7 @@ namespace AeroCar.Controllers
                         reservation.Surname = model.Surname;
                         reservation.Passport = model.Passport;
 
-                        bool finished = true;
-                        if (!reservation.Finished)
-                        {
-                            finished = false;
-                        }
-
                         await ReservationService.UpdateFlightReservation(reservation);
-
-                        if (!finished && reservation.Finished)
-                        {
-                            var flight = await FlightService.GetFlight(reservation.FlightId);
-
-                            var sCoord = new GeoCoordinate(flight.DepartureLocation.Latitude, flight.DepartureLocation.Longitude);
-                            var eCoord = new GeoCoordinate(flight.ArrivalLocation.Latitude, flight.ArrivalLocation.Longitude);
-
-                            user.Bonus += (int) (sCoord.GetDistanceTo(eCoord) / 100000);
-                            await UserService.UpdateUser(user);
-                        }
 
                         return Ok(new { reservation });
                     }
