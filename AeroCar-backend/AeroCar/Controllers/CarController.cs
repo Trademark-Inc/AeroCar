@@ -57,7 +57,10 @@ namespace AeroCar.Controllers
                     string allOffices = "";
                     for (int j = 0; j < companies[i].Offices.Count; j++)
                     {
-                        allOffices += companies[i].Offices[j].Location + ",";
+                        if (j < companies[i].Offices.Count - 1)
+                            allOffices += companies[i].Offices[j].Location.Name + ", ";
+                        else
+                            allOffices += companies[i].Offices[j].Location.Name;
                     }
 
                     CarCompanyProfileDTO acpDTO = new CarCompanyProfileDTO()
@@ -181,7 +184,10 @@ namespace AeroCar.Controllers
                 string allOfficies = "";
                 for (int i = 0; i < officeList.Count; i++)
                 {
-                    allOfficies += officeList[i].Location.Name + ",";
+                    if (i < officeList.Count - 1)
+                        allOfficies += officeList[i].Location.Name + ", ";
+                    else
+                        allOfficies += officeList[i].Location.Name;
                 }
 
                 companyProfile = await CarService.GetCompanyProfile(id);
