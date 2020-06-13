@@ -7,11 +7,11 @@
         <div>
             <div style="overflow: hidden;">
                 <label class="lookLabel">Average rating of company</label>
-                <label class="lookLabelValue">{{report.companyRating}}/5</label>
+                <label class="lookLabelValue">{{report.companyRating | number : '1.1'}}/5</label>
             </div>
             <div style="overflow: hidden;">
                 <label class="lookLabel">Average rating of flight</label>
-                <label class="lookLabelValue">{{report.flightRating}}/5</label>
+                <label class="lookLabelValue">{{report.flightRating | number : '1.1'}}/5</label>
             </div>
             <div style="overflow: hidden;">
                 <label class="lookLabel">Graph of sold tickets</label>

@@ -41,7 +41,7 @@ namespace AeroCar.Services
                     if (f.DepartureLocation.Name.ToLower().Equals(origin.ToLower()) && f.ArrivalLocation.Name.ToLower().Equals(destination.ToLower()) &&
                         f.Departure >= departure)
                     {
-                        var aeroplane = await _aeroplaneRepository.GetAeroplane(f.FlightId);
+                        var aeroplane = await _aeroplaneRepository.GetAeroplane(f.AeroplaneId);
 
                         if (aeroplane != null && aeroplane.Seats != null && aeroplane.Seats.DeletedSeats != null && (aeroplane.Seats.SeatCount - aeroplane.Seats.DeletedSeats.Count) >= peopleCount)
                         {
