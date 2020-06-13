@@ -50,13 +50,15 @@ namespace AeroCar.Controllers
                     avioCompanyRatingPicture.Add((int)(Math.Round(await AvioService.GetAverageCompanyRating(avioCompany.AvioCompanyId))));      
                 }
 
-                
                 for (int i = 0; i < companies.Count; i++)
                 {
                     string allDestinations = "";
                     for (int j = 0; j < companies[i].Destinations.Count; j++)
                     {
-                        allDestinations += companies[i].Destinations[j].Name + ",";
+                        if (j < companies[i].Destinations.Count - 1)
+                            allDestinations += companies[i].Destinations[j].Name + ", ";
+                        else
+                            allDestinations += companies[i].Destinations[j].Name;
                     }
 
                     AvioCompanyProfileDTO acpDTO = new AvioCompanyProfileDTO()
@@ -96,7 +98,10 @@ namespace AeroCar.Controllers
                 string allDestinations = "";
                 for (int i = 0; i < destinationList.Count; i++)
                 {
-                    allDestinations += destinationList[i].Name + ",";
+                    if (i < destinationList.Count - 1)
+                        allDestinations += destinationList[i].Name + ", ";
+                    else
+                        allDestinations += destinationList[i].Name;
                 }
 
                 companyProfile = await AvioService.GetCompanyProfile(id);

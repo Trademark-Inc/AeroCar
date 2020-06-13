@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AeroCar.Models;
 using AeroCar.Models.Admin;
 using AeroCar.Models.Avio;
 using AeroCar.Models.Car;
@@ -281,7 +282,8 @@ namespace AeroCar.Controllers
 
                 RegularUser user = new RegularUser()
                 {
-                    UserName = adminDTO.Username
+                    UserName = adminDTO.Username,
+                    Status = UserStatus.Activated
                 };
 
                 var foundAdmin = await UserManager.FindByNameAsync(user.UserName) != null;
@@ -358,7 +360,8 @@ namespace AeroCar.Controllers
 
                 RegularUser user = new RegularUser()
                 {
-                    UserName = adminDTO.Username
+                    UserName = adminDTO.Username,
+                    Status = UserStatus.Activated
                 };
 
                 var foundAdmin = await UserManager.FindByNameAsync(user.UserName) != null;
