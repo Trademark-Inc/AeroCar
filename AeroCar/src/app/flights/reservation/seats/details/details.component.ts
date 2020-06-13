@@ -113,7 +113,7 @@ export class FlightDetailsComponent implements OnInit {
   }
 
   loadFriends(): void {
-    var ret = this.userService.loadFriends();
+    var ret = this.userService.getFriends();
     
     ret.subscribe(data => {
         this.zone.run(() => {

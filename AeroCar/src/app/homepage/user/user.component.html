@@ -22,12 +22,17 @@
         </div>
         <div style="float: right;">
             <button routerLink="/dashboard/notifications" routerLinkActive="active" class="lookButton" style="margin: 5% 0% 0% 0%;" type="button">More</button><br><br> 
-            <label class="lookLabelBonus">{{profile.bonus}}</label>
+            <label class="lookLabelBonus" (click)="refreshBonusPoints();">
+                {{profile.bonus}}
+                <div class="tooltiptext">
+                    Click to refresh Your points!
+                </div>
+            </label>
         </div>                   
     </div>   
     <hr>  
     <div style="display: inline-block; width: 45%; vertical-align: top;">
-        <label class="lookLabel">View history of Your flights and rented cars</label><br>
+        <label class="lookLabel"><b>History</b> of Your flights and rented cars</label><br>
         <div style="float: left;">
             <label class="lookLabel" style="font-size: 20px;">- Flights</label><br>
             <label class="lookLabel" style="font-size: 20px;">- Cars</label>
@@ -52,7 +57,7 @@
     </div>
     <hr>
     <div style="display: inline-block; width: 45%;">
-        <label class="lookLabel">Your reservation of flights and cars</label><br>
+        <label class="lookLabel"><b>Reservations</b> of flights and cars</label><br>
         <div style="float: left;" >
             <label class="lookLabel" style="font-size: 20px;">- Flights</label><br>
             <label class="lookLabel" style="font-size: 20px;">- Cars</label>
@@ -65,7 +70,7 @@
     <div class="space">
     </div>
     <div style="display: inline-block; width: 45%;">
-        <label class="lookLabel">Rating of flights and cars</label><br>
+        <label class="lookLabel"><b>Rate</b> your flights and rented cars</label><br>
         <div style="float: left;">
             <label class="lookLabel" style="font-size: 20px;">- Flights</label><br>
             <label class="lookLabel" style="font-size: 20px;">- Cars</label>
@@ -161,8 +166,8 @@
             </table>
             <form #cancelReservationCarForm="ngForm" (ngSubmit)="cancelReservationCar(cancelReservationCarForm);">
                 <div style="display: flex; margin: 0% 0% 1% 0%;">
-                    <select class="lookReservationBox" name="reservationId" ngModel required>
-                        <option value="{{car.reservationId}}" *ngFor="let car of carsHistory;">{{car.reservationId}}</option>
+                    <select #carReservationSelect class="lookReservationBox" name="reservationId" ngModel required>
+                        <option *ngFor="let car of carsHistory;" [value]="car.reservationId">{{car.reservationId}}</option>
                     </select>
                     <button class="lookReservationButton" type="submit">Cancel reservation</button> 
                 </div>      
@@ -170,6 +175,8 @@
         </div>       
     </div>
 </div>
+
+<!-- RATE FLIGHTS -->
 <div class="modal fade" id="rateFlightsList" tabindex="0" role="dialog" aria-labelledby="rateFlightsList" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -220,7 +227,7 @@
 </div>
 <div class="modal fade" id="rateCarsList" tabindex="0" role="dialog" aria-labelledby="rateCarsList" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content" style="width: 100%;" >
           <div class="modal-header">
             <h5 class="modal-title" id="rateCarsList" style="font-size: 25px; color: #444444;">Rate (cars)</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -235,7 +242,7 @@
                         <td class="lookTd">{{vehicleR.returnLocation}} (Will return/Returned),<br>{{vehicleR.returnDate}}</td>                    
                         <td class="lookTdRating">
                             <div style="overflow: hidden;">
-                                <label style="font-size: 15px; float: left;">Rating Car: {{vehicleR.vehicleName}}</label>
+                                <label style="font-size: 15px; float: left;">Rating Car Company: {{vehicleR.carCompanyName}}</label>
                                     <select class="lookRating" name="ratingCarCompany" ngModel required>
                                         <option>1</option>
                                         <option>2</option>
@@ -258,7 +265,7 @@
                             </div>                    
                         </td>
                         <td class="lookTdConfirm">
-                            <button class="lookButtonConfirm" type="button">Confirm</button>
+                            <button class="lookButtonConfirm" type="submit">Confirm</button>  
                         </td>
                     </form>
                     </td>
