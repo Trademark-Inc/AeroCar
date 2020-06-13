@@ -6,14 +6,14 @@
     <div style="margin: 25px;">
         <div>
             <label class="lookLabelBig">More information about flight</label><br>
-            <div style="width: 45%;">
+            <div style="width: 100%;">
                 <div style="overflow: hidden;">
                     <label class="lookLabelLeft">- Flight ID</label>
                     <label class="lookLabelRight">{{flight.flightId}}</label><br>
                 </div>
                 <div style="overflow: hidden;">
                     <label class="lookLabelLeft">- Company name</label>
-                    <label class="lookLabelRight">{{companyProfile.Name}}</label><br>
+                    <label class="lookLabelRight">{{companyProfile.name}}</label><br>
                 </div>
                 <div style="overflow: hidden;">
                     <label class="lookLabelLeft">- Departure</label>
@@ -32,7 +32,7 @@
             <form class="form" #chooseItemsForm="ngForm" (ngSubmit)="next(chooseItemsForm);">
                 <div style="width: 45%;">
                     <div style="overflow: hidden;" *ngFor="let item of company.priceList">
-                        <label class="lookLabelLeft">- {{item.name}} {{item.price}}</label>
+                        <label class="lookLabelLeft">- {{item.name}} <b>${{item.price}}</b></label>
                         <input name="{{item.priceListIdemId}}" ngModel required class="lookCheckBox" type="checkbox">
                     </div>
                 </div>  

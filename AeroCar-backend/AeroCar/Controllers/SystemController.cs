@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using AeroCar.Models;
@@ -25,7 +26,7 @@ namespace AeroCar.Controllers
     public class SystemController : ControllerBase
     {
         public SystemController(UserManager<RegularUser> userManager, UserService userService, AvioService avioService, RentACarService rentACarService,
-            AvioAdminService avioAdminService, CarAdminService carAdminService)
+            AvioAdminService avioAdminService, CarAdminService carAdminService, AeroplaneService aeroplaneService, SeatService seatService)
         {
             UserManager = userManager;
             UserService = userService;
@@ -33,6 +34,8 @@ namespace AeroCar.Controllers
             RentACarService = rentACarService;
             AvioAdminService = avioAdminService;
             CarAdminService = carAdminService;
+            AeroplaneService = aeroplaneService;
+            SeatService = seatService;
         }
 
         public UserManager<RegularUser> UserManager { get; set; }
@@ -41,6 +44,8 @@ namespace AeroCar.Controllers
         public RentACarService RentACarService { get; set; }
         public AvioAdminService AvioAdminService { get; set; }
         public CarAdminService CarAdminService { get; set; }
+        public AeroplaneService AeroplaneService { get; set; }
+        public SeatService SeatService { get; set; }
 
         // GET api/system/check
         [HttpGet]
@@ -106,7 +111,81 @@ namespace AeroCar.Controllers
                     PromoDescription = avioCompanyDTO.Description
                 };
 
-                await AvioService.CreateCompany(new AvioCompany(), profile);
+                // add destinations
+                var dest = new List<Destination>();
+                string[,] destinations = { { "Belgrade", "44.786568", "20.448921" },
+                                       { "Tokyo", "35.689487", "139.691711" },
+                                       { "New York", "40.712776", "-74.005974" },
+                                       { "Berlin", "52.520008", "13.404954" },
+                                       { "Rome", "41.9028", "12.4964" },
+                                       { "Zurich", "47.3768880", "8.541694" } };
+
+                for (int j = 0; j < destinations.GetLength(0); ++j)
+                {
+                    Destination destination = new Destination()
+                    {
+                        Name = destinations[j, 0],
+                        Latitude = double.Parse(destinations[j, 1], CultureInfo.InvariantCulture),
+                        Longitude = double.Parse(destinations[j, 2], CultureInfo.InvariantCulture),
+                    };
+
+                    dest.Add(destination);
+                }
+
+                AvioCompany company = new AvioCompany()
+                {
+                    Destinations = dest
+                };
+
+                await AvioService.CreateCompany(company, profile);
+
+                // create planes for companies
+                var aeroplaneA380 = new Aeroplane()
+                {
+                    AvioCompanyId = company.AvioCompanyId,
+                    Name = "Airbus A380"
+                };
+
+                var aeroplane737 = new Aeroplane()
+                {
+                    AvioCompanyId = company.AvioCompanyId,
+                    Name = "Boeing 737"
+                };
+
+                if (!await AeroplaneService.AeroplaneExists(company.AvioCompanyId, aeroplaneA380.Name))
+                {
+                    await AeroplaneService.AddAeroplane(aeroplaneA380);
+                }
+
+                if (!await AeroplaneService.AeroplaneExists(company.AvioCompanyId, aeroplane737.Name))
+                {
+                    await AeroplaneService.AddAeroplane(aeroplane737);
+                }
+
+                // create seats for planes
+                var seatsA380 = new Seats()
+                {
+                    AeroplaneId = aeroplaneA380.AeroplaneId,
+                    SeatCount = 240,
+                    InOneRow = 6
+                };
+
+                var seats737 = new Seats()
+                {
+                    AeroplaneId = aeroplane737.AeroplaneId,
+                    SeatCount = 320,
+                    InOneRow = 8
+                };
+
+                if (!await SeatService.SeatsExist(aeroplaneA380.AeroplaneId))
+                {
+                    await SeatService.AddSeats(seatsA380);
+                }
+
+                if (!await SeatService.SeatsExist(aeroplane737.AeroplaneId))
+                {
+                    await SeatService.AddSeats(seats737);
+                }
 
                 return Ok(200);
             }
